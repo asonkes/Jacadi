@@ -1,0 +1,62 @@
+header {
+    font-family: var(--font-family1);
+    position: fixed;
+    width: 100%;
+    margin-top: 25px;
+
+    .j-headerContent {
+        display: flex;
+        justify-content: space-evenly;
+
+        nav ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            li {
+                list-style: none;
+                position: relative;
+
+                a {
+                    list-style: none;
+                    text-decoration-line: none;
+                    padding: 10px 35px;
+                    font-size: 18px;
+                    font-weight: bold;
+                    letter-spacing: 1px;
+                    color: var(--white);
+
+                    &:hover {
+                        text-decoration-line: underline;
+                        text-decoration-color: var(--orange);
+                        text-decoration-thickness: 2px;
+                        text-underline-offset: 8px;
+                    }
+                }
+
+                ul {
+                    display: flex;
+                    flex-direction: column;
+                    display: none;
+                    position: absolute;
+                    top: 25px;
+                    left: 0;
+
+                    li {
+                        margin-top: 25px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.j-sousMenu:hover ul {
+    display: block;
+}
+
+.j-accountIcon {
+    height: 41px;
+    margin: -8px;
+    cursor: pointer;
+}

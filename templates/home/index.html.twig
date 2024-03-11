@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jacadi
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('build/app.css') }}">
+{% endblock %}
+
+{% block body %}
+	<div class="j-home">
+		<div class="j-homeBackground" style="background-image: url('{{ asset('images/pexels-pixabay-39369.jpg') }}')"></div>
+	</div>
+{% endblock %}

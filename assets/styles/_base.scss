@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+}
+
+.j-home {
+    height: 100%;
+    background-color: red;
+
+    .j-homeBackground {
+        max-width: 100%;
+        height: 60%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
