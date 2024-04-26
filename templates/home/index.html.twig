@@ -3,13 +3,102 @@
 {% block title %}Jacadi
 {% endblock %}
 
-{% block stylesheets %}
-	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('build/app.css') }}">
-{% endblock %}
-
 {% block body %}
-	<div class="j-home">
-		<div class="j-homeBackground" style="background-image: url('{{ asset('images/pexels-pixabay-39369.jpg') }}')"></div>
-	</div>
+
+	<section class="j-section">
+		<a class="j-ballon" href="#">
+			<img class="j-ballonContainer" src="{{ asset('images/icones/ballon1.png')}}">
+		</a>
+		<div class="j-homeCover" style="background-image: url('{{ asset('images/backgroundImages/doudou.jpg') }}')">
+			<img class="j-homeLogo" src="{{ asset('images/Logo/Logo.png')}}">
+		</div>
+		<div class="j-homeGrid">
+			<div class="j-homeGridCover" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}')">
+				<div class="j-homeGridContainer">
+					<div class="j-Card">
+						<div class="j-Card-container">
+							<img class="j-Card-media" src="{{ asset('images/medias/pexels-photo-235398.jpeg') }}" alt="Image">
+							<div class="j-Card-contentText">
+								<div class="j-Card-Containerlink">
+									<a href="#" class="j-Card-link">
+										<p class="j-Card-title">Bébé Fille</p>
+										<p class="j-Card-textSize">(3-36 mois)</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="j-Card">
+						<div class="j-Card-container">
+							<img class="j-Card-media" src="{{ asset('images/medias/pexels-photo-3154330.webp') }}">
+							<div class="j-Card-contentText">
+								<div class="j-Card-Containerlink">
+									<a href="#" class="j-Card-link">
+										<p class="j-Card-title">Fille</p>
+										<p class="j-Card-textSize">(2-14 ans)</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="j-Card">
+						<div class="j-Card-container">
+							<img class="j-Card-media" src="{{ asset('images/medias/pexels-photo-15466102.jpeg') }}">
+							<div class="j-Card-contentText">
+								<div class="j-Card-Containerlink">
+									<a href="#" class="j-Card-link">
+										<p class="j-Card-title">Bébé Garçon</p>
+										<p class="j-Card-textSize">(3-36 mois)</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="j-Card">
+						<div class="j-Card-container">
+							<img class="j-Card-media" src="{{ asset('images/medias/pexels-photo-1427288.jpg')}}">
+							<div class="j-Card-contentText">
+								<div class="j-Card-Containerlink">
+									<a href="#" class="j-Card-link">
+										<p class="j-Card-title">Garçon</p>
+										<p class="j-Card-textSize">(2-14 ans)</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="j-section j-coupDeCoeur" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}" alt="image-texture-cimentee">
+		<h1 class="j-coupDeCoeur-title">Nos Coups de Coeur</h1>
+		<div class="j-coupDeCoeur-grid">
+			<div class="j-coupDeCoeur-Card">
+				<div class="j-coupDeCoeur-CardCover">
+					<img src="">
+				</div>
+
+			</div>
+
+			<div class="j-coupDeCoeur-Card"></div>
+			<div class="j-coupDeCoeur-Card"></div>
+			<div class="j-coupDeCoeur-Card"></div>
+			<div class="j-coupDeCoeur-Card"></div>
+			<div class="j-coupDeCoeur-Card"></div>
+
+
+		</div>
+
+
+	</section>
+
+	<section class="j-section j-notreUnivers">
+		<p>Page : "Notre Univers"</p>
+	</section>
+
+	<section class="j-section j-contact">
+		<p>Page : Contact</p>
+	</section>
 {% endblock %}

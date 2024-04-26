@@ -1,3 +1,5 @@
+@use '../styles/mixin' as mixin;
+
 header {
     font-family: var(--font-family1);
     position: fixed;
@@ -7,6 +9,10 @@ header {
     .j-headerContent {
         display: flex;
         justify-content: space-evenly;
+
+        @include mixin.lg {
+            display: none;
+        }
 
         nav ul {
             display: flex;
@@ -26,9 +32,17 @@ header {
                     letter-spacing: 1px;
                     color: var(--white);
 
+                    @include mixin.lg-lt {
+                        padding: 10px 20px;
+                    }
+
+                    @include mixin.lg {
+                        padding: 10px 15px;
+                    }
+
                     &:hover {
                         text-decoration-line: underline;
-                        text-decoration-color: var(--orange);
+                        text-decoration-color: var(--brun);
                         text-decoration-thickness: 2px;
                         text-underline-offset: 8px;
                     }
@@ -59,4 +73,12 @@ header {
     height: 41px;
     margin: -8px;
     cursor: pointer;
+
+    @include mixin.lg-lt {
+        height: 35px;
+    }
+
+    @include mixin.md-lt {
+        height: 30px;
+    }
 }
