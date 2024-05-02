@@ -5,7 +5,7 @@
 
 {% block body %}
 
-	<section class="j-section">
+	<section class="j-section js-page-content">
 		<a class="j-ballon" href="#">
 			<img class="j-ballonContainer" src="{{ asset('images/icones/ballon1.png')}}">
 		</a>
@@ -17,7 +17,7 @@
 				<div class="j-homeGridContainer">
 					<div class="j-Card">
 						<div class="j-Card-container">
-							<img class="j-Card-media" src="{{ asset('images/medias/pexels-photo-235398.jpeg') }}" alt="Image">
+							<img class="j-Card-media" src="{{ asset('images/medias/mediaHome/pexels-photo-235398.jpeg') }}" alt="jeune fille qui joue avec des feuilles séchées">
 							<div class="j-Card-contentText">
 								<div class="j-Card-Containerlink">
 									<a href="#" class="j-Card-link">
@@ -30,7 +30,7 @@
 					</div>
 					<div class="j-Card">
 						<div class="j-Card-container">
-							<img class="j-Card-media" src="{{ asset('images/medias/pexels-photo-3154330.webp') }}">
+							<img class="j-Card-media" src="{{ asset('images/medias/mediaHome/pexels-photo-3154330.webp') }}" alt="fille assisse sur un fauteuil qui sourit">
 							<div class="j-Card-contentText">
 								<div class="j-Card-Containerlink">
 									<a href="#" class="j-Card-link">
@@ -43,7 +43,7 @@
 					</div>
 					<div class="j-Card">
 						<div class="j-Card-container">
-							<img class="j-Card-media" src="{{ asset('images/medias/pexels-photo-15466102.jpeg') }}">
+							<img class="j-Card-media" src="{{ asset('images/medias/mediaHome/pexels-photo-15466102.jpeg') }}" alt="jeune garçon en salopette avec chapeau">
 							<div class="j-Card-contentText">
 								<div class="j-Card-Containerlink">
 									<a href="#" class="j-Card-link">
@@ -56,7 +56,7 @@
 					</div>
 					<div class="j-Card">
 						<div class="j-Card-container">
-							<img class="j-Card-media" src="{{ asset('images/medias/pexels-photo-1427288.jpg')}}">
+							<img class="j-Card-media" src="{{ asset('images/medias/mediaHome/pexels-photo-1427288.jpg')}}" alt="visage garçon avec cheveux brun">
 							<div class="j-Card-contentText">
 								<div class="j-Card-Containerlink">
 									<a href="#" class="j-Card-link">
@@ -72,33 +72,113 @@
 		</div>
 	</section>
 
-	<section class="j-section j-coupDeCoeur" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}" alt="image-texture-cimentee">
-		<h1 class="j-coupDeCoeur-title">Nos Coups de Coeur</h1>
+	<section id="coupDeCoeur" class="j-section j-coupDeCoeur" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}" alt="image-texture-cimentee">
+		<h2 class="j-coupDeCoeur-h2">Nos Coups de Coeur</h2>
 		<div class="j-coupDeCoeur-grid">
 			<div class="j-coupDeCoeur-Card">
-				<div class="j-coupDeCoeur-CardCover">
-					<img src="">
+				<img class="j-coupDeCoeur-media" src="{{ asset('images/medias/mediaCoupDeCoeur/pexels-photo-4971312.jpeg')}}" alt="jeune fille couchée sur le dos parterre">
+				<a class="j-coupDeCoeur-link">
+					<p class="j-coupDeCoeur-title" href="#">T-shirt</p>
+				</a>
+			</div>
+			<div class="j-coupDeCoeur-Card">
+				<img class="j-coupDeCoeur-media" src="{{ asset('images/medias/mediaCoupDeCoeur/pexels-photo-3763588.jpeg')}}" alt="jeune fille avec cheveux crollés debout sur un lit">
+				<a class="j-coupDeCoeur-link">
+					<p class="j-coupDeCoeur-title" href="#">Robes</p>
+				</a>
+			</div>
+			<div class="j-coupDeCoeur-Card">
+				<img class="j-coupDeCoeur-media" src="{{ asset('images/medias/mediaCoupDeCoeur/c407b2c2a69045bc9ed52467c17e22c6-thumbnail-0000000000 (3).jpg')}}" alt="jeune garçon assis avec chemise rayée">
+				<a class="j-coupDeCoeur-link">
+					<p class="j-coupDeCoeur-title" href="#">Chemises</p>
+				</a>
+			</div>
+			<div class="j-coupDeCoeur-Card">
+				<img class="j-coupDeCoeur-media" src="{{ asset('images/medias/mediaCoupDeCoeur/TW15041-11_TW22131-44_1_1024x.jpg')}}" alt="jeune garçon qui se tien sur un mur avec pull rayé">
+				<a class="j-coupDeCoeur-link">
+					<p class="j-coupDeCoeur-title" href="#">Pantalons</p>
+				</a>
+			</div>
+			<div class="j-coupDeCoeur-Card">
+				<img class="j-coupDeCoeur-media" src="{{ asset('images/medias/mediaCoupDeCoeur/pexels-photo-189857.jpeg')}}" alt="petite fille avec appareil photo en robe">
+				<a class="j-coupDeCoeur-link">
+					<p class="j-coupDeCoeur-title" href="#">Jupes</p>
+				</a>
+			</div>
+			<div class="j-coupDeCoeur-Card">
+				<img class="j-coupDeCoeur-media" src="{{ asset('images/medias/mediaCoupDeCoeur/pexels-photo-47840511.jpeg')}}" alt="petite fille avec chapeau">
+				<a class="j-coupDeCoeur-link">
+					<p class="j-coupDeCoeur-title" href="#">Accessoires</p>
+				</a>
+			</div>
+		</div>
+	</section>
+
+
+	<section id="notreUnivers" class="j-section j-notreUnivers" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}" alt="image-texture-cimentee">
+		<div class="j-notreUnivers-grid">
+			<div class="j-notreUnivers-Card1">
+				<img class="j-notreUnivers-media" src="{{ asset('images/medias/mediaNotreUnivers/pexels-photo-462578911.jpeg') }}" alt="petite fille avec un nounours">
+			</div>
+			<div class="j-notreUnivers-Card2">
+				<div class="j-notreUnivers-contentParent">
+					<div class="j-notreUnivers-content">
+						<p class="j-notreUnivers-title">Jeune Entreprise...</p>
+						<p class="j-notreUnivers-text">
+							<strong>Jacadi</strong>, c'est l'histoire d'une jeune maman, ne trouvant pas ce dont elle avait besoin pour ses enfants.<br>
+							Elle décida de favoriser son imaginaire pour que<br>
+							<strong>ses enfants s'épanouissent</strong>
+							au mieux.<br>
+							C'est pour cela que depuis
+							<strong>2021</strong>, nous imaginons dans nos ateliers des vêtements, des accessoires et même des jouets originaux, qui sont autant d'histoires merveilleuses à
+							<strong>inventer, réinventer, jouer</strong>
+							et
+							<strong>raconter.</strong>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="j-notreUnivers-Card3">
+				<div class="j-notreUnivers-content">
+					<div class="j-notreUnivers-blockquote">
+						<p class="j-notreUnivers-text">
+							"Le temps de l'enfance est précieux: il faut laisser les enfants être des enfants".
+						</p>
+						<p class="j-notreUnivers-footer">
+							Maryline Zemmour<br>
+							Fondatrice de Jacadi
+						</p>
+					</div>
 				</div>
 
+
 			</div>
-
-			<div class="j-coupDeCoeur-Card"></div>
-			<div class="j-coupDeCoeur-Card"></div>
-			<div class="j-coupDeCoeur-Card"></div>
-			<div class="j-coupDeCoeur-Card"></div>
-			<div class="j-coupDeCoeur-Card"></div>
-
-
+			<div class="j-notreUnivers-Card4">
+				<img class="j-notreUnivers-media" src="{{ asset('images/medias/mediaNotreUnivers/TW10001-01_TW26011-45.jpg') }}" alt="petite fille qui sourit">
+			</div>
+			<div class="j-notreUnivers-Card5">
+				<img class="j-notreUnivers-media" src="{{ asset('images/medias/mediaNotreUnivers/pexels-photo-4641053.jpeg') }}" alt="petite fille assisse avec une pomme en main">
+			</div>
 		</div>
-
-
 	</section>
 
-	<section class="j-section j-notreUnivers">
-		<p>Page : "Notre Univers"</p>
-	</section>
-
-	<section class="j-section j-contact">
-		<p>Page : Contact</p>
+	<section id="contact" class="j-section j-contact" style="background-image: url('{{ asset('images/backgroundImages/Capture d’écran (662).png') }}" alt="image-jeuneFille">
+		<div class="j-contact-content">
+			<h2 class="j-contact-h2">Contact</h2>
+			<form action="">
+				<div class="j-contact-inputParent">
+					<input class="j-contact-input" type="text" placeholder="Nom">
+				</div>
+				<div class="j-contact-inputParent">
+					<input class="j-contact-input" type="text" placeholder="Prénom">
+				</div>
+				<div class="j-contact-inputParent">
+					<input class="j-contact-input" type="text" placeholder="E-mail">
+				</div>
+				<div class="j-contact-inputParent">
+					<input class="j-contact-input" type="text" placeholder="Message">
+				</div>
+			</form>
+		</div>
 	</section>
 {% endblock %}

@@ -1,5 +1,304 @@
 @use '../styles/mixin' as mixin;
 
 .j-notreUnivers {
-    background-color: var(--brun);
+    margin: 5px auto;
+    max-width: 75%;
+    filter: drop-shadow(0 0 0.5rem var(--darkGray));
+    display: flex;
+    align-items: center;
+
+    .j-notreUnivers-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin: 40px auto;
+        max-width: 80%;
+        gap: 30px;
+        position: relative;
+
+        @include mixin.lg-lt {
+            max-width: 90%;
+        }
+
+        @include mixin.lg {
+            max-width: 95%;
+            grid-template-columns: repeat(1, 1fr);
+            padding: 40px;
+            margin: 70px auto;
+        }
+
+        @include mixin.md {
+            padding: 0px;
+        }
+
+        .j-notreUnivers-Card1 {
+            grid-column: 1;
+            max-width: 40%;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            z-index: -1;
+
+            @include mixin.lg-lt {
+                left: 20px;
+            }
+
+            @include mixin.lg {
+                max-width: 45%;
+                top: -50px;
+                left: 30px;
+            }
+
+            @include mixin.md-lt-lt {
+                max-width: 50%;
+                top: -80px;
+            }
+
+            @include mixin.md {
+                max-width: 65%;
+                top: -120px;
+                left: 50px;
+            }
+
+            @include mixin.sm-lt {
+                max-width: 60%;
+                top: -160px;
+            }
+
+            @include mixin.sm {
+                max-width: 65%;
+                top: -180px;
+            }
+
+            .j-notreUnivers-media {
+                max-width: 100%;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transform: rotate(-30deg);
+            }
+        }
+
+        .j-notreUnivers-Card2 {
+            grid-column: 2/4;
+            max-width: 100%;
+            height: 100%;
+            text-align: center;
+
+            .j-notreUnivers-contentParent {
+                max-width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-bottom: 5px;
+
+                @include mixin.lg {
+                    justify-content: end;
+                }
+
+                .j-notreUnivers-content {
+                    max-width: 70%;
+                    height: 100%;
+                    background-color: var(--gray);
+                    border-radius: 25px;
+                    filter: drop-shadow(0 0 0.4rem var(--darkGray));
+
+                    @include mixin.xl-lt {
+                        max-width: 85%;
+                    }
+
+                    @include mixin.xl {
+                        max-width: 100%;
+                    }
+
+                    @include mixin.lg {
+                        max-width: 65%;
+                    }
+
+                    @include mixin.md-lt-lt {
+                        max-width: 80%;
+                    }
+
+                    @include mixin.md {
+                        max-width: 100%;
+                    }
+
+                    .j-notreUnivers-title {
+                        font-family: var(--font-family2);
+                        font-size: 25px;
+                        font-style: italic;
+                        font-weight: bolder;
+                        padding: 20px;
+                        color: var(--blue2);
+
+                        @include mixin.lg-lt {
+                            font-size: 20px;
+                            padding: 10px;
+                        }
+
+                        @include mixin.sm-lt {
+                            font-size: 16px;
+                        }
+                    }
+
+                    .j-notreUnivers-text {
+                        font-family: var(--font-family3);
+                        font-size: 17px;
+                        font-style: italic;
+                        padding: 0 5px 10px 5px;
+
+                        @include mixin.lg-lt {
+                            font-size: 15px;
+                        }
+
+                        @include mixin.md-lt-lt {
+                            font-size: 11px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .j-notreUnivers-Card3 {
+            grid-column: 1;
+            max-width: 37%;
+            position: absolute;
+            bottom: 0;
+            left: -40px;
+
+            @include mixin.lg-lt {
+                left: -40px;
+                bottom: -100px;
+            }
+
+            @include mixin.lg {
+                max-width: 50%;
+                bottom: -90px;
+            }
+
+            @include mixin.md-lt-lt {
+                max-width: 60%;
+            }
+
+            @include mixin.md {
+                max-width: 100%;
+                bottom: -150px;
+                left: 0;
+            }
+
+            .j-notreUnivers-content {
+                max-width: 100%;
+                display: flex;
+                align-items: end;
+                justify-content: center;
+                text-align: center;
+
+                .j-notreUnivers-blockquote {
+                    max-width: 150%;
+                    background-color: var(--gray);
+                    filter: drop-shadow(0 0 0.4rem var(--darkGray));
+                    border-radius: 25px;
+                    padding: 20px 5px;
+
+                    @include mixin.lg {
+                        padding: 10px 5px;
+                    }
+
+                    @include mixin.md {
+                        max-width: 70%;
+                    }
+
+                    @include mixin.sm {
+                        max-width: 100%;
+                    }
+
+                    .j-notreUnivers-text {
+                        max-width: 100%;
+                        font-family: var(--font-family3);
+                        font-size: 18px;
+                        font-weight: 500;
+                        font-style: italic;
+                        color: var(--blue2);
+
+                        @include mixin.md-lt-lt {
+                            font-size: 14px;
+                        }
+
+                        @include mixin.sm-lt {
+                            font-size: 11px;
+                        }
+                    }
+
+                    .j-notreUnivers-footer {
+                        max-width: 100%;
+                        font-family: var(--font-family2);
+                        font-size: 18px;
+                        font-weight: 600;
+                        font-style: italic;
+                        padding: 10px 5px;
+
+                        @include mixin.md-lt-lt {
+                            font-size: 14px;
+                        }
+
+                        @include mixin.sm-lt {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .j-notreUnivers-Card4 {
+            grid-column: 2;
+            max-width: 100%;
+            height: 100%;
+            margin: -20px auto 0 auto;
+
+            @include mixin.lg {
+                max-width: 80%;
+                margin: -15px auto;
+            }
+
+            @include mixin.md-lt-lt {
+                max-width: 100%;
+                margin: 0;
+            }
+
+            .j-notreUnivers-media {
+                max-width: 100%;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .j-notreUnivers-Card5 {
+            grid-column: 3;
+            max-width: 100%;
+
+            @include mixin.lg {
+                max-width: 80%;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                margin: 15px 0 0 0;
+
+                @include mixin.md-lt-lt {
+                    max-width: 90%;
+                    z-index: -1;
+                }
+
+                @include mixin.sm-lt {
+                    max-width: 100%;
+                }
+            }
+
+            .j-notreUnivers-media {
+                max-width: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+    }
 }

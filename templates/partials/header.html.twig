@@ -1,44 +1,71 @@
-<header>
+<header class="js-change-background">
 	<div class="j-headerContent">
 		<nav>
 			<ul>
 				<li>
-					<a href="{{ path('home') }}">Accueil</a>
+					<a class="js-change-color-a" href=" {{ path('home') }} ">Accueil</a>
 				</li>
 				<li class="j-sousMenu">
-					<a href="#">Bébé</a>
-					<ul>
-						<li><a href="#">Fille</a></li>
-						<li><a href="#">Garçon</a></li>
+					<a class="js-change-color-a" href="#">&nbsp;Bébé&nbsp;
+					</a>
+					<ul class="js-change-background-sousMenus">
+						<li>
+							<a class="js-change-color-a" href="#">Fille</a>
+						</li>
+						<li>
+							<a class="js-change-color-a" href="#">Garçon</a>
+						</li>
 					</ul>
 				</li>
 				<li class="j-sousMenu">
-					<a href="#">Enfant</a>
-					<ul>
-						<li><a href="#">Fille</a></li>
-						<li><a href="#">Garçon</a></li>
+					<a class="js-change-color-a" href="#">Enfant</a>
+					<ul class="js-change-background-sousMenus">
+						<li>
+							<a class="js-change-color-a" href="#">Fille</a>
+						</li>
+						<li>
+							<a class="js-change-color-a" href="#">Garçon</a>
+						</li>
 					</ul>
 				</li>
 				<li>
-					<a href="#">Coup de Coeur</a>
+					<a class="js-change-color-a" href=" {{ path('home')}}#coupDeCoeur ">Coup de Coeur</a>
 				</li>
 				<li>
-					<a href="#">Notre Univers</a>
+					<a class="js-change-color-a" href=" {{ path('home')}}#notreUnivers ">Notre Univers</a>
 				</li>
 				<li>
-					<a href="#">Contact</a>
+					<a class="js-change-color-a" href=" {{ path('home')}}#contact ">Contact</a>
 				</li>
 			</ul>
 		</nav>
 		<div>
 			<a>
-				<img class="j-accountIcon" src="{{ asset('images/icones/Business-Man-Add-02-256.png')}}">
+				<img class="j-accountIcon js-change-accountIconWhite" src="{{ asset('images/icones/Business-Man-Add-02-256.png')}}">
+
+				<img class="j-accountIcon j-accountIconBlack js-change-accountIconBlack" src="{{ asset('images/icones/Business-Man-Add-02-2561.png')}}">
 			</a>
 		</div>
 	</div>
+</header>
 
-	<div class="burger">
-		<span></span>
+<div class="j-burger">
+	<div class="j-burger-icon">
+		<div class="j-burger-iconContainer">
+			<span></span>
+		</div>
 	</div>
 
-</header>
+	<nav class="j-burger-nav">
+		<ul>
+			<li><a href=" {{ path('home') }} ">Accueil</a></li>
+			<li><a href="#">Bébé</a></li>
+			<li><a href="#">Enfant</a></li>
+			<li><a href=" {{ path('home')}}#coupDeCoeur ">Coup de Coeur</a></li>
+			<li><a href=" {{ path('home')}}#notreUnivers ">Notre Univers</a></li>
+			<li><a href=" {{ path('home')}}#contact ">Contact</a></li>
+			<li><a href="#">Mon Compte</a></li>
+			<li><a href="#">Connexion</a></li>
+		</ul>
+	</nav>
+</div>

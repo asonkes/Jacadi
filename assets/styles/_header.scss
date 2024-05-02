@@ -4,7 +4,17 @@ header {
     font-family: var(--font-family1);
     position: fixed;
     width: 100%;
-    margin-top: 25px;
+    padding: 25px 0 10px 0;
+    z-index: 999999;
+
+    &.change-header-background {
+        background-color: var(--blue);
+        transition: 0.4s ease-in-out;
+
+        @include mixin.lg {
+            display: none;
+        }
+    }
 
     .j-headerContent {
         display: flex;
@@ -18,6 +28,13 @@ header {
             display: flex;
             flex-direction: row;
             justify-content: center;
+            padding-bottom: 15px;
+            text-align: center;
+
+            &.change-navUl-background {
+                background-color: var(--blue);
+                transition: 0.4s ease-in-out;
+            }
 
             li {
                 list-style: none;
@@ -30,7 +47,12 @@ header {
                     font-size: 18px;
                     font-weight: bold;
                     letter-spacing: 1px;
+                    text-align: center;
                     color: var(--white);
+
+                    &.change-color-a {
+                        color: var(--black);
+                    }
 
                     @include mixin.lg-lt {
                         padding: 10px 20px;
@@ -74,11 +96,24 @@ header {
     margin: -8px;
     cursor: pointer;
 
+    &.change-accountIconWhite {
+        display: none;
+    }
+
     @include mixin.lg-lt {
         height: 35px;
     }
 
     @include mixin.md-lt {
         height: 30px;
+    }
+}
+
+.j-accountIconBlack {
+    margin-left: -42px;
+    display: none;
+
+    &.change-accountIconBlack {
+        display: block;
     }
 }
