@@ -7,7 +7,7 @@
 
 	<section class="j-section js-page-content">
 		<a class="j-ballon" href="#">
-			<img class="j-ballonContainer" src="{{ asset('images/icones/ballon1.png')}}">
+			<img class="j-ballonContainer" src="{{ asset('images/icons/ballon1.png')}}">
 		</a>
 		<div class="j-homeCover" style="background-image: url('{{ asset('images/backgroundImages/doudou.jpg') }}')">
 			<img class="j-homeLogo" src="{{ asset('images/Logo/Logo.png')}}">
@@ -114,8 +114,8 @@
 		</div>
 	</section>
 
-
 	<section id="notreUnivers" class="j-section j-notreUnivers" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}" alt="image-texture-cimentee">
+
 		<div class="j-notreUnivers-grid">
 			<div class="j-notreUnivers-Card1">
 				<img class="j-notreUnivers-media" src="{{ asset('images/medias/mediaNotreUnivers/pexels-photo-462578911.jpeg') }}" alt="petite fille avec un nounours">
@@ -138,6 +138,9 @@
 					</div>
 				</div>
 			</div>
+		</div>
+
+		<div class="j-notreUnivers-grid2">
 			<div class="j-notreUnivers-Card3">
 				<div class="j-notreUnivers-content">
 					<div class="j-notreUnivers-blockquote">
@@ -150,35 +153,117 @@
 						</p>
 					</div>
 				</div>
-
-
 			</div>
 			<div class="j-notreUnivers-Card4">
-				<img class="j-notreUnivers-media" src="{{ asset('images/medias/mediaNotreUnivers/TW10001-01_TW26011-45.jpg') }}" alt="petite fille qui sourit">
-			</div>
-			<div class="j-notreUnivers-Card5">
-				<img class="j-notreUnivers-media" src="{{ asset('images/medias/mediaNotreUnivers/pexels-photo-4641053.jpeg') }}" alt="petite fille assisse avec une pomme en main">
+				<div class="j-notreUnivers-mediaParent">
+					<img class="j-notreUnivers-media1" src="{{ asset('images/medias/mediaNotreUnivers/TW10001-01_TW26011-45.jpg') }}" alt="petite fille qui sourit">
+				</div>
+				<div class="j-notreUnivers-mediaParent">
+					<img class="j-notreUnivers-media2" src="{{ asset('images/medias/mediaNotreUnivers/pexels-photo-4641053.jpeg') }}" alt="petite fille assisse avec une pomme en main">
+				</div>
 			</div>
 		</div>
 	</section>
 
+
+	<!--
+													<section id="notreUnivers" class="j-section j-notreUnivers" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}" alt="image-texture-cimentee">
+														<div class="j-notreUnivers-grid">
+															<div class="j-notreUnivers-Card1">
+																<img class="j-notreUnivers-media" src="{{ asset('images/medias/mediaNotreUnivers/pexels-photo-462578911.jpeg') }}" alt="petite fille avec un nounours">
+															</div>
+															<div class="j-notreUnivers-Card2">
+																<div class="j-notreUnivers-contentParent">
+																	<div class="j-notreUnivers-content">
+																		<p class="j-notreUnivers-title">Jeune Entreprise...</p>
+																		<p class="j-notreUnivers-text">
+																			<strong>Jacadi</strong>, c'est l'histoire d'une jeune maman, ne trouvant pas ce dont elle avait besoin pour ses enfants.<br>
+																			Elle décida de favoriser son imaginaire pour que<br>
+																			<strong>ses enfants s'épanouissent</strong>
+																			au mieux.<br>
+																			C'est pour cela que depuis
+																			<strong>2021</strong>, nous imaginons dans nos ateliers des vêtements, des accessoires et même des jouets originaux, qui sont autant d'histoires merveilleuses à
+																			<strong>inventer, réinventer, jouer</strong>
+																			et
+																			<strong>raconter.</strong>
+																		</p>
+																	</div>
+																</div>
+															</div>
+															<div class="j-notreUnivers-Card3">
+																<div class="j-notreUnivers-content">
+																	<div class="j-notreUnivers-blockquote">
+																		<p class="j-notreUnivers-text">
+																			"Le temps de l'enfance est précieux: il faut laisser les enfants être des enfants".
+																		</p>
+																		<p class="j-notreUnivers-footer">
+																			Maryline Zemmour<br>
+																			Fondatrice de Jacadi
+																		</p>
+																	</div>
+																</div>
+															</div>
+															<div class="j-notreUnivers-Card4">
+																<img class="j-notreUnivers-media" src="{{ asset('images/medias/mediaNotreUnivers/TW10001-01_TW26011-45.jpg') }}" alt="petite fille qui sourit">
+															</div>
+															<div class="j-notreUnivers-Card5">
+																<img class="j-notreUnivers-media" src="{{ asset('images/medias/mediaNotreUnivers/pexels-photo-4641053.jpeg') }}" alt="petite fille assisse avec une pomme en main">
+															</div>
+														</div>
+													</section>
+												-->
+
 	<section id="contact" class="j-section j-contact" style="background-image: url('{{ asset('images/backgroundImages/Capture d’écran (662).png') }}" alt="image-jeuneFille">
-		<div class="j-contact-content">
-			<h2 class="j-contact-h2">Contact</h2>
-			<form action="">
-				<div class="j-contact-inputParent">
-					<input class="j-contact-input" type="text" placeholder="Nom">
+		<div class="j-contact-contentParent">
+			<div class="j-contact-content">
+				<h2 class="j-contact-h2">Contact</h2>
+				<form action="">
+					<div class="j-contact-inputParent">
+						<input class="j-contact-input" type="text" placeholder="Nom">
+					</div>
+					<div class="j-contact-inputParent">
+						<input class="j-contact-input" type="text" placeholder="Prénom">
+					</div>
+					<div class="j-contact-inputParent">
+						<input class="j-contact-input" type="text" placeholder="E-mail">
+					</div>
+					<div class="j-contact-inputParent">
+						<textarea class="j-contact-textarea" placeholder="Message"></textarea>
+					</div>
+					<button class="j-contact-button">Envoyer</button>
+				</form>
+			</div>
+		</div>
+		<div class="j-contact-grid-prefooter">
+			<div class="j-contact-prefooter-Card">
+				<img class="j-contact-prefooter-media" src="{{ asset('images/icons/Telephone-01-256.png')}}" alt="phone icon">
+				<div class="j-contact-prefooter-text">
+					<p>Service Client</p>
+					<p>+32(2) 411.58.37</p>
 				</div>
-				<div class="j-contact-inputParent">
-					<input class="j-contact-input" type="text" placeholder="Prénom">
+			</div>
+			<div class="j-contact-prefooter-Card">
+				<img class="j-contact-prefooter-media" src="{{ asset('images/icons/Mail-01-256(1).png')}}" alt="mail icon">
+				<div class="j-contact-prefooter-text">
+					<p>E-Mail :</p>
+					<p>jacadi @ gmail.com</p>
 				</div>
-				<div class="j-contact-inputParent">
-					<input class="j-contact-input" type="text" placeholder="E-mail">
+			</div>
+			<div class="j-contact-prefooter-Card">
+				<img class="j-contact-prefooter-media" src="{{ asset('images/icons/Clock-01-256.png')}}" alt="clock icon">
+				<div class="j-contact-prefooter-text">
+					<p>Du Mardi au Samedi</p>
+					<p>de 10h00 à 18h00</p>
 				</div>
-				<div class="j-contact-inputParent">
-					<input class="j-contact-input" type="text" placeholder="Message">
+			</div>
+			<div class="j-contact-prefooter-Card">
+				<img class="j-contact-prefooter-media" src="{{ asset('images/icons/Counting-Machine-256.png')}}" alt="couting machine icon">
+				<div class="j-contact-prefooter-text">
+					<p>Fourchette de Prix :</p>
+					<img class="j-contact-prefooter-media2" src="{{asset('images/icons/Euro-256.png')}}" alt="euro money icon">
+					<img class="j-contact-prefooter-media2" src="{{asset('images/icons/Euro-256.png')}}" alt="euro money icon">
 				</div>
-			</form>
+			</div>
 		</div>
 	</section>
 {% endblock %}

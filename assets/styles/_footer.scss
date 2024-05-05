@@ -1,8 +1,15 @@
+@use '../styles/mixin' as mixin;
+
 footer {
     max-width: 100%;
+    font-size: 17px;
     text-align: center;
     background-color: var(--blueDark);
     padding: 15px 0;
     color: var(--white);
     font-family: var(--font-family3);
+
+    @include mixin.sm-lt {
+        font-size: 15px;
+    }
 }

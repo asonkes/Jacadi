@@ -5,6 +5,10 @@
     margin: 0 auto;
     filter: drop-shadow(0 0 0.3rem var(--darkGray));
 
+    @include mixin.lg-lt {
+        max-width: 100%;
+    }
+
     .j-coupDeCoeur-h2 {
         text-align: center;
         font-family: var(--font-family4);
@@ -34,27 +38,16 @@
         gap: 70px;
         padding: 0 60px 60px 0;
 
-        @include mixin.lg-lt {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 60px;
-        }
-
         @include mixin.lg {
-            max-width: 80%;
             gap: 50px;
         }
 
-        @include mixin.md-lt {
-            max-width: 85%;
+        @include mixin.lg {
+            grid-template-columns: repeat(2, 1fr);
         }
 
         @include mixin.sm-lt {
             grid-template-columns: repeat(1, 1fr);
-            max-width: 85%;
-        }
-
-        @include mixin.sm {
-            max-width: 95%;
         }
 
         .j-coupDeCoeur-Card {

@@ -25,6 +25,10 @@
             left: 30px;
             cursor: pointer;
 
+            @include mixin.md {
+                width: 40px;
+            }
+
             span {
                 display: block;
                 width: 100%;
