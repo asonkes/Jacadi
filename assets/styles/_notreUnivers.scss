@@ -2,8 +2,6 @@
 
 .j-notreUnivers {
     margin: 5px auto;
-    max-width: 75%;
-    filter: drop-shadow(0 0 0.5rem var(--darkGray));
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,8 +11,6 @@
     }
 
     .j-notreUnivers-grid {
-        max-width: 75%;
-        display: grid;
         grid-template-columns: 0.9fr 1.1fr;
         grid-template-rows: 1fr;
         margin: 60px auto 0 auto;
@@ -25,7 +21,12 @@
             max-width: 95%;
         }
 
+        @include mixin.lg-lt {
+            max-width: 85%;
+        }
+
         @include mixin.lg {
+            max-width: 95%;
             grid-template-columns: 1fr 1fr;
         }
 
@@ -33,13 +34,17 @@
             grid-template-columns: 1fr;
         }
 
-        .j-notreUnivers-Card1 {
+        .j-gallery__item1 {
             max-width: 100%;
             height: 100%;
             display: flex;
             align-items: center;
             justify-content: start;
-            margin: 45px 0 0 95px;
+            margin: 50px 0 0 0;
+
+            @include mixin.xl-lt {
+                margin: 45px 0 0 95px;
+            }
 
             @include mixin.md-lt {
                 margin: 10px 0 0 55px;
@@ -54,7 +59,7 @@
                 max-width: 60%;
             }
 
-            .j-notreUnivers-media {
+            .j-item1__media {
                 max-width: 100%;
                 width: 100%;
                 height: 100%;
@@ -67,11 +72,11 @@
             }
         }
 
-        .j-notreUnivers-Card2 {
+        .j-gallery__item2 {
             max-width: 100%;
             text-align: center;
 
-            .j-notreUnivers-contentParent {
+            .j-item2__contentParent {
                 width: 100%;
                 height: 100%;
                 display: flex;
@@ -82,7 +87,7 @@
                     justify-content: center;
                 }
 
-                .j-notreUnivers-content {
+                .j-item2__content {
                     max-width: 100%;
                     background-color: var(--gray);
                     border-radius: 25px;
@@ -92,7 +97,7 @@
                         max-width: 70%;
                     }
 
-                    .j-notreUnivers-title {
+                    .j-item2__title {
                         font-family: var(--font-family2);
                         font-size: 25px;
                         font-style: italic;
@@ -109,7 +114,7 @@
                         }
                     }
 
-                    .j-notreUnivers-text {
+                    .j-item2__text {
                         font-family: var(--font-family3);
                         font-size: 17px;
                         font-style: italic;
@@ -133,8 +138,6 @@
     }
 
     .j-notreUnivers-grid2 {
-        max-width: 75%;
-        display: grid;
         grid-template-columns: 0.7fr 1.3fr;
         grid-template-rows: 1fr;
         margin: 0 auto 60px auto;
@@ -142,6 +145,10 @@
 
         @include mixin.xl-lt {
             max-width: 95%;
+        }
+
+        @include mixin.lg-lt {
+            max-width: 85%;
         }
 
         @include mixin.lg {
@@ -152,14 +159,14 @@
         }
 
         @include mixin.md {
-            margin: -30px auto 0 auto;
+            margin: -30px auto 15px auto;
         }
 
-        .j-notreUnivers-Card3 {
+        .j-gallery__item3 {
             max-width: 100%;
             height: 100%;
 
-            .j-notreUnivers-content {
+            .j-item3__content {
                 max-width: 100%;
                 height: 100%;
                 display: flex;
@@ -175,7 +182,7 @@
                     justify-content: center;
                 }
 
-                .j-notreUnivers-blockquote {
+                .j-item3__blockquote {
                     max-width: 100%;
                     background-color: var(--gray);
                     filter: drop-shadow(0 0 0.4rem var(--darkGray));
@@ -196,8 +203,8 @@
                         max-width: 55%;
                     }
 
-                    .j-notreUnivers-text,
-                    .j-notreUnivers-footer {
+                    .j-item3__text,
+                    .j-item3__footer {
                         max-width: 100%;
                         font-size: 18px;
                         font-style: italic;
@@ -211,13 +218,13 @@
                         }
                     }
 
-                    .j-notreUnivers-text {
+                    .j-item3__text {
                         font-family: var(--font-family3);
                         font-weight: 500;
                         color: var(--blue2);
                     }
 
-                    .j-notreUnivers-footer {
+                    .j-item3__footer {
                         font-family: var(--font-family2);
                         font-weight: 600;
                         padding: 10px 5px;
@@ -226,7 +233,7 @@
             }
         }
 
-        .j-notreUnivers-Card4 {
+        .j-gallery__item4 {
             max-width: 100%;
             height: 100%;
             display: flex;
@@ -236,7 +243,7 @@
                 order: -1;
             }
 
-            .j-notreUnivers-mediaParent {
+            .j-item4__mediaParent {
                 max-width: 100%;
                 width: 100%;
                 height: 100%;
@@ -250,19 +257,19 @@
                     justify-content: center;
                 }
 
-                .j-notreUnivers-media1,
-                .j-notreUnivers-media2 {
+                .j-item4__media1,
+                .j-item4__media2 {
                     max-width: 100%;
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
 
                     @include mixin.lg {
-                        max-width: 70%;
+                        max-width: 80%;
                     }
 
-                    @include mixin.md {
-                        max-width: 80%;
+                    @include mixin.md-lt-lt {
+                        max-width: 85%;
                     }
 
                     @include mixin.sm-lt {
@@ -270,8 +277,12 @@
                     }
                 }
 
-                .j-notreUnivers-media1 {
+                .j-item4__media1 {
                     margin: -30px 0 0 -20px;
+
+                    @include mixin.lg {
+                        margin: -15px 0 0 -20px;
+                    }
 
                     @include mixin.md {
                         margin: 0;

@@ -1,3 +1,5 @@
+@use '../styles/mixin' as mixin;
+
 * {
     margin: 0;
     padding: 0;
@@ -9,19 +11,59 @@ body,
     max-width: 100%;
     min-height: 100vh;
 
-    .j-ballon {
+    .j-ballon,
+    .j-ballon2 {
         max-width: 100%;
         max-height: 100%;
         position: fixed;
         right: 10px;
         bottom: 0px;
         z-index: 999;
-        //background-color: red;
 
         .j-ballonContainer {
             width: 80px;
             height: 103px;
-            //background-color: orange;
         }
     }
+
+    .j-ballon2 {
+        max-width: 100%;
+        max-height: 100%;
+        position: fixed;
+        right: 80px;
+        bottom: 0px;
+        z-index: 999;
+        display: none;
+
+        .j-ballonContainer {
+            width: 80px;
+            height: 103px;
+        }
+    }
+
+    .j-ballon {
+        &.scrollDown {
+            display: none;
+        }
+    }
+}
+
+.j-home,
+.j-coupDeCoeur,
+.j-notreUnivers {
+    max-width: 75%;
+    filter: drop-shadow(0 0 0.5rem var(--darkGray));
+
+    @include mixin.lg-lt {
+        max-width: 100%;
+    }
+}
+
+.j-homeGrid,
+.j-coupDeCoeur-grid,
+.j-notreUnivers-grid,
+.j-notreUnivers-grid2 {
+    max-width: 75%;
+    display: grid;
+
 }

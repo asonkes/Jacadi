@@ -7,7 +7,7 @@ footer {
     background-color: var(--blueDark);
     padding: 15px 0;
     color: var(--white);
-    font-family: var(--font-family3);
+    font-family: var(--font-family2);
 
     @include mixin.sm-lt {
         font-size: 15px;

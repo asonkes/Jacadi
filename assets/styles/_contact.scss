@@ -10,7 +10,7 @@
         background-position: -450px;
     }
 
-    .j-contact-contentParent {
+    .j-contact__contentParent {
         max-width: 100%;
         display: flex;
         justify-content: end;
@@ -19,7 +19,7 @@
             justify-content: center;
         }
 
-        .j-contact-content {
+        .j-contact__content {
             width: 40%;
 
             @include mixin.md-lt {
@@ -34,7 +34,7 @@
                 width: 70%;
             }
 
-            .j-contact-h2 {
+            .j-contact__h2 {
                 font-family: var(--font-family2);
                 font-size: 70px;
                 font-style: italic;
@@ -56,7 +56,7 @@
                 }
             }
 
-            .j-contact-inputParent {
+            .j-form__inputParent {
                 width: 70%;
                 margin: 15px;
 
@@ -68,8 +68,8 @@
                     width: 100%;
                 }
 
-                .j-contact-input,
-                .j-contact-textarea {
+                .j-form__input,
+                .j-form__textarea {
                     width: 100%;
                     font-size: 20px;
                     font-weight: bolder;
@@ -87,7 +87,7 @@
                     }
 
                     @include mixin.sm-lt {
-                        background-color: rgba(255, 255, 255, 0.7);
+                        background-color: rgba(255, 255, 255, 07);
                     }
 
                     @include mixin.sm {
@@ -95,12 +95,12 @@
                     }
                 }
 
-                .j-contact-textarea {
+                .j-form__textarea {
                     resize: none;
                 }
             }
 
-            .j-contact-button {
+            .j-form__button {
                 width: 200px;
                 margin: 45px 15px;
                 padding: 15px;
@@ -118,7 +118,7 @@
         }
     }
 
-    .j-contact-grid-prefooter {
+    .j-prefooter-grid {
         max-width: 100%;
         background-color: var(--blueDark);
         display: grid;
@@ -132,7 +132,7 @@
             padding: 0;
         }
 
-        .j-contact-prefooter-Card {
+        .j-prefooter__Card {
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -143,7 +143,7 @@
                 margin: 15px;
             }
 
-            .j-contact-prefooter-media {
+            .j-prefooter__Card__media {
                 width: 35px;
                 height: 35px;
 
@@ -169,7 +169,7 @@
 
             }
 
-            .j-contact-prefooter-text {
+            .j-prefooter__Card__text {
                 font-family: var(--font-family2);
                 font-size: 16px;
                 color: var(--white);
@@ -184,7 +184,7 @@
                     font-size: 14px;
                 }
 
-                .j-contact-prefooter-media2 {
+                .j-prefooter__Card__media2 {
                     width: 20px;
                     height: 20px;
 

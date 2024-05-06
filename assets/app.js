@@ -57,8 +57,8 @@ function updateHeaderStyles() {
         })
         
         // On sélectionne les différents éléments(a)
-        headerColor.forEach(element => {
-            element.classList.add('change-color-a');
+        headerColor.forEach(e => {
+            e.classList.add('change-color-a');
         })
 
         // On met l'image de base en display: block
@@ -89,6 +89,41 @@ function updateHeaderStyles() {
 }
 window.addEventListener('scroll', updateHeaderStyles);
 
+/** BALLON LIE AU HEADER - Permet au click de pouvoir descendre de page **/
 
+// window.onload ==> garantit que le script sera effectué une fois que tous les éléments de la page seront chargés.
+window.onload = function() {
+    const ballon = document.querySelector(".j-ballon");
+    console.log('ballon', ballon);
 
+    const sections = document.querySelectorAll('.js-section');
+    console.log('js-sections', sections);
 
+    let sectionId = 0;
+
+    // preventDefault empêche que l'évènement par défault de clic au ballon qui est de recharger la page...
+    ballon.addEventListener("click", function(event) {
+        event.preventDefault();
+        // et puis on exécute la fonction...
+        scrollToNextSection();
+    });
+
+    // Ici, on vérifie si l'index de la section est inférieur à la longueur totale des sections -1, on ajoute +1, si c'est =, on est à la dernière section, donc on retourne à la page "home"
+    function scrollToNextSection() {
+        if (sectionId < sections.length - 1) {
+            sectionId++;
+        } else {
+            sectionId = 0;
+        }
+
+        const nextSection = sections[sectionId];
+
+        // Défiler vers la section suivante de manière fluide
+        const top = nextSection.offsetTop;
+
+        window.scrollTo({
+            top: top,
+            behavior: 'smooth'
+        });
+    }
+};
