@@ -1,0 +1,117 @@
+@use '../mixin/mixin' as mixin;
+
+.j-articles {
+    margin: -50px auto 0 auto;
+
+    .j-articlesGrid {
+        margin: 0 auto;
+        flex-direction: column;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px;
+        padding: 60px 0 30px 0;
+
+        @include mixin.xl {
+            max-width: 80%;
+        }
+
+        @include mixin.md-lt {
+            max-width: 90%;
+            gap: 30px;
+        }
+
+        @include mixin.md {
+            max-width: 60%;
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        @include mixin.sm {
+            max-width: 65%;
+        }
+
+        .j-CardPair {
+            max-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+
+            .j-CardPair-container,
+            .j-CardPair-container1 {
+                width: 100%;
+                height: 100%;
+                border-radius: (30px 0 0 0);
+            }
+
+            .j-CardPair-container {
+                background-color: transparent;
+
+                .j-CardPair__media {
+                    width: 100%;
+                    border-radius: (30px 0 30px 0);
+                    object-fit: cover;
+                    aspect-ratio: 2/3;
+                }
+            }
+
+            .j-CardPair-container1 {
+                background-color: var(--gray);
+
+                .j-CardPair__contentTextParent {
+                    width: 100%;
+                    height: 100%;
+
+                    .j-CardPair__contentText {
+                        width: 100%;
+                        height: 80%;
+
+                        .j-CardPair__title {
+                            max-width: 100%;
+                            font-family: var(--font-family2);
+                            font-size: 20px;
+                            font-style: italic;
+                            font-weight: bold;
+                            text-align: center;
+                            padding: 25px 0;
+
+                            @include mixin.md-lt {
+                                padding: 25px 0 20px 0;
+                            }
+                        }
+                    }
+
+                    .j-CardPair__buttonParent {
+                        max-width: 100%;
+                        height: 20%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: end;
+                        padding: 30px 0;
+
+                        .j-CardPair__button {
+                            width: 70%;
+                            height: 50px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background-color: var(--blueDark);
+                            padding: 20px;
+                            border-radius: 25px;
+                            border: none;
+                            color: var(--white);
+                            font-family: var(--font-family1);
+                            font-size: 16px;
+
+                            @include mixin.md-lt {
+                                font-size: 14px;
+                            }
+
+                            @include mixin.sm-lt {
+                                width: 60%;
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

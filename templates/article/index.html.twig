@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jacadi
+{% endblock %}
+
+{% block body %}
+
+	<section class="j-section js-page-content">
+		<div class="j-homeCover" style="background-image: url('{{ asset('images/backgroundImages/doudou.jpg') }}')">
+			<img class="j-homeLogo" src="{{ asset('images/Logo/Logo.png')}}">
+		</div>
+
+		<div class="j-articles" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}')">
+			<a href=" {{ path('home') }} " class="j-linkPage__Parent">
+				<div class="j-linkPage">
+					<i class="fa-solid fa-chevron-right j-linkPage__icon"></i>
+					<p class="j-linkPage__text">Retour</p>
+				</div>
+			</a>
+			<div class="j-articlesGrid">
+				<div class="j-CardPair">
+					<div class="j-CardPair-container">
+						<img class="j-CardPair__media" src="{{ asset('images/medias/mediaProducts/TW12071-13_TW22031-78_1 (3).jpg') }}" alt="petit garçon avec chemise rayée">
+					</div>
+				</div>
+				<div class="j-CardPair">
+					<div class="j-CardPair-container1">
+						<div class="j-CardPair__contentTextParent">
+							<div class="j-CardPair__contentText">
+								<p class="j-CardPair__title">Chemise Rayée Bleu</p>
+								<div class="j-accordion">
+									<div class="j-accordion__block">
+										<p class="j-accordion__title">Description</p>
+										<a href="#">
+											<i class="fa-solid fa-chevron-right j-accordion__icon"></i>
+										</a>
+									</div>
+									<p class="j-accordion__text">Cette chemise blanche rayée de notre gamme Jacadi est légèrement texturée, idéale pour une saison d'été, elle s'associera parfaitement avec tous les shorts et les pantalons de la gamme.</p>
+								</div>
+								<div class="j-accordion">
+									<div class="j-accordion__block">
+										<p class="j-accordion__title">Composition</p>
+										<a href="#">
+											<i class="fa-solid fa-chevron-right j-accordion__icon"></i>
+										</a>
+									</div>
+									<p class="j-accordion__text">Article 100% coton.</p>
+								</div>
+								<div class="j-accordion">
+									<div class="j-accordion__block">
+										<p class="j-accordion__title">Conseils d'entretien</p>
+										<a href="#">
+											<i class="fa-solid fa-chevron-right j-accordion__icon"></i>
+										</a>
+									</div>
+									<p class="j-accordion__text">Ne pas laver au-dessus de 30°C.</p>
+								</div>
+								<div class="j-accordion">
+									<div class="j-accordion__block">
+										<p class="j-accordion__title">Articles responsables</p>
+										<a href="#">
+											<i class="fa-solid fa-chevron-right j-accordion__icon"></i>
+										</a>
+									</div>
+									<p class="j-accordion__text">Les articles Jacadi sont éco-responsables, en prenant soin de recycler, nous prenons soin de notre planète.</p>
+								</div>
+							</div>
+							<div class="j-CardPair__buttonParent">
+								<button class="j-CardPair__button">Réserver en boutique</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

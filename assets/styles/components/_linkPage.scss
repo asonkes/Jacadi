@@ -1,0 +1,44 @@
+@use '../mixin/mixin' as mixin;
+
+.j-linkPage__Parent {
+    max-width: 100%;
+    padding-top: 45px;
+    display: flex;
+    justify-content: center;
+    text-decoration-line: none;
+    color: black;
+
+    @include mixin.xs {
+        padding-top: 65px;
+    }
+
+    .j-linkPage {
+        width: 76%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+
+        .j-linkPage__icon {
+            font-size: 24px;
+            margin: auto 0;
+            transform: rotate(180deg);
+
+            @include mixin.md {
+                font-size: 20px;
+            }
+        }
+
+        .j-linkPage__text {
+            width: 100%;
+            height: 100%;
+            font-family: var(--font-family1);
+            font-size: 18px;
+            font-weight: bold;
+            padding-left: 10px;
+
+            @include mixin.md {
+                font-size: 17px;
+            }
+        }
+    }
+}

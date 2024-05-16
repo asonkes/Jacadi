@@ -6,25 +6,25 @@
 					<a class="js-change-color-a" href=" {{ path('home') }} ">Accueil</a>
 				</li>
 				<li class="j-sousMenu">
-					<a class="js-change-color-a" href="#">&nbsp;Bébé&nbsp;
+					<a class="js-change-color-a" href=" {{ path('home') }} ">&nbsp;Bébé&nbsp;
 					</a>
 					<ul class="js-change-background-sousMenus">
-						<li>
-							<a class="js-change-color-a" href="#">Fille</a>
+						<li class="js-change-background-sousMenusLi">
+							<a class="js-change-color-a" href=" {{ path('products_youngGirl') }} ">Fille</a>
 						</li>
-						<li>
-							<a class="js-change-color-a" href="#">Garçon</a>
+						<li class="js-change-background-sousMenusLi">
+							<a class="js-change-color-a" href=" {{ path('products_youngBoy') }} ">Garçon</a>
 						</li>
 					</ul>
 				</li>
 				<li class="j-sousMenu">
-					<a class="js-change-color-a" href="#">Enfant</a>
+					<a class="js-change-color-a" href=" {{ path('home') }} ">Enfant</a>
 					<ul class="js-change-background-sousMenus">
-						<li>
-							<a class="js-change-color-a" href="#">Fille</a>
+						<li class="js-change-background-sousMenusLi">
+							<a class="js-change-color-a" href=" {{ path('products_girl') }} ">Fille</a>
 						</li>
-						<li>
-							<a class="js-change-color-a" href="#">Garçon</a>
+						<li class="js-change-background-sousMenusLi">
+							<a class="js-change-color-a" href=" {{ path('products_boy') }} ">Garçon</a>
 						</li>
 					</ul>
 				</li>
@@ -59,8 +59,10 @@
 	<nav class="j-burger-nav">
 		<ul>
 			<li><a href=" {{ path('home') }} ">Accueil</a></li>
-			<li><a href="#">Bébé</a></li>
-			<li><a href="#">Enfant</a></li>
+			<li><a href="#">Bébé Fille</a></li>
+			<li><a href="#">Bébé Garçon</a></li>
+			<li><a href="#">Enfant Fille</a></li>
+			<li><a href="#">Enfant Garçon</a></li>
 			<li><a href=" {{ path('home')}}#coupDeCoeur ">Coup de Coeur</a></li>
 			<li><a href=" {{ path('home')}}#notreUnivers ">Notre Univers</a></li>
 			<li><a href=" {{ path('home')}}#contact ">Contact</a></li>

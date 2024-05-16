@@ -1,4 +1,4 @@
-@use '../styles/mixin' as mixin;
+@use '../mixin/mixin' as mixin;
 
 .j-burger {
     width: 100%;
@@ -13,7 +13,7 @@
 
     .j-burger-icon {
         width: 100%;
-        padding: 0 0 15px 0;
+        padding: 0 0 25px 0;
         background-color: var(--blue);
         opacity: 92%;
 

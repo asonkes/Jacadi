@@ -1,0 +1,177 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jacadi
+{% endblock %}
+
+{% block body %}
+
+	<section class="j-section js-page-content">
+		<div class="j-homeCover" style="background-image: url('{{ asset('images/backgroundImages/doudou.jpg') }}')">
+			<img class="j-homeLogo" src="{{ asset('images/Logo/Logo.png')}}">
+		</div>
+
+		<div class="j-products" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}')">
+
+			<div class="j-searchBar__Parent">
+				<div class="j-searchBar">
+					<input class="j-searchBar__input" type="text" placeholder="Veuillez insérer votre recherche">
+					<button class="j-searchBar__button">
+						<img class="j-searchBar__icon" src="{{ asset('images/icons/Magnifying-Glass-256.png')}}" alt="icone loupe pour la barre de recherche">
+					</button>
+				</div>
+			</div>
+			<a href=" {{ path('home') }} " class="j-linkPage__Parent">
+				<div class="j-linkPage">
+					<i class="fa-solid fa-chevron-right j-linkPage__icon"></i>
+					<p class="j-linkPage__text">Bébé Garçon</p>
+				</div>
+			</a>
+			<div class="j-productsGrid">
+				<div class="j-Card">
+					<div class="j-Card-container">
+						<img class="j-Card__media" src="{{ asset('images/medias/mediaProducts/TW12071-13_TW22031-78_1 (3).jpg') }}" alt="petit garçon avec chemise rayée">
+						<div class="j-Card__contentText">
+							<div class="j-Card__containerlink">
+								<a href=" {{ path('article_index') }} " class="j-Card__link">
+									<p class="j-Card__title">T-shirt Rayé Bleu</p>
+								</a>
+								<div class="j-Card__footer">
+									<i class="fa-solid fa-heart j-Card__icon"></i>
+									<p class="j-Card__text">55,00 €</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="j-Card">
+					<div class="j-Card-container">
+						<img class="j-Card__media" src="{{ asset('images/medias/mediaProducts/Henri.jpg') }}" alt="photo d'un pull et d'un pantalon blanc et bleu foncé">
+						<div class="j-Card__contentText">
+							<div class="j-Card__containerlink">
+								<a href=" {{ path('article_index') }} " class="j-Card__link">
+									<p class="j-Card__title">Ensemble Marine</p>
+								</a>
+								<div class="j-Card__footer">
+									<i class="fa-solid fa-heart j-Card__icon"></i>
+									<p class="j-Card__text">14,00 €</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="j-Card">
+					<div class="j-Card-container">
+						<img class="j-Card__media" src="{{ asset('images/medias/mediaProducts/TW10023-43_TW26023-52_1_1024x.jpg') }}" alt="jeune garçon qui regarde vers la gauche avec un t-shirt bleu">
+						<div class="j-Card__contentText">
+							<div class="j-Card__containerlink">
+								<a href=" {{ path('article_index') }} " class="j-Card__link">
+									<p class="j-Card__title">T-shirt Logo</p>
+								</a>
+								<div class="j-Card__footer">
+									<i class="fa-solid fa-heart j-Card__icon"></i>
+									<p class="j-Card__text">20,00 €</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="j-Card">
+					<div class="j-Card-container">
+						<img class="j-Card__media" src="{{ asset('images/medias/mediaProducts/pexels-photo-4563009.jpeg')}}" alt="visage garçon avec cheveux brun">
+						<div class="j-Card__contentText">
+							<div class="j-Card__containerlink">
+								<a href=" {{ path('article_index') }} " class="j-Card__link">
+									<p class="j-Card__title">Chemise Bleu foncé</p>
+								</a>
+								<div class="j-Card__footer">
+									<i class="fa-solid fa-heart j-Card__icon"></i>
+									<p class="j-Card__text">21,00 €</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="j-Card">
+					<div class="j-Card-container">
+						<img class="j-Card__media" src="{{ asset('images/medias/mediaProducts/packshot-garcon_1024x.jpg') }}" alt="chemise avec logo de Tartine et Chocolat">
+						<div class="j-Card__contentText">
+							<div class="j-Card__containerlink">
+								<a href=" {{ path('article_index') }} " class="j-Card__link">
+									<p class="j-Card__title">Tartine et chocolat</p>
+								</a>
+								<div class="j-Card__footer">
+									<i class="fa-solid fa-heart j-Card__icon"></i>
+									<p class="j-Card__text">18,00 €</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="j-Card">
+					<div class="j-Card-container">
+						<img class="j-Card__media" src="{{ asset('images/medias/mediaHome/pexels-photo-15466102.jpeg') }}" alt="jeune garçon en salopette avec chapeau">
+						<div class="j-Card__contentText">
+							<div class="j-Card__containerlink">
+								<a href=" {{ path('article_index') }} " class="j-Card__link">
+									<p class="j-Card__title">Chemise Rayée blanche</p>
+								</a>
+								<div class="j-Card__footer">
+									<i class="fa-solid fa-heart j-Card__icon"></i>
+									<p class="j-Card__text">20,00 €</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="j-Card">
+					<div class="j-Card-container">
+						<img class="j-Card__media" src="{{ asset('images/medias/mediaProducts/TW12023-13_TW26023-04_1_1.jpg') }}" alt="garçon contre un mur avec chemise rayée">
+						<div class="j-Card__contentText">
+							<div class="j-Card__containerlink">
+								<a href=" {{ path('article_index') }} " class="j-Card__link">
+									<p class="j-Card__title">Chemise rayée</p>
+								</a>
+								<div class="j-Card__footer">
+									<i class="fa-solid fa-heart j-Card__icon"></i>
+									<p class="j-Card__text">21,00 €</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="j-Card">
+					<div class="j-Card-container">
+						<img class="j-Card__media" src="{{ asset('images/medias/mediaHome/pexels-photo-1427288.jpg')}}" alt="visage garçon avec cheveux brun">
+						<div class="j-Card__contentText">
+							<div class="j-Card__containerlink">
+								<a href=" {{ path('article_index') }} " class="j-Card__link">
+									<p class="j-Card__title">Chemise colorée</p>
+								</a>
+								<div class="j-Card__footer">
+									<i class="fa-solid fa-heart j-Card__icon"></i>
+									<p class="j-Card__text">55,00 €</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="j-Card">
+					<div class="j-Card-container">
+						<img class="j-Card__media" src="{{ asset('images/medias/mediaProducts/Hector.jpg') }}" alt="ensemble pantalon rayée et chemise bleue clair">
+						<div class="j-Card__contentText">
+							<div class="j-Card__containerlink">
+								<a href=" {{ path('article_index') }} " class="j-Card__link">
+									<p class="j-Card__title">Ensemble bleu clair</p>
+								</a>
+								<div class="j-Card__footer">
+									<i class="fa-solid fa-heart j-Card__icon"></i>
+									<p class="j-Card__text">15,00 €</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

@@ -1,4 +1,4 @@
-@use '../styles/mixin' as mixin;
+@use '../styles/mixin/mixin' as mixin;
 
 * {
     margin: 0;
@@ -11,8 +11,7 @@ body,
     max-width: 100%;
     min-height: 100vh;
 
-    .j-ballon,
-    .j-ballon2 {
+    .j-ballon {
         max-width: 100%;
         max-height: 100%;
         position: fixed;
@@ -20,37 +19,41 @@ body,
         bottom: 0px;
         z-index: 999;
 
+        &.hidden {
+            display: none;
+        }
+
         .j-ballonContainer {
             width: 80px;
             height: 103px;
         }
     }
 
-    .j-ballon2 {
+    .j-ballon1 {
         max-width: 100%;
         max-height: 100%;
         position: fixed;
-        right: 80px;
+        right: 10px;
         bottom: 0px;
         z-index: 999;
         display: none;
 
-        .j-ballonContainer {
-            width: 80px;
-            height: 103px;
+        &.hidden {
+            display: block;
         }
-    }
 
-    .j-ballon {
-        &.scrollDown {
-            display: none;
+        .j-ballonContainer1 {
+            //width: 80px;
+            height: 103px;
         }
     }
 }
 
 .j-home,
 .j-coupDeCoeur,
-.j-notreUnivers {
+.j-notreUnivers,
+.j-products,
+.j-articles {
     max-width: 75%;
     filter: drop-shadow(0 0 0.5rem var(--darkGray));
 
@@ -62,8 +65,9 @@ body,
 .j-homeGrid,
 .j-coupDeCoeur-grid,
 .j-notreUnivers-grid,
-.j-notreUnivers-grid2 {
+.j-notreUnivers-grid2,
+.j-productsGrid,
+.j-articlesGrid {
     max-width: 75%;
     display: grid;
-
 }

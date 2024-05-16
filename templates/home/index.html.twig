@@ -6,24 +6,24 @@
 {% block body %}
 
 	<section class="j-section js-section js-page-content">
-		<a class="j-ballon" href="#">
-			<img class="j-ballonContainer js-ballon" src="{{ asset('images/icons/ballon129.png')}}">
+		<a class="j-ballon js-ballon" href="#">
+			<img class="j-ballonContainer" src="{{ asset('images/icons/ballon129.png')}}">
 		</a>
-		<a class="j-ballon2" href="#">
-			<img class="j-ballonContainer js-ballon2" src="{{ asset('images/icons/ballon1.png')}}">
+		<a class="j-ballon1 js-ballon1" href="#">
+			<img class="j-ballonContainer1" src="{{ asset('images/icons/ballon1.png')}}">
 		</a>
 		<div class="j-homeCover" style="background-image: url('{{ asset('images/backgroundImages/doudou.jpg') }}')">
 			<img class="j-homeLogo" src="{{ asset('images/Logo/Logo.png')}}">
 		</div>
 
 		<div class="j-home" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}')">
-			<div class="j-homeGrid">
+			<div class="j-homeGrid js-homeGrid">
 				<div class="j-Card">
 					<div class="j-Card-container">
 						<img class="j-Card__media" src="{{ asset('images/medias/mediaHome/pexels-photo-235398.jpeg') }}" alt="jeune fille qui joue avec des feuilles séchées">
 						<div class="j-Card__contentText">
 							<div class="j-Card__containerlink">
-								<a href="#" class="j-Card__link">
+								<a href=" {{ path('products_youngGirl') }} " class="j-Card__link">
 									<p class="j-Card__title">Bébé Fille</p>
 									<p class="j-Card__textSize">(3-36 mois)</p>
 								</a>
@@ -36,7 +36,7 @@
 						<img class="j-Card__media" src="{{ asset('images/medias/mediaHome/pexels-photo-3154330.webp') }}" alt="fille assisse sur un fauteuil qui sourit">
 						<div class="j-Card__contentText">
 							<div class="j-Card__containerlink">
-								<a href="#" class="j-Card__link">
+								<a href=" {{ path('products_girl') }} " class="j-Card__link">
 									<p class="j-Card__title">Fille</p>
 									<p class="j-Card__textSize">(2-14 ans)</p>
 								</a>
@@ -49,7 +49,7 @@
 						<img class="j-Card__media" src="{{ asset('images/medias/mediaHome/pexels-photo-15466102.jpeg') }}" alt="jeune garçon en salopette avec chapeau">
 						<div class="j-Card__contentText">
 							<div class="j-Card__containerlink">
-								<a href="#" class="j-Card__link">
+								<a href=" {{ path('products_youngBoy') }} " class="j-Card__link">
 									<p class="j-Card__title">Bébé Garçon</p>
 									<p class="j-Card__textSize">(3-36 mois)</p>
 								</a>
@@ -62,7 +62,7 @@
 						<img class="j-Card__media" src="{{ asset('images/medias/mediaHome/pexels-photo-1427288.jpg')}}" alt="visage garçon avec cheveux brun">
 						<div class="j-Card__contentText">
 							<div class="j-Card__containerlink">
-								<a href="#" class="j-Card__link">
+								<a href=" {{ path('products_boy') }} " class="j-Card__link">
 									<p class="j-Card__title">Garçon</p>
 									<p class="j-Card__textSize">(2-14 ans)</p>
 								</a>
@@ -74,9 +74,9 @@
 		</div>
 	</section>
 
-	<section class="j-section js-section j-coupDeCoeur" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}" alt="image-texture-cimentee">
+	<section id="coupDeCoeur" class="j-section js-section j-coupDeCoeur" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}" alt="image-texture-cimentee">
 		<h2 class="j-coupDeCoeur-h2">Nos Coups de Coeur</h2>
-		<div class="j-coupDeCoeur-grid">
+		<div class="j-coupDeCoeur-grid js-coupDeCoeurGrid">
 			<div class="j-Card__shadow">
 				<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/pexels-photo-4971312.jpeg')}}" alt="jeune fille couchée sur le dos parterre">
 				<a class="j-Card__link__shadow">
@@ -116,7 +116,7 @@
 		</div>
 	</section>
 
-	<section class="j-section js-section j-notreUnivers" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}" alt="image-texture-cimentee">
+	<section id="notreUnivers" class="j-section js-section j-notreUnivers" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}" alt="image-texture-cimentee">
 
 		<div class="j-notreUnivers-grid">
 			<div class="j-gallery__item1">
@@ -167,21 +167,25 @@
 		</div>
 	</section>
 
-	<section class="j-section js-section j-contact" style="background-image: url('{{ asset('images/backgroundImages/Capture d’écran (662).png') }}" alt="image-jeuneFille">
+	<section id="contact" class="j-section j-contact js-section" style="background-image: url('{{ asset('images/backgroundImages/Capture d’écran (662).png') }}" alt="image-jeuneFille">
 		<div class="j-contact__contentParent">
 			<div class="j-contact__content">
 				<h2 class="j-contact__h2">Contact</h2>
 				<form action="">
 					<div class="j-form__inputParent">
+						<label for="firstname"></label>
 						<input class="j-form__input" type="text" placeholder="Nom">
 					</div>
 					<div class="j-form__inputParent">
+						<label for="lastname"></label>
 						<input class="j-form__input" type="text" placeholder="Prénom">
 					</div>
 					<div class="j-form__inputParent">
+						<label for="e-mail"></label>
 						<input class="j-form__input" type="text" placeholder="E-mail">
 					</div>
 					<div class="j-form__inputParent">
+						<label for="message"></label>
 						<textarea class="j-form__textarea" placeholder="Message"></textarea>
 					</div>
 					<button class="j-form__button">Envoyer</button>

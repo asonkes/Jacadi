@@ -1,4 +1,4 @@
-@use '../styles/mixin' as mixin;
+@use '../mixin/mixin' as mixin;
 
 .j-contact {
     max-width: 100%;
@@ -87,7 +87,7 @@
                     }
 
                     @include mixin.sm-lt {
-                        background-color: rgba(255, 255, 255, 07);
+                        background-color: rgba(255, 255, 255, 0.7);
                     }
 
                     @include mixin.sm {

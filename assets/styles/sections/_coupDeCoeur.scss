@@ -1,0 +1,64 @@
+@use '../mixin/mixin' as mixin;
+
+.j-coupDeCoeur {
+    margin: 0 auto;
+
+    .j-coupDeCoeur-h2 {
+        text-align: center;
+        font-family: var(--font-family4);
+        font-size: 34px;
+        font-weight: bold;
+        font-style: italic;
+        padding: 65px 0 20px 0;
+
+        @include mixin.sm-lt {
+            font-size: 30px;
+        }
+
+        @include mixin.sm {
+            font-size: 25px;
+        }
+
+        @include mixin.xs {
+            font-size: 20px;
+        }
+    }
+
+    .j-coupDeCoeur-grid {
+        margin: 0 auto;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 70px;
+        padding: 0 60px 75px 0;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+
+        &.active {
+            opacity: 1;
+        }
+
+        @include mixin.lg {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 70%;
+            gap: 50px;
+        }
+
+        @include mixin.md-lt {
+            max-width: 75%;
+        }
+
+        @include mixin.md {
+            max-width: 80%;
+        }
+
+        @include mixin.sm-lt {
+            max-width: 70%;
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        @include mixin.xs {
+            max-width: 80%;
+        }
+
+
+    }
+}
