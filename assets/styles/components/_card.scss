@@ -10,10 +10,11 @@
     .j-Card-container1 {
         width: 100%;
         height: 100%;
-        background-color: #785B5D;
+        background-color: var(--brun);
         border-radius: (30px 0 0 0);
         display: flex;
         flex-direction: column;
+        border: 1px solid var(--brun);
 
         .j-Card__media {
             width: 100%;

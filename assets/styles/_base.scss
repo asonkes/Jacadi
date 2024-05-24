@@ -55,7 +55,8 @@ body,
 .j-products,
 .j-articles {
     max-width: 75%;
-    filter: drop-shadow(0 0 0.5rem var(--darkGray));
+    //filter: drop-shadow(0 0 0.1rem var(--darkGray));
+    border: 1px solid var(--gray);
 
     @include mixin.lg-lt {
         max-width: 100%;

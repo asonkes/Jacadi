@@ -2,34 +2,53 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Products;
+use App\Repository\ProductsRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/products', name: 'products_')]
 class ProductsController extends AbstractController
 {
-    #[Route('/', name: 'boy')]
-    public function boy(): Response
+    #[Route('/boy', name: 'boy')]
+    public function boy(ProductsRepository $repo): Response
     {
-        return $this->render('products/boy.html.twig');
+        /**
+         * Permet de récupérer tous les produits
+         */
+        $products = $repo->findAll();
+
+        return $this->render('products/boy.html.twig', [
+            'products' => $products
+        ]);
     }
 
     #[Route('/youngBoy', name: 'youngBoy')]
-    public function youngBoy(): Response
+    public function youngBoy(ProductsRepository $repo): Response
     {
-        return $this->render('products/youngBoy.html.twig');
+        $products = $repo->findAll();
+
+        return $this->render('products/youngBoy.html.twig', [
+            'products' => $products
+        ]);
     }
 
     #[Route('/girl', name: 'girl')]
-    public function girl(): Response
+    public function girl(ProductsRepository $repo): Response
     {
-        return $this->render('products/girl.html.twig');
+        $products = $repo->findAll();
+        return $this->render('products/girl.html.twig', [
+            'products' => $products
+        ]);
     }
 
     #[Route('/youngGirl', name: 'youngGirl')]
-    public function youngGirl(): Response
+    public function youngGirl(ProductsRepository $repo): Response
     {
-        return $this->render('products/youngGirl.html.twig');
+        $products = $repo->findAll();
+        return $this->render('products/youngGirl.html.twig', [
+            'products' => $products
+        ]);
     }
 }
