@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jacadi - Connexion
+{% endblock %}
+
+{% block body %}
+
+	<section class="j-section js-page-content">
+		<div class="j-homeCover" style="background-image: url('{{ asset('images/backgroundImages/doudou.jpg') }}')">
+			<img class="j-homeLogo" src="{{ asset('images/Logo/Logo.png')}}">
+		</div>
+
+		<div class="j-articles" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}')">
+			<a href=" {{ path('home') }} " class="j-linkPage__Parent">
+				<div class="j-linkPage">
+					<i class="fa-solid fa-chevron-right j-linkPage__icon"></i>
+					<p class="j-linkPage__text">Retour à l'accueil</p>
+				</div>
+			</a>
+			<div class="j-login">
+				<form class="j-form" method="post">
+					{% if error %}
+						<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+					{% endif %}
+
+					{% if app.user %}
+						<div class="j-form__text">
+							Vous êtes déjà connecté en tant que
+							{{ app.user.userIdentifier }},
+							<a class="j-form__link" href="{{ path('app_logout') }}">Me déconnecter</a>
+						</div>
+					{% endif %}
+
+					<h3 class="j-form__h3">Me connecter</h3>
+					<label for="inputEmail">E-mail</label>
+					<input type="email" value="{{ last_username }}" name="email" id="inputEmail" autocomplete="email" required autofocus>
+					<label for="inputPassword">Mot de passe</label>
+					<input type="password" name="password" id="inputPassword" autocomplete="current-password" required>
+
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+					<div class="checkbox mb-3">
+						<label>
+							<input type="checkbox" name="_remember_me">
+							Resté connecter
+						</label>
+					</div>
+
+					<div class="j-form__buttonParent">
+						<button class="j-form__button" type="submit">Me connecter</button>
+					</div>
+					<p class="j-form__text">
+						<a class="j-form__link" href="#">Mot de passe oublié</a>
+					</p>
+					<p class="j-form__text">
+						Pas encore inscrit(e) ?
+						<a class="j-form__link" href="{{ path('app_register')}}">M'inscrire</a>
+					</p>
+				</form>
+			</div>
+		</div>
+	</section>
+{% endblock %}

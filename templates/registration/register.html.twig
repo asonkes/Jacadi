@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jacadi - Inscription
+{% endblock %}
+
+{% block body %}
+
+	<section class="j-section js-page-content">
+		<div class="j-homeCover" style="background-image: url('{{ asset('images/backgroundImages/doudou.jpg') }}')">
+			<img class="j-homeLogo" src="{{ asset('images/Logo/Logo.png')}}">
+		</div>
+
+		<div class="j-articles" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}')">
+			<a href=" {{ path('home') }} " class="j-linkPage__Parent">
+				<div class="j-linkPage">
+					<i class="fa-solid fa-chevron-right j-linkPage__icon"></i>
+					<p class="j-linkPage__text">Retour à l'accueil</p>
+				</div>
+			</a>
+			<div class="j-register">
+				<form class="j-form" method="post">
+					<h3 class="j-form__h3">M'inscrire</h3>
+					{{ form_errors(registrationForm) }}
+
+					{{ form_start(registrationForm) }}
+					{{ form_row(registrationForm.email) }}
+					{{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+					{{ form_row(registrationForm.agreeTerms) }}
+
+					<div class="j-form__buttonParent">
+						<button class="j-form__button" type="submit">M'inscrire</button>
+					</div>
+
+					<p class="j-form__text">Déjà inscrit(e) ?<a class="j-form__link" href=" {{ path('app_login')}}">Me connecter</a>
+					</p>
+
+					{{ form_end(registrationForm) }}
+				</form>
+			</div>
+		</div>
+	</section>
+{% endblock %}

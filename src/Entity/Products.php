@@ -32,7 +32,7 @@ class Products
     private ?string $image = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, options: ['default' => 'CURRENT_TIMESTAMP'])]
-    private ?\DateTimeInterface $createdAd = null;
+    private ?\DateTimeInterface $createdAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'products')]
     #[ORM\JoinColumn(nullable: false)]
@@ -111,14 +111,14 @@ class Products
         return $this;
     }
 
-    public function getCreatedAd(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->createdAd;
+        return $this->createdAt;
     }
 
-    public function setCreatedAd(\DateTimeInterface $createdAd): static
+    public function setCreatedAt(\DateTimeInterface $createdAt): static
     {
-        $this->createdAd = $createdAd;
+        $this->createdAt = $createdAt;
 
         return $this;
     }

@@ -1,5 +1,7 @@
 @use "./articles/articles";
 @use "./base";
+@use "./login/login";
+@use "./components/form";
 @use "./components/accordion";
 @use "./components/card";
 @use "./components/card__shadow";
@@ -9,6 +11,7 @@
 @use "./header/menuBurger";
 @use "./sections/notreUnivers";
 @use "./products/products";
+@use "./register/register";
 @use "./sections/home";
 @use "./header/header";
 @use "./footer/footer";
