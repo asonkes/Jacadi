@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 trait CreatedAtTrait
 {
     /**
-     * CURRENT_TIMESTAMP ==> par défault maintenant
+     * CURRENT_TIMESTAMP ==> par createdAt est NULL, utiliser la date actuelle
      *
      * @var \DateTimeInterface|null
      */

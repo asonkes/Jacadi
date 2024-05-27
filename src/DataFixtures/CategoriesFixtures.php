@@ -15,37 +15,34 @@ class CategoriesFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        $typesCategory = $this->createCategory(name: 'Types', manager: $manager);
-        $this->createCategory(name: 'tShirts', manager: $manager, parent: $typesCategory);
-        $this->createCategory(name: 'robes', manager: $manager, parent: $typesCategory);
-        $this->createCategory(name: 'chemises', manager: $manager, parent: $typesCategory);
-        $this->createCategory(name: 'pantalons', manager: $manager, parent: $typesCategory);
-        $this->createCategory(name: 'jupes', manager: $manager, parent: $typesCategory);
-        $this->createCategory(name: 'accessoires', manager: $manager, parent: $typesCategory);
-
-        $profilesCategory = $this->createCategory(name: 'Profiles', manager: $manager);
-        $this->createCategory(name: '', manager: $manager, parent: $profilesCategory);
-        $this->createCategory(name: 'robes', manager: $manager, parent: $profilesCategory);
-        $this->createCategory(name: 'chemises', manager: $manager, parent: $profilesCategory);
-        $this->createCategory(name: 'pantalons', manager: $manager, parent: $profilesCategory);
+        // Création des catégories sans hiérarchie parentale
+        $this->createCategory(name: 'tShirtsYoungBoy', manager: $manager);
+        $this->createCategory(name: 'tShirtsBoy', manager: $manager);
+        $this->createCategory(name: 'tShirtsYoungGirl', manager: $manager);
+        $this->createCategory(name: 'tShirtsGirl', manager: $manager);
+        $this->createCategory(name: 'robesYoungGirl', manager: $manager);
+        $this->createCategory(name: 'robesGirl', manager: $manager);
+        $this->createCategory(name: 'chemisesYoungBoy', manager: $manager);
+        $this->createCategory(name: 'chemisesBoy', manager: $manager);
+        $this->createCategory(name: 'pantalonsYoungBoy', manager: $manager);
+        $this->createCategory(name: 'pantalonsBoy', manager: $manager);
+        $this->createCategory(name: 'pantalonsYoungGirl', manager: $manager);
+        $this->createCategory(name: 'pantalonsGirl', manager: $manager);
+        $this->createCategory(name: 'jupesYoungGirl', manager: $manager);
+        $this->createCategory(name: 'jupesGirl', manager: $manager);
+        $this->createCategory(name: 'accessoires', manager: $manager);
 
         $manager->flush();
     }
 
-    // Ajoutez $parent comme paramètre de la méthode createCategory
-    public function createCategory(string $name, ObjectManager $manager, ?Categories $parent = null)
+    // Méthode simplifiée sans gestion de catégories parentales
+    public function createCategory(string $name, ObjectManager $manager): void
     {
         $category = new Categories();
 
         $category->setName($name)
             ->setSlug($this->slugger->slug($category->getName())->lower());
 
-        if ($parent) {
-            $category->setParent($parent);
-        }
-
         $manager->persist($category);
-
-        return $category;
     }
 }
