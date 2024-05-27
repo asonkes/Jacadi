@@ -53,7 +53,7 @@ class ProductsFixtures extends Fixture
             ->setStock($stock)
             ->setImage($image)
             ->setCreatedAt($createdAt)
-            ->setCategories($category); // Utilisation de setCategories
+            ->setCategories($category);
 
         $manager->persist($product);
 
