@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Jacadi - Bébé Garçon
+{% block title %}Jacadi - Garçon
 {% endblock %}
 
 {% block body %}
@@ -23,29 +23,10 @@
 			<a href=" {{ path('home') }} " class="j-linkPage__Parent">
 				<div class="j-linkPage">
 					<i class="fa-solid fa-chevron-right j-linkPage__icon"></i>
-					<p class="j-linkPage__text">Bébé Garçon</p>
+					<p class="j-linkPage__text">Garçon</p>
 				</div>
 			</a>
-			<div class="j-productsGrid">
-				{% for product in products %}
-					<div class="j-Card">
-						<div class="j-Card-container">
-							<img class="j-Card__media" src="{{ asset('images/medias/mediaProducts/' ~ product.image) }}" alt="petit garçon avec chemise rayée">
-							<div class="j-Card__contentText">
-								<div class="j-Card__containerlink">
-									<a href=" {{ path('article_index', {'slug': product.slug, 'id': product.id}) }} " class="j-Card__link">
-										<p class="j-Card__title">{{product.name}}</p>
-									</a>
-									<div class="j-Card__footer">
-										<i class="fa-solid fa-heart j-Card__icon"></i>
-										<p class="j-Card__text">{{product.price}}€</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				{% endfor %}
-			</div>
+			<h3>Gestion des utilisateurs</h3>
 		</div>
 	</section>
 {% endblock %}

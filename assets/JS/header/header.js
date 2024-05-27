@@ -24,6 +24,14 @@ function updateHeaderStyles() {
     const accountIconBlack = document.querySelector('.js-change-accountIconBlack');
     console.log('accountIconBlack', accountIconBlack);
 
+    // Permet de sélectionner l'image de base de l'icone du panier(blanc)
+    const basketIconWhite = document.querySelector('.js-change-basketIconWhite');
+    console.log('backetIconWhite', basketIconWhite);
+
+    // Permet de sélectionner la 2eme image de l'icone du panier(noire)
+    const basketIconBlack = document.querySelector('.js-change-basketIconBlack');
+    console.log('basketIconBlack', basketIconBlack);
+
     if(window.scrollY > 0 ) {
         console.log('scroll', window.scrollY);
         // On change le background du header
@@ -49,6 +57,12 @@ function updateHeaderStyles() {
 
         // On met la 2eme image du compte en display: none;
         accountIconBlack.classList.add('change-accountIconBlack');
+
+        // On met l'image de base en display: block
+        basketIconWhite.classList.add('change-basketIconWhite');
+
+        // On met la 2eme image du compte en display: none;
+        basketIconBlack.classList.add('change-basketIconBlack');
     } else {
         // On enlève la couleur du background
         headerBg.classList.remove('change-header-background');
@@ -68,11 +82,17 @@ function updateHeaderStyles() {
             e.classList.remove('change-headerSousMenuLI-background');
         })
 
-        // On met l'image de base de l'icone en display: none
+        // On met l'image de base de l'icone account en display: none
         accountIconWhite.classList.remove('change-accountIconWhite');
 
         // On met la 2eme icone du compte en display: block
         accountIconBlack.classList.remove('change-accountIconBlack');
+
+        // On met l'image du panier de base de l'icone en display: none
+        basketIconWhite.classList.remove('change-basketIconWhite');
+
+        // On met la 2eme icone du panier du compte en display: block
+        basketIconBlack.classList.remove('change-basketIconBlack');
     }
 }
 window.addEventListener('scroll', updateHeaderStyles);

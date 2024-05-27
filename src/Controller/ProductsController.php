@@ -2,16 +2,15 @@
 
 namespace App\Controller;
 
-use App\Entity\Products;
 use App\Repository\ProductsRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/products', name: 'products_')]
+#[Route('/produits', name: 'products_')]
 class ProductsController extends AbstractController
 {
-    #[Route('/boy', name: 'boy')]
+    #[Route('/garcon', name: 'boy')]
     public function boy(ProductsRepository $repo): Response
     {
         /**
@@ -24,7 +23,7 @@ class ProductsController extends AbstractController
         ]);
     }
 
-    #[Route('/youngBoy', name: 'youngBoy')]
+    #[Route('/bebeGarcon', name: 'youngBoy')]
     public function youngBoy(ProductsRepository $repo): Response
     {
         $products = $repo->findAll();
@@ -34,7 +33,7 @@ class ProductsController extends AbstractController
         ]);
     }
 
-    #[Route('/girl', name: 'girl')]
+    #[Route('/fille', name: 'girl')]
     public function girl(ProductsRepository $repo): Response
     {
         $products = $repo->findAll();
@@ -43,7 +42,7 @@ class ProductsController extends AbstractController
         ]);
     }
 
-    #[Route('/youngGirl', name: 'youngGirl')]
+    #[Route('/bebeFille', name: 'youngGirl')]
     public function youngGirl(ProductsRepository $repo): Response
     {
         $products = $repo->findAll();

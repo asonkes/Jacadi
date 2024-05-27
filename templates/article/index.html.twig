@@ -20,14 +20,14 @@
 			<div class="j-articlesGrid">
 				<div class="j-CardPair">
 					<div class="j-CardPair-container">
-						<img class="j-CardPair__media" src="{{ asset('images/medias/mediaProducts/TW12071-13_TW22031-78_1 (3).jpg') }}" alt="petit garçon avec chemise rayée">
+						<img class="j-CardPair__media" src="{{ asset('images/medias/mediaProducts/' ~ product.image) }}" alt="{{product.name}}">
 					</div>
 				</div>
 				<div class="j-CardPair">
 					<div class="j-CardPair-container1">
 						<div class="j-CardPair__contentTextParent">
 							<div class="j-CardPair__contentText">
-								<p class="j-CardPair__title">Chemise Rayée Bleu</p>
+								<p class="j-CardPair__title">{{product.name}}</p>
 								<div class="j-accordion">
 									<div class="j-accordion__block">
 										<p class="j-accordion__title">Description</p>

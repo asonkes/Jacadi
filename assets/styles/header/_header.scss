@@ -117,28 +117,55 @@ header {
     display: block;
 }
 
-.j-accountIcon {
-    height: 41px;
-    margin: 15px;
-    cursor: pointer;
+.j-headerIcon {
+    display: flex;
+    flex-direction: row;
 
-    &.change-accountIconWhite {
-        display: none;
+    .j-accountIcon {
+        height: 41px;
+        margin: 15px;
+        cursor: pointer;
+
+        &.change-accountIconWhite {
+            display: none;
+        }
+
+        @include mixin.lg-lt {
+            height: 35px;
+        }
+
+        @include mixin.md-lt {
+            height: 30px;
+        }
     }
 
-    @include mixin.lg-lt {
-        height: 35px;
-    }
-
-    @include mixin.md-lt {
+    .j-basketIcon {
         height: 30px;
+        margin: 23px 0 0 23px;
+        cursor: pointer;
+
+        &.change-basketIconWhite {
+            display: none;
+        }
+
+        @include mixin.md-lt {
+            height: 30px;
+        }
     }
-}
 
-.j-accountIconBlack {
-    display: none;
+    .j-accountIconBlack {
+        display: none;
 
-    &.change-accountIconBlack {
-        display: block;
+        &.change-accountIconBlack {
+            display: block;
+        }
+    }
+
+    .j-basketIconBlack {
+        display: none;
+
+        &.change-basketIconBlack {
+            display: block;
+        }
     }
 }
