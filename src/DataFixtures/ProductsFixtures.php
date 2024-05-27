@@ -16,7 +16,6 @@ class ProductsFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        /*
         // Créez des produits avec des dates spécifiques ou par défaut à la date actuelle
         $this->createProduct(name: 'T-shirt Rayé Bleu', price: 15.00, stock: 4, image: 'TW12071-13_TW22031-78_1 (3).jpg', createdAt: new DateTimeImmutable('2024-05-23'), manager: $manager);
 
@@ -35,8 +34,6 @@ class ProductsFixtures extends Fixture
         $this->createProduct(name: 'Chemise colorée', price: 21.00, stock: 4, image: 'pexels-photo-1427288.jpg', createdAt: new DateTimeImmutable('2024-05-23'), manager: $manager);
 
         $this->createProduct(name: 'Ensemble bleu clair', price: 55.00, stock: 4, image: 'Hector.jpg', createdAt: new DateTimeImmutable('2024-05-23'), manager: $manager);
-        */
-
 
         $manager->flush();
     }
