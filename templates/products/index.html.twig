@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Jacadi - Bébé Garçon
+{% block title %}Jacadi -
+	{{ category.slug }}
 {% endblock %}
 
 {% block body %}
@@ -23,7 +24,7 @@
 			<a href=" {{ path('home') }} " class="j-linkPage__Parent">
 				<div class="j-linkPage">
 					<i class="fa-solid fa-chevron-right j-linkPage__icon"></i>
-					<p class="j-linkPage__text">Bébé Garçon</p>
+					<p class="j-linkPage__text">{{category.name}}</p>
 				</div>
 			</a>
 			<div class="j-productsGrid">

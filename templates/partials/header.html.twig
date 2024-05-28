@@ -10,10 +10,10 @@
 					</a>
 					<ul class="js-change-background-sousMenus">
 						<li class="js-change-background-sousMenusLi">
-							<a class="js-change-color-a" href=" {{ path('products_youngGirl') }} ">Fille</a>
+							<a class="js-change-color-a" href="{{ path('products_index', {'slug': 'bebe-fille'}) }}">Fille</a>
 						</li>
 						<li class="js-change-background-sousMenusLi">
-							<a class="js-change-color-a" href=" {{ path('products_youngBoy') }} ">Garçon</a>
+							<a class="js-change-color-a" href=" {{ path('products_index', {'slug': 'bebe-garçon'}) }}"=>Garçon</a>
 						</li>
 					</ul>
 				</li>
@@ -21,10 +21,10 @@
 					<a class="js-change-color-a" href=" {{ path('home') }} ">Enfant</a>
 					<ul class="js-change-background-sousMenus">
 						<li class="js-change-background-sousMenusLi">
-							<a class="js-change-color-a" href=" {{ path('products_girl') }} ">Fille</a>
+							<a class="js-change-color-a" href=" {{ path('products_index', {'slug': 'fille'})}} ">Fille</a>
 						</li>
 						<li class="js-change-background-sousMenusLi">
-							<a class="js-change-color-a" href=" {{ path('products_boy') }} ">Garçon</a>
+							<a class="js-change-color-a" href=" {{ path('products_index', {'slug': 'garcon'}) }}">Garçon</a>
 						</li>
 					</ul>
 				</li>
@@ -64,10 +64,10 @@
 	<nav class="j-burger-nav">
 		<ul>
 			<li><a href=" {{ path('home') }} ">Accueil</a></li>
-			<li><a href="#">Bébé Fille</a></li>
-			<li><a href="#">Bébé Garçon</a></li>
-			<li><a href="#">Enfant Fille</a></li>
-			<li><a href="#">Enfant Garçon</a></li>
+			<li><a href=" {{ path('products_index', {'slug': 'bebe-fille'}) }} ">Bébé Fille</a></li>
+			<li><a href=" {{ path('products_index', {'slug': 'bebe-garcon'}) }} ">Bébé Garçon</a></li>
+			<li><a href=" {{ path('products_index', {'slug': 'fille'}) }} ">Enfant Fille</a></li>
+			<li><a href=" {{ path('products_index', {'slug': 'garcon'}) }} ">Enfant Garçon</a></li>
 			<li><a href=" {{ path('home')}}#coupDeCoeur ">Coup de Coeur</a></li>
 			<li><a href=" {{ path('home')}}#notreUnivers ">Notre Univers</a></li>
 			<li><a href=" {{ path('home')}}#contact ">Contact</a></li>

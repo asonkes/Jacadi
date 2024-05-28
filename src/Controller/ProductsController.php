@@ -2,52 +2,31 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoriesRepository;
 use App\Repository\ProductsRepository;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/produits', name: 'products_')]
 class ProductsController extends AbstractController
 {
-    #[Route('/garcon', name: 'boy')]
-    public function boy(ProductsRepository $repo): Response
+    #[Route('/{slug}', name: 'index')]
+    public function index(ProductsRepository $productsRepository, CategoriesRepository $categoriesRepository, string $slug): Response
     {
-        /**
-         * Permet de récupérer tous les produits
-         */
-        $products = $repo->findAll();
+        // Récupérer la catégorie par le slug, findOneBy ne retourne qu'une seule donnée.
+        $category = $categoriesRepository->findOneBy(['slug' => $slug]);
 
-        return $this->render('products/boy.html.twig', [
-            'products' => $products
-        ]);
-    }
+        if (!$category) {
+            throw $this->createNotFoundException('La catégorie n\'existe pas');
+        }
 
-    #[Route('/bebeGarcon', name: 'youngBoy')]
-    public function youngBoy(ProductsRepository $repo): Response
-    {
-        $products = $repo->findAll();
+        // Récupérer les produits de cette catégorie
+        $products = $productsRepository->findBy(['categories' => $category]);
 
-        return $this->render('products/youngBoy.html.twig', [
-            'products' => $products
-        ]);
-    }
-
-    #[Route('/fille', name: 'girl')]
-    public function girl(ProductsRepository $repo): Response
-    {
-        $products = $repo->findAll();
-        return $this->render('products/girl.html.twig', [
-            'products' => $products
-        ]);
-    }
-
-    #[Route('/bebeFille', name: 'youngGirl')]
-    public function youngGirl(ProductsRepository $repo): Response
-    {
-        $products = $repo->findAll();
-        return $this->render('products/youngGirl.html.twig', [
-            'products' => $products
+        return $this->render('products/index.html.twig', [
+            'products' => $products,
+            'category' => $category
         ]);
     }
 }

@@ -9,7 +9,6 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: CategoriesRepository::class)]
-
 class Categories
 {
     use SlugTrait;
@@ -31,6 +30,9 @@ class Categories
 
     #[ORM\OneToMany(targetEntity: Products::class, mappedBy: 'categories')]
     private Collection $products;
+
+    #[ORM\Column]
+    private ?int $CategoryOrder = null;
 
     public function __construct()
     {
@@ -123,6 +125,18 @@ class Categories
                 $product->setCategories(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCategoryOrder(): ?int
+    {
+        return $this->CategoryOrder;
+    }
+
+    public function setCategoryOrder(int $CategoryOrder): static
+    {
+        $this->CategoryOrder = $CategoryOrder;
 
         return $this;
     }

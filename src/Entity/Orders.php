@@ -2,14 +2,15 @@
 
 namespace App\Entity;
 
-use App\Entity\Trait\CreatedAtTrait;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
+use App\Entity\OrdersDetails;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Trait\CreatedAtTrait;
 use App\Repository\OrdersRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: OrdersRepository::class)]
+
 class Orders
 {
     use CreatedAtTrait;
