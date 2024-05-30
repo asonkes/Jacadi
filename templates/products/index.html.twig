@@ -15,10 +15,10 @@
 
 			<div class="j-searchBar__Parent">
 				<div class="j-searchBar">
-					<input class="j-searchBar__input" type="text" placeholder="Veuillez insérer votre recherche">
-					<button class="j-searchBar__button">
-						<img class="j-searchBar__icon" src="{{ asset('images/icons/Magnifying-Glass-256.png')}}" alt="icone loupe pour la barre de recherche">
-					</button>
+					<input class="j-searchBar__input js-searchInput" type="text" placeholder="Veuillez insérer votre recherche">
+					<div class="j-searchBar__button">
+						<i class="fa-solid fa-magnifying-glass j-searchBar__icon"></i>
+					</div>
 				</div>
 			</div>
 			<a href=" {{ path('home') }} " class="j-linkPage__Parent">
@@ -31,7 +31,7 @@
 				{% for product in products %}
 					<div class="j-Card">
 						<div class="j-Card-container">
-							<img class="j-Card__media" src="{{ asset('images/medias/mediaProducts/' ~ product.image) }}" alt="petit garçon avec chemise rayée">
+							<img class="j-Card__media" src="{{ asset('images/medias/mediaProducts/' ~ product.image) }}" alt="{{ product.name}}">
 							<div class="j-Card__contentText">
 								<div class="j-Card__containerlink">
 									<a href=" {{ path('article_index', {'slug': product.slug, 'id': product.id}) }} " class="j-Card__link">
@@ -49,4 +49,5 @@
 			</div>
 		</div>
 	</section>
+	<script src="{{ asset('js/search.js') }}"></script>
 {% endblock %}
