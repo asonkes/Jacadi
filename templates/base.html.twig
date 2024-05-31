@@ -13,11 +13,14 @@
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 
+
 		{{ encore_entry_link_tags('app') }}
 	</head>
 
 	<body>
 		{% include "partials/header.html.twig" %}
+
+		{% include "partials/flash.html.twig" %}
 
 		{% block body %}{% endblock %}
 

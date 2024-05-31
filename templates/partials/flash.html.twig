@@ -1,0 +1,9 @@
+{% for label, messages in app.flashes %}
+	{% for message in messages %}
+		{% if app.user and app.user.isVerified == false %}
+			<div class="j-flashMessage">
+				{{ message|raw }}
+			</div>
+		{% endif %}
+	{% endfor %}
+{% endfor %}

@@ -11,6 +11,12 @@
 		</div>
 
 		<div class="j-articles" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}')">
+			{% if app.user and app.user.isVerified == false %}
+				<div class="j-flashMessage">
+					<strong>Votre compte n'est pas activé</strong>, renvoyez le lien d'activation
+				</div>
+			{% endif %}
+
 			<a href=" {{ path('home') }} " class="j-linkPage__Parent">
 				<div class="j-linkPage">
 					<i class="fa-solid fa-chevron-right j-linkPage__icon"></i>

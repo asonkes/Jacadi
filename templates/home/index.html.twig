@@ -84,42 +84,51 @@
 	<section id="coupDeCoeur" class="j-section js-section j-coupDeCoeur" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}" alt="image-texture-cimentee">
 		<h2 class="j-coupDeCoeur-h2">Nos Coups de Coeur</h2>
 		<div class="j-coupDeCoeur-grid js-coupDeCoeurGrid">
-			<div class="j-Card__shadow">
-				<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/pexels-photo-4971312.jpeg')}}" alt="jeune fille couchée sur le dos parterre">
-				<a class="j-Card__link__shadow">
-					<p class="j-Card__title__shadow" href="#">T-shirt</p>
-				</a>
-			</div>
-			<div class="j-Card__shadow">
-				<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/pexels-photo-3763588.jpeg')}}" alt="jeune fille avec cheveux crollés debout sur un lit">
-				<a class="j-Card__link__shadow">
-					<p class="j-Card__title__shadow" href="#">Robes</p>
-				</a>
-			</div>
-			<div class="j-Card__shadow">
-				<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/c407b2c2a69045bc9ed52467c17e22c6-thumbnail-0000000000 (3).jpg')}}" alt="jeune garçon assis avec chemise rayée">
-				<a class="j-Card__link__shadow">
-					<p class="j-Card__title__shadow" href="#">Chemises</p>
-				</a>
-			</div>
-			<div class="j-Card__shadow">
-				<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/TW15041-11_TW22131-44_1_1024x.jpg')}}" alt="jeune garçon qui se tien sur un mur avec pull rayé">
-				<a class="j-Card__link__shadow">
-					<p class="j-Card__title__shadow" href="#">Pantalons</p>
-				</a>
-			</div>
-			<div class="j-Card__shadow">
-				<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/jupe-de-ceremonie-a-fleurs-fille.jpg')}}" alt="petite fille en robe">
-				<a class="j-Card__link__shadow">
-					<p class="j-Card__title__shadow" href="#">Jupes</p>
-				</a>
-			</div>
-			<div class="j-Card__shadow">
-				<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/portrait-grand-angle-enfant-souriant_23-2148222919.jpg')}}" alt="petit garçon avec short et t-shirt rouge">
-				<a class="j-Card__link__shadow">
-					<p class="j-Card__title__shadow" href="#">Shorts</p>
-				</a>
-			</div>
+			{% for category in categories %}
+				{% if category.categoryOrder == 6 %}
+					<div class="j-Card__shadow">
+						<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/pexels-photo-4971312.jpeg')}}" alt="jeune fille couchée sur le dos parterre">
+						<a class="j-Card__link__shadow" href="{{ path('products_index', {'slug': 't-shirts'}) }}">
+							<p class="j-Card__title__shadow">{{ category.name }}</p>
+						</a>
+					</div>
+				{% elseif category.categoryOrder == 7 %}
+					<div class="j-Card__shadow">
+						<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/pexels-photo-3763588.jpeg')}}" alt="jeune fille avec cheveux crollés debout sur un lit">
+						<a class="j-Card__link__shadow" href="{{ path('products_index', {'slug': 'robes'}) }}">
+							<p class="j-Card__title__shadow">{{ category.name }}</p>
+						</a>
+					</div>
+				{% elseif category.categoryOrder == 8 %}
+					<div class="j-Card__shadow">
+						<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/c407b2c2a69045bc9ed52467c17e22c6-thumbnail-0000000000 (3).jpg')}}" alt="jeune garçon assis avec chemise rayée">
+						<a class="j-Card__link__shadow" href="{{ path('products_index', {'slug': 'chemises'}) }}">
+							<p class="j-Card__title__shadow">Chemises</p>
+						</a>
+					</div>
+				{% elseif category.categoryOrder == 9 %}
+					<div class="j-Card__shadow">
+						<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/TW15041-11_TW22131-44_1_1024x.jpg')}}" alt="jeune garçon qui se tien sur un mur avec pull rayé">
+						<a class="j-Card__link__shadow" href="{{ path('products_index', {'slug': 'pantalons'}) }}">
+							<p class="j-Card__title__shadow">Pantalons</p>
+						</a>
+					</div>
+				{% elseif category.categoryOrder == 10 %}
+					<div class="j-Card__shadow">
+						<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/jupe-de-ceremonie-a-fleurs-fille.jpg')}}" alt="petite fille en robe">
+						<a class="j-Card__link__shadow" href="{{ path('products_index', {'slug': 'jupes'}) }}">
+							<p class="j-Card__title__shadow">Jupes</p>
+						</a>
+					</div>
+				{% elseif category.categoryOrder == 11 %}
+					<div class="j-Card__shadow">
+						<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/portrait-grand-angle-enfant-souriant_23-2148222919.jpg')}}" alt="petit garçon avec short et t-shirt rouge">
+						<a class="j-Card__link__shadow" href="{{ path('products_index', {'slug': 'shorts'}) }}">
+							<p class="j-Card__title__shadow">Shorts</p>
+						</a>
+					</div>
+				{% endif %}
+			{% endfor %}
 		</div>
 	</section>
 
