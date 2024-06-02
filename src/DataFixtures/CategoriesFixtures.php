@@ -16,28 +16,27 @@ class CategoriesFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         // Création des catégories parentes
-        $profilesCategory = $this->createCategory(name: 'Profiles', manager: $manager, parent: null, categoryOrder: 0);
+        $profilesCategory = $this->createCategory('Profiles', $manager, 0, null);
         // Création des catégories enfants
-        $this->createCategory(name: 'Bébé Fille', manager: $manager, parent: $profilesCategory, categoryOrder: 1);
-        $this->createCategory(name: 'Fille', manager: $manager, parent: $profilesCategory, categoryOrder: 2);
-        $this->createCategory(name: 'Bébé Garçon', manager: $manager, parent: $profilesCategory, categoryOrder: 3);
-        $this->createCategory(name: 'Garçon', manager: $manager, parent: $profilesCategory, categoryOrder: 4);
+        $this->createCategory('Bébé Fille', $manager, 1, $profilesCategory, 'category-bebe-fille');
+        $this->createCategory('Fille', $manager, 2, $profilesCategory, 'category-fille');
+        $this->createCategory('Bébé Garçon', $manager, 3, $profilesCategory, 'category-bebe-garcon');
+        $this->createCategory('Garçon', $manager, 4, $profilesCategory, 'category-garcon');
 
         // Création des catégories parentes
-        $typesCategory = $this->createCategory(name: 'Types', manager: $manager, parent: null, categoryOrder: 5);
+        $typesCategory = $this->createCategory('Types', $manager, 5, null);
         // Création des catégories enfants
-        $this->createCategory(name: 'T-Shirts', manager: $manager, parent: $typesCategory, categoryOrder: 6);
-        $this->createCategory(name: 'Robes', manager: $manager, parent: $typesCategory, categoryOrder: 7);
-        $this->createCategory(name: 'Chemises', manager: $manager, parent: $typesCategory, categoryOrder: 8);
-        $this->createCategory(name: 'Pantalons', manager: $manager, parent: $typesCategory, categoryOrder: 9);
-        $this->createCategory(name: 'Jupes', manager: $manager, parent: $typesCategory, categoryOrder: 10);
-        $this->createCategory(name: 'Shorts', manager: $manager, parent: $typesCategory, categoryOrder: 11);
+        $this->createCategory('T-Shirts', $manager, 6, $typesCategory, 'category-t-shirts');
+        $this->createCategory('Robes', $manager, 7, $typesCategory, 'category-robes');
+        $this->createCategory('Chemises', $manager, 8, $typesCategory, 'category-chemises');
+        $this->createCategory('Pantalons', $manager, 9, $typesCategory, 'category-pantalons');
+        $this->createCategory('Jupes', $manager, 10, $typesCategory, 'category-jupes');
+        $this->createCategory('Shorts', $manager, 11, $typesCategory, 'category-shorts');
 
         $manager->flush();
     }
 
-    // Ajoutez $parent comme paramètre de la méthode createCategory
-    public function createCategory(string $name, ObjectManager $manager, int $categoryOrder, ?Categories $parent = null)
+    public function createCategory(string $name, ObjectManager $manager, int $categoryOrder, ?Categories $parent = null, string $referenceName = null): Categories
     {
         $category = new Categories();
 
@@ -50,6 +49,10 @@ class CategoriesFixtures extends Fixture
         }
 
         $manager->persist($category);
+
+        if ($referenceName) {
+            $this->addReference($referenceName, $category);
+        }
 
         return $category;
     }

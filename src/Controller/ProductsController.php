@@ -14,7 +14,7 @@ class ProductsController extends AbstractController
     #[Route('/{slug}', name: 'index')]
     public function index(ProductsRepository $productsRepository, CategoriesRepository $categoriesRepository, string $slug): Response
     {
-        // Récupérer la catégorie par le slug, findOneBy ne retourne qu'une seule donnée.
+        // Récupérer la catégorie par le slug
         $category = $categoriesRepository->findOneBy(['slug' => $slug]);
 
         if (!$category) {
@@ -22,7 +22,7 @@ class ProductsController extends AbstractController
         }
 
         // Récupérer les produits de cette catégorie
-        $products = $productsRepository->findBy(['categories' => $category]);
+        $products = $category->getProducts();
 
         return $this->render('products/index.html.twig', [
             'products' => $products,

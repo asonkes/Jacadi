@@ -35,15 +35,16 @@ class Products
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    #[ORM\ManyToOne(inversedBy: 'products')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Categories $categories = null;
+    #[ORM\ManyToMany(targetEntity: Categories::class, inversedBy: 'products')]
+    #[ORM\JoinTable(name: 'product_category')]
+    private Collection $categories;
 
     #[ORM\OneToMany(targetEntity: OrdersDetails::class, mappedBy: 'products')]
     private Collection $ordersDetails;
 
     public function __construct()
     {
+        $this->categories = new ArrayCollection();
         $this->ordersDetails = new ArrayCollection();
         $this->createdAt = new \DateTimeImmutable();
     }
@@ -101,14 +102,26 @@ class Products
         return $this;
     }
 
-    public function getCategories(): ?categories
+    public function getCategories(): Collection
     {
         return $this->categories;
     }
 
-    public function setCategories(?categories $categories): static
+    public function addCategory(Categories $category): self
     {
-        $this->categories = $categories;
+        if (!$this->categories->contains($category)) {
+            $this->categories->add($category);
+            $category->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Categories $category): self
+    {
+        if ($this->categories->removeElement($category)) {
+            $category->removeProduct($this);
+        }
 
         return $this;
     }
