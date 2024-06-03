@@ -20,8 +20,8 @@ class ProductsFixtures extends Fixture
         $categories = $manager->getRepository(Categories::class)->findAll();
 
         // Produits bébé fille
-        $this->createProduct(name: 'Robe verte légère', price: 27.00, stock: 4, image: 'TY30102_54_1024x.jpg', createdAt: new DateTimeImmutable('2024-05-23'), manager: $manager, categories: [$categories[1], $categories[6]]);
-        $this->createProduct(name: 'T-Shirt blanc', price: 28.00, stock: 4, image: 'TW10011-01_TW22011-45_1_1024x.jpg', createdAt: new DateTimeImmutable('2024-05-23'), manager: $manager, categories: [$categories[2], $categories[7]]);
+        $this->createProduct(name: 'Robe verte légère', price: 27.00, stock: 4, image: 'TY30102_54_1024x.jpg', createdAt: new DateTimeImmutable('2024-05-23'), manager: $manager, categories: [$categories[1], $categories[7]]);
+        $this->createProduct(name: 'T-Shirt blanc', price: 28.00, stock: 4, image: 'TW10011-01_TW22011-45_1_1024x.jpg', createdAt: new DateTimeImmutable('2024-05-23'), manager: $manager, categories: [$categories[1], $categories[6]]);
         $this->createProduct(name: 'Robe moltonée', price: 25.00, stock: 4, image: 'slide-mobile (1).jpg', createdAt: new DateTimeImmutable('2024-05-23'), manager: $manager, categories: [$categories[1], $categories[7]]);
         $this->createProduct(name: 'T-Shirt Bleu', price: 15.00, stock: 4, image: 'TY12021-42_TY22011-45_1024x.png', createdAt: new DateTimeImmutable('2024-05-23'), manager: $manager, categories: [$categories[1], $categories[6]]);
         $this->createProduct(name: 'Robe rouge été', price: 26.00, stock: 4, image: 'TY30022-35_2_1024x.jpg', createdAt: new DateTimeImmutable('2024-05-23'), manager: $manager, categories: [$categories[1], $categories[7]]);
@@ -39,11 +39,11 @@ class ProductsFixtures extends Fixture
         $this->createProduct(name: 'Robe rose princesse', price: 32.00, stock: 4, image: 'TY30262-35_2_1024x.jpg', createdAt: new DateTimeImmutable('2024-05-23'), manager: $manager, categories: [$categories[1], $categories[7]]);
 
         // Produits fille
-        $this->createProduct(name: 'jupe colorée', price: 20.00, stock: 4, image: 'jupe-de-ceremonie-a-fleurs-fille.jpg', createdAt: new DateTimeImmutable('2024-05-23'), manager: $manager, categories: [$categories[2], $categories[10]]);
+        $this->createProduct(name: 'Jupe colorée', price: 20.00, stock: 4, image: 'jupe-de-ceremonie-a-fleurs-fille.jpg', createdAt: new DateTimeImmutable('2024-05-23'), manager: $manager, categories: [$categories[2], $categories[10]]);
         $this->createProduct(name: 'Robe de cérémonie avec fleur', price: 32.00, stock: 4, image: 'PUSH_LAYER_VERTICALE_b185c97f-8e6b-4843-b242-8f2b239e43b3_10.jpg', createdAt: new DateTimeImmutable('2024-05-23'), manager: $manager, categories: [$categories[2], $categories[7]]);
         $this->createProduct(name: 'Jean vert', price: 25.00, stock: 4, image: 'TY10012-13_TY22022-54_1_1024x.jpg', createdAt: new DateTimeImmutable('2024-05-23'), manager: $manager, categories: [$categories[2], $categories[9]]);
         $this->createProduct(name: 'T-Shirt Rose', price: 15.00, stock: 4, image: 'TY10012-30_1_1024x.jpg', createdAt: new DateTimeImmutable('2024-05-23'), manager: $manager, categories: [$categories[2], $categories[6]]);
-        $this->createProduct(name: 'Pull bleu foncé crocheté', price: 28.00, stock: 4, image: 'TY18042-04_1024x.jpg', createdAt: new DateTimeImmutable('2024-05-23'), manager: $manager, categories: [$categories[2], $categories[7]]);
+        $this->createProduct(name: 'Pull bleu foncé crocheté', price: 28.00, stock: 4, image: 'TY18042-04_1024x.jpg', createdAt: new DateTimeImmutable('2024-05-23'), manager: $manager, categories: [$categories[2], $categories[6]]);
         $this->createProduct(name: 'Robe Rouge et blanche', price: 35.00, stock: 4, image: 'TY30082-33_4_1024x.jpg', createdAt: new DateTimeImmutable('2024-05-23'), manager: $manager, categories: [$categories[2], $categories[7]]);
         $this->createProduct(name: 'T-Shirt Rouge', price: 18.00, stock: 4, image: 'TY30042-35_2_1024x.jpg', createdAt: new DateTimeImmutable('2024-05-23'), manager: $manager, categories: [$categories[2], $categories[6]]);
         $this->createProduct(name: 'Jupe avec fleur en imprimé', price: 35.00, stock: 4, image: 'TY27012-04_TY10002-01_1024x.jpg', createdAt: new DateTimeImmutable('2024-05-23'), manager: $manager, categories: [$categories[2], $categories[10]]);
