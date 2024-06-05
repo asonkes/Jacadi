@@ -42,6 +42,18 @@ class Products
     #[ORM\OneToMany(targetEntity: OrdersDetails::class, mappedBy: 'products')]
     private Collection $ordersDetails;
 
+    #[ORM\Column(length: 255)]
+    private ?string $content = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $composition = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $advices = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $eco = null;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
@@ -152,6 +164,54 @@ class Products
                 $ordersDetail->setProducts(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(string $content): static
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    public function getComposition(): ?string
+    {
+        return $this->composition;
+    }
+
+    public function setComposition(string $composition): static
+    {
+        $this->composition = $composition;
+
+        return $this;
+    }
+
+    public function getAdvices(): ?string
+    {
+        return $this->advices;
+    }
+
+    public function setAdvices(string $advices): static
+    {
+        $this->advices = $advices;
+
+        return $this;
+    }
+
+    public function getEco(): ?string
+    {
+        return $this->eco;
+    }
+
+    public function setEco(string $eco): static
+    {
+        $this->eco = $eco;
 
         return $this;
     }
