@@ -1,0 +1,48 @@
+.j-popUp__size {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99999999;
+    color: var(--white);
+    font-family: var(--font-family1);
+
+    .j-popUp {
+        display: none;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(#785B5D, 0.9);
+
+        &.active {
+            display: block;
+        }
+
+        .j-popUp__item1 {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            border: 1px solid var(--white);
+
+            .j-popUp__text {
+                font-size: 18px;
+            }
+
+            .j-popUp__icon {
+                padding: 5px;
+                cursor: pointer;
+            }
+        }
+
+        .j-popUp__item2 {
+            padding: 20px;
+
+            .j-popUp__item2__item {
+                padding: 20px 0;
+                cursor: pointer;
+            }
+        }
+    }
+}

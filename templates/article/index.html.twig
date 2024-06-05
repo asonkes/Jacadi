@@ -66,10 +66,44 @@
 								</div>
 							</div>
 							<div class="j-CardPair__buttonParent">
-								<button class="j-CardPair__button" type="submit">Réserver en boutique</button>
+								<button class="j-CardPair__button js-CardPair__button" type="submit">
+									Choisir sa taille
+								</button>
+								<button class="j-CardPair__button" type="submit">
+									Ajouter au panier
+								</button>
 							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+		<div id="popUpSize" class="j-popUp__size">
+			<div class="j-popUp js-crossDiv">
+				<div class="j-popUp__item1">
+					<p class="j-popUp__text">Choisir une Taille</p>
+					<div class="j-popUp__icon js-popUp__icon">
+						<i class="fa-solid fa-xmark"></i>
+					</div>
+				</div>
+				<div class="j-popUp__item2">
+					<p class="j-popUp__item2__item">3 ans</p>
+					<p class="j-popUp__item2__item">4 ans</p>
+					<p class="j-popUp__item2__item">5 ans</p>
+					<p class="j-popUp__item2__item">6 ans</p>
+					<p class="j-popUp__item2__item">7 ans</p>
+					<p class="j-popUp__item2__item">8 ans</p>
+					<p class="j-popUp__item2__item">9 ans</p>
+					<p class="j-popUp__item2__item">10 ans</p>
+					<p class="j-popUp__item2__item">11 ans</p>
+					<p class="j-popUp__item2__item">12 ans</p>
+				</div>
+				<div>
+					{% if product.stock > 0 %}
+						<a href="#">Ajouter au panier</a>
+					{% else %}
+						<p>Temporairement en rupture de stock</p>
+					{% endif %}
 				</div>
 			</div>
 		</div>
