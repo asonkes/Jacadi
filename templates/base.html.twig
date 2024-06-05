@@ -19,15 +19,6 @@
 	<body>
 		{% include "partials/header.html.twig" %}
 
-		{% if app.user and app.user.isVerified == false %}
-			<div class="j-flashMessage">
-				<strong>Votre compte n'est pas activé</strong>,
-				<a href="{{ path('resend_verif') }}">Renvoyez le lien d'activation</a>
-			</div>
-		{% endif %}
-
-		{% include "partials/flash.html.twig" %}
-
 		{% block body %}{% endblock %}
 
 		{% include "partials/footer.html.twig" %}

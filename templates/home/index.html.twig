@@ -17,6 +17,20 @@
 		</div>
 
 		<div class="j-home" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}')">
+
+			{% for messages in app.flashes %}
+				{% for message in messages %}
+					<div class="j-flashMessage js-flashMessage">
+						<div>
+							<strong>{{ message }}</strong>
+						</div>
+						<div class="j-flashIcon js-flashIcon">
+							<i class="fa-solid fa-xmark"></i>
+						</div>
+					</div>
+				{% endfor %}
+			{% endfor %}
+
 			<div class="j-homeGrid js-homeGrid">
 				{% for category in categories %}
 					{% if category.categoryOrder == 1 %}
@@ -183,7 +197,7 @@
 		</div>
 	</section>
 
-	<section id="contact" class="j-section j-contact js-section" style="background-image: url('{{ asset('images/backgroundImages/Capture d’écran (662).png') }}" alt="image-jeuneFille">
+	<section id="contact" class="j-section j-contact js-section" style="background-image: url('{{ asset('images/backgroundImages/jolie-petite-fille-jouant-dans-champ-ete_1157-37751.jpg') }}" alt="image-jeuneFille">
 		<div class="j-contact__contentParent">
 			<div class="j-contact__content">
 				<h2 class="j-contact__h2">Contact</h2>

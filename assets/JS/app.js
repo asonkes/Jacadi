@@ -6,6 +6,5 @@ import '../JS/accordion/accordion.js';
 import '../JS/Grid/homegrid.js';
 import '../JS/Grid/coupDeCoeur.js';
 import '../JS/searchInput/searchInput.js';
-
-
+import '../JS/flashMessage/flashMessage.js';
 

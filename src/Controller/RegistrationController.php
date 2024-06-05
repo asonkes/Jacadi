@@ -10,24 +10,23 @@ use App\Service\JWTService;
 use App\Service\SendMailService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Psr\Log\LoggerInterface;
+use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, Security $security, EntityManagerInterface $entityManager, SendMailService $mail, JWTService $jwt, UsersRepository $usersRepository): Response
+    #[Route('/inscription', name: 'app_register')]
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, UsersAuthenticator $authenticator, EntityManagerInterface $entityManager, SendMailService $mail, JWTService $jwt): Response
     {
         $user = new Users();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Encoder le mot de passe en clair
+            // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
@@ -37,15 +36,16 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
+            // do anything else you need here, like send an email
 
             // On génère le JWT de l'utilisateur
-            // On créé le Header
+            // On crée le Header
             $header = [
-                'alg' => 'HS256',
-                'typ' => 'JWT'
+                'typ' => 'JWT',
+                'alg' => 'HS256'
             ];
 
-            // On créé le Payload
+            // On crée le Payload
             $payload = [
                 'user_id' => $user->getId()
             ];
@@ -53,19 +53,20 @@ class RegistrationController extends AbstractController
             // On génère le token
             $token = $jwt->generate($header, $payload, $this->getParameter('app.jwtsecret'));
 
-            // Envoyer l'email d'activation
+            // On envoie un mail
             $mail->send(
                 'no-reply@monsite.net',
                 $user->getEmail(),
-                'Activation de votre compte sur Jacadi',
+                'Activation de votre compte sur le site e-commerce',
                 'register',
-                [
-                    'user' => $user,
-                    'token' => $token
-                ]
+                compact('user', 'token')
             );
 
-            return $security->login($user, UsersAuthenticator::class);
+            return $userAuthenticator->authenticateUser(
+                $user,
+                $authenticator,
+                $request
+            );
         }
 
         return $this->render('registration/register.html.twig', [
@@ -73,86 +74,53 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    #[Route('/verification/{token}', name: 'verify_user')]
-    public function verifyUser($token, JWTService $jwt, UsersRepository $usersRepository, EntityManagerInterface $em, LoggerInterface $logger): Response
+    #[Route('/verif/{token}', name: 'verify_user')]
+    public function verifyUser($token, JWTService $jwt, UsersRepository $usersRepository, EntityManagerInterface $em): Response
     {
-        $logger->info('Vérification du token commencée.');
-
-        // Vérifier si le token est valide, n'a pas expiré, et n'a pas été modifié
-        if ($jwt->isValid($token)) {
-            $logger->info('Le token est valide.');
-        } else {
-            $logger->warning('Le token n\'est pas valide.');
-        }
-
-        if (!$jwt->isExpired($token)) {
-            $logger->info('Le token n\'est pas expiré.');
-        } else {
-            $logger->warning('Le token est expiré.');
-        }
-
-        if ($jwt->check($token, $this->getParameter('app.jwtsecret'))) {
-            $logger->info('Le token est authentique.');
-        } else {
-            $logger->warning('Le token n\'est pas authentique.');
-        }
-
+        //On vérifie si le token est valide, n'a pas expiré et n'a pas été modifié
         if ($jwt->isValid($token) && !$jwt->isExpired($token) && $jwt->check($token, $this->getParameter('app.jwtsecret'))) {
-            // Récupérer le payload
+            // On récupère le payload
             $payload = $jwt->getPayload($token);
-            $logger->info('Payload récupéré: ' . json_encode($payload));
 
-            // Récupérer l'utilisateur à partir du token
-            $user = $usersRepository->find($payload['user_id']); // Utiliser 'user_id' comme dans le payload
+            // On récupère le user du token
+            $user = $usersRepository->find($payload['user_id']);
 
-            // Vérifier si l'utilisateur existe et n'a pas encore activé son compte
-            if ($user) {
-                $logger->info('Utilisateur trouvé: ' . $user->getEmail());
-                if (!$user->getIsVerified()) {
-                    $user->setIsVerified(true);
-                    $em->flush();
-                    $logger->info('Utilisateur activé.');
-
-                    $this->addFlash('success', 'Utilisateur activé');
-                    return $this->redirectToRoute('home');
-                } else {
-                    $logger->info('Utilisateur déjà activé.');
-                }
-            } else {
-                $logger->warning('Utilisateur non trouvé pour le token donné.');
+            //On vérifie que l'utilisateur existe et n'a pas encore activé son compte
+            if ($user && !$user->getIsVerified()) {
+                $user->setIsVerified(true);
+                $em->flush($user);
+                $this->addFlash('success', 'Utilisateur activé');
+                return $this->redirectToRoute('home');
             }
-        } else {
-            $logger->warning('Token invalide ou expiré.');
         }
-
-        // Gérer les problèmes de token
+        // Ici un problème se pose dans le token
         $this->addFlash('danger', 'Le token est invalide ou a expiré');
         return $this->redirectToRoute('app_login');
     }
 
     #[Route('/renvoiverif', name: 'resend_verif')]
-    public function resendVerif(JWTService $jwt, SendMailService $mail, UsersRepository $usersRepository)
+    public function resendVerif(JWTService $jwt, SendMailService $mail, UsersRepository $usersRepository): Response
     {
-        // Récupérer le "user connecté"
         $user = $this->getUser();
+
         if (!$user) {
             $this->addFlash('danger', 'Vous devez être connecté pour accéder à cette page');
             return $this->redirectToRoute('app_login');
         }
 
         if ($user->getIsVerified()) {
-            $this->addFlash('Warning', 'Cet utilisateur est déjà activé');
-            return $this->redirectToRoute('app_login');
+            $this->addFlash('warning', 'Cet utilisateur est déjà activé');
+            return $this->redirectToRoute('home');
         }
 
-        // Générer le JWT de l'utilisateur
-        // On créé le header
+        // On génère le JWT de l'utilisateur
+        // On crée le Header
         $header = [
-            'alg' => 'HS256',
-            'typ' => 'JWT'
+            'typ' => 'JWT',
+            'alg' => 'HS256'
         ];
 
-        // On créé le Payload
+        // On crée le Payload
         $payload = [
             'user_id' => $user->getId()
         ];
@@ -160,19 +128,15 @@ class RegistrationController extends AbstractController
         // On génère le token
         $token = $jwt->generate($header, $payload, $this->getParameter('app.jwtsecret'));
 
-        // Envoyer l'email d'activation
+        // On envoie un mail
         $mail->send(
             'no-reply@monsite.net',
             $user->getEmail(),
-            'Activation de votre compte sur Jacadi',
+            'Activation de votre compte sur le site e-commerce',
             'register',
-            [
-                'user' => $user,
-                'token' => $token
-            ]
+            compact('user', 'token')
         );
-
         $this->addFlash('success', 'Email de vérification envoyé');
-        return $this->redirectToRoute('home');
+        return $this->redirectToRoute('app_login');
     }
 }

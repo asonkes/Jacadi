@@ -13,25 +13,34 @@
     .j-contact__contentParent {
         max-width: 100%;
         display: flex;
-        justify-content: end;
+        justify-content: start;
+        padding-left: 100px;
+
+        @include mixin.md-lt {
+            padding-left: 50px;
+        }
 
         @include mixin.sm-lt {
             justify-content: center;
         }
 
         .j-contact__content {
-            width: 40%;
+            width: 60%;
 
             @include mixin.md-lt {
-                width: 50%;
+                width: 70%;
             }
 
             @include mixin.md {
-                width: 55%;
+                width: 60%;
+            }
+
+            @include mixin.sm-lt {
+                width: 70%;
             }
 
             @include mixin.sm {
-                width: 70%;
+                width: 80%;
             }
 
             .j-contact__h2 {
@@ -86,7 +95,7 @@
                         opacity: 1 !important;
                     }
 
-                    @include mixin.sm-lt {
+                    @include mixin.md {
                         background-color: rgba(255, 255, 255, 0.7);
                     }
 
