@@ -53,7 +53,10 @@ body,
 .j-coupDeCoeur,
 .j-notreUnivers,
 .j-products,
-.j-articles {
+.j-articles,
+.j-loginParent,
+.j-registerParent,
+.j-resetPasswordParent {
     max-width: 75%;
     //filter: drop-shadow(0 0 0.1rem var(--darkGray));
     border: 1px solid var(--gray);
@@ -71,22 +74,4 @@ body,
 .j-articlesGrid {
     max-width: 75%;
     display: grid;
-}
-
-.j-flashMessage {
-    display: flex;
-    justify-content: space-between;
-    background-color: var(--blue);
-    color: #212529;
-    padding: 20px;
-    font-family: var(--font-family2);
-
-    &.active {
-        display: none;
-    }
-
-    .j-flashIcon {
-        padding: 3px;
-        cursor: pointer;
-    }
 }

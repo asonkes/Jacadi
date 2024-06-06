@@ -18,3 +18,5 @@
 @use "./footer/footer";
 @use "./mixin/mixin";
 @use "./variables";
+@use "./resetPassword/resetPassword";
+@use "./FlashMessages/flashMessages";

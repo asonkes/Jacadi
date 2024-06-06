@@ -1,0 +1,29 @@
+.j-flashMessage {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--blue);
+    color: #212529;
+    padding: 20px;
+    font-family: var(--font-family2);
+
+    &.active {
+        display: none;
+    }
+
+    .j-flashIcon {
+        padding: 3px;
+        cursor: pointer;
+    }
+}
+
+.j-flashMessage.warning {
+    background-color: rgba(255, 255, 0, 0.5);
+}
+
+.j-flashMessage.success {
+    background-color: rgba(0, 128, 0, 0.6);
+}
+
+.j-flashMessage.danger {
+    background-color: rgba(255, 0, 0, 0.5);
+}

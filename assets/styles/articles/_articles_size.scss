@@ -1,14 +1,17 @@
 .j-popUp__size {
+    display: none;
     width: 20%;
     height: 100%;
-    display: flex;
-    justify-content: end;
     position: fixed;
     top: 0;
     right: 0;
     z-index: 99999999;
     color: var(--white);
     font-family: var(--font-family1);
+
+    &.active {
+        display: block;
+    }
 
     .j-popUp {
         display: none;

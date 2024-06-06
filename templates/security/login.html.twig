@@ -10,8 +10,7 @@
 			<img class="j-homeLogo" src="{{ asset('images/Logo/Logo.png')}}">
 		</div>
 
-		<div class="j-articles" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}')">
-
+		<div class="j-loginParent" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}')">
 			{% if app.user and app.user.isVerified == false %}
 				<div class="j-flashMessage js-flashMessage">
 					<div>
@@ -23,6 +22,7 @@
 					</div>
 				</div>
 			{% endif %}
+
 			{% for label, messages in app.flashes %}
 				{% for message in messages %}
 					<div class="j-flashMessage js-flashMessage {{ label }}">
@@ -75,7 +75,7 @@
 						<button class="j-form__button" type="submit">Me connecter</button>
 					</div>
 					<p class="j-form__text">
-						<a class="j-form__link" href="#">Mot de passe oublié</a>
+						<a class="j-form__link" href="{{ path('forgotten_password') }}">Mot de passe oublié</a>
 					</p>
 					<p class="j-form__text">
 						Pas encore inscrit(e) ?

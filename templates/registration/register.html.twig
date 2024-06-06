@@ -10,10 +10,17 @@
 			<img class="j-homeLogo" src="{{ asset('images/Logo/Logo.png')}}">
 		</div>
 
-		<div class="j-articles" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}')">
+		<div class="j-registerParent" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}')">
+
 			{% if app.user and app.user.isVerified == false %}
-				<div class="j-flashMessage">
-					<strong>Votre compte n'est pas activé</strong>, renvoyez le lien d'activation
+				<div class="j-flashMessage js-flashMessage">
+					<div>
+						<strong>Votre compte n'est pas activé</strong>,
+						<a href="{{ path('resend_verif') }}">Renvoyez le lien d'activation</a>
+					</div>
+					<div class="j-flashIcon js-flashIcon">
+						<i class="fa-solid fa-xmark"></i>
+					</div>
 				</div>
 			{% endif %}
 
@@ -33,7 +40,7 @@
 					{{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
-					{{ form_row(registrationForm.agreeTerms) }}
+					{{ form_row(registrationForm.validerLesConditionsDeConfidentialite) }}
 
 					<div class="j-form__buttonParent">
 						<button class="j-form__button" type="submit">M'inscrire</button>
