@@ -8,7 +8,11 @@
     text-decoration-line: none;
     color: black;
 
-    @include mixin.xs {
+    @include mixin.md {
+        padding-top: 55px;
+    }
+
+    @include mixin.sm-lt {
         padding-top: 65px;
     }
 
@@ -38,6 +42,10 @@
 
             @include mixin.md {
                 font-size: 17px;
+            }
+
+            @include mixin.sm-lt {
+                font-size: 15px;
             }
         }
     }

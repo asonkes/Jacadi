@@ -54,9 +54,8 @@ body,
 .j-notreUnivers,
 .j-products,
 .j-articles,
-.j-loginParent,
-.j-registerParent,
-.j-resetPasswordParent {
+.j-loginRegister,
+.j-resetPassword {
     max-width: 75%;
     //filter: drop-shadow(0 0 0.1rem var(--darkGray));
     border: 1px solid var(--gray);

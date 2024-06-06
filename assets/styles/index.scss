@@ -1,7 +1,6 @@
 @use "./articles/articles";
 @use "./articles/articles_size";
 @use "./base";
-@use "./login/login";
 @use "./components/form";
 @use "./components/accordion";
 @use "./components/card";
@@ -12,11 +11,11 @@
 @use "./header/menuBurger";
 @use "./sections/notreUnivers";
 @use "./products/products";
-@use "./register/register";
 @use "./sections/home";
 @use "./header/header";
 @use "./footer/footer";
 @use "./mixin/mixin";
 @use "./variables";
-@use "./resetPassword/resetPassword";
+@use "./resetPassword-resetPasswordRequest/resetPassword";
 @use "./FlashMessages/flashMessages";
+@use "./login-register/login-register";
