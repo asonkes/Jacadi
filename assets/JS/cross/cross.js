@@ -5,8 +5,7 @@ const crossDiv = document.querySelector('.js-crossDiv');
 console.log('js-crossDiv', crossDiv);
 
 if(linkPopUp) {
-    linkPopUp.addEventListener('click', (event) => {
-        event.preventDefault();
+    linkPopUp.addEventListener('click', () => {
         crossDiv.classList.add('active');
     })
 }
@@ -20,3 +19,9 @@ cross.addEventListener('click', () => {
 
     crossDiv.classList.remove('active');
 });
+
+document.addEventListener('click', (e) => {
+    if(!linkPopUp.contains(e.target) && !cross.contains(e.target)) {
+        crossDiv.classList.remove('active');
+    }
+})
