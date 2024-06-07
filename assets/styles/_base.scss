@@ -18,6 +18,7 @@ body,
         right: 10px;
         bottom: 0px;
         z-index: 999;
+        transition: opacity 0.3s ease-in-out;
 
         &.hidden {
             display: none;
@@ -26,6 +27,7 @@ body,
         .j-ballonContainer {
             width: 80px;
             height: 103px;
+            transition: opacity 0.3s ease-in-out;
         }
     }
 
@@ -37,6 +39,7 @@ body,
         bottom: 0px;
         z-index: 999;
         display: none;
+        transition: opacity 0.3s ease-in-out;
 
         &.hidden {
             display: block;
@@ -45,6 +48,7 @@ body,
         .j-ballonContainer1 {
             //width: 80px;
             height: 103px;
+            transition: opacity 0.3s ease-in-out;
         }
     }
 }
