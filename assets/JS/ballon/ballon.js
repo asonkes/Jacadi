@@ -1,4 +1,3 @@
-
 const ballon = document.querySelector(".js-ballon");
 console.log('ballon', ballon);
 
@@ -7,6 +6,8 @@ if (ballon) {
     console.log('js-section', sections);
 
     const ballon1 = document.querySelector('.js-ballon1'); 
+
+    console.log('sections',sections)
 
     let currentSlide = 0;
 
@@ -48,4 +49,23 @@ if (ballon) {
             });
         }
     }
+
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY + window.innerHeight;
+
+        // Récupérer la dernière section
+        const lastSection = sections[sections.length - 1];
+        const secondLastSection = sections[sections.length - 2];
+
+        // Vérifier si on est dans l'avant-dernière section
+        if (scrollPosition >= secondLastSection.offsetTop + secondLastSection.offsetHeight) {
+            // Cacher le premier ballon et afficher le second
+            ballon.classList.add('hidden');
+            ballon1.classList.add('hidden');
+        } else {
+            // Afficher le premier ballon et cacher le second
+            ballon.classList.remove('hidden');
+            ballon1.classList.remove('hidden');
+        }
+    });
 }
