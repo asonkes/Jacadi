@@ -1,0 +1,22 @@
+.j-error {
+    max-width: 100%;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .j-error__text {
+        max-width: 100%;
+        background-color: var(--blueDark);
+        padding: 30px;
+        text-align: center;
+        color: var(--white);
+        font-family: var(--font-family2);
+        font-size: 25px;
+        font-weight: bolder;
+        transform: rotate(5deg);
+    }
+}
