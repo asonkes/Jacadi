@@ -18,9 +18,9 @@
 
 		<div class="j-home" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}')">
 
-			{% for messages in app.flashes %}
+			{% for label, messages in app.flashes %}
 				{% for message in messages %}
-					<div class="j-flashMessage js-flashMessage">
+					<div class="j-flashMessage js-flashMessage {{ label }}">
 						<div>
 							<strong>{{ message }}</strong>
 						</div>

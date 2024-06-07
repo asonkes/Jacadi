@@ -1,6 +1,8 @@
+@use '../mixin/mixin' as mixin;
+
 .j-popUp__size {
     display: none;
-    width: 20%;
+    width: 40%;
     height: 100%;
     position: fixed;
     top: 0;
@@ -8,6 +10,10 @@
     z-index: 99999999;
     color: var(--white);
     font-family: var(--font-family1);
+
+    @include mixin.md {
+        width: 60%;
+    }
 
     &.active {
         display: block;
@@ -31,6 +37,10 @@
 
             .j-popUp__text {
                 font-size: 18px;
+
+                @include mixin.md {
+                    font-size: 16px;
+                }
             }
 
             .j-popUp__icon {

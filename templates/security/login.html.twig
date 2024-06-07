@@ -12,6 +12,17 @@
 
 		<div class="j-loginRegister" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.jpeg') }}')">
 
+			{% if app.user and app.user.isVerified == false %}
+				<div class="j-flashMessage js-flashMessage">
+					<div>
+						<strong>Votre compte n'est pas activé</strong>,
+						<a href="{{ path('resend_verif') }}">Renvoyez le lien d'activation</a>
+					</div>
+					<div class="j-flashIcon js-flashIcon">
+						<i class="fa-solid fa-xmark"></i>
+					</div>
+				</div>
+			{% endif %}
 			{% for label, messages in app.flashes %}
 				{% for message in messages %}
 					<div class="j-flashMessage js-flashMessage {{ label }}">
