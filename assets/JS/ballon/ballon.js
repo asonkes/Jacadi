@@ -1,73 +1,51 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const ballon = document.querySelector('.js-ballon');
-    const ballon1 = document.querySelector('.js-ballon1');
+
+const ballon = document.querySelector(".js-ballon");
+console.log('ballon', ballon);
+
+if (ballon) {
     const sections = document.querySelectorAll('.js-section');
-    let currentSectionIndex = 0;
+    console.log('js-section', sections);
 
-    // Show the first ballon and hide the second one initially
-    ballon.style.display = 'block';
-    ballon1.style.display = 'none';
+    const ballon1 = document.querySelector('.js-ballon1'); 
 
-    // Function to scroll to the next section
-    function scrollToNextSection() {
-        currentSectionIndex++;
-        if (currentSectionIndex >= sections.length) {
-            currentSectionIndex = sections.length - 1;
-        }
-        sections[currentSectionIndex].scrollIntoView({ behavior: 'smooth' });
-        toggleBallons();
-    }
+    let currentSlide = 0;
 
-    // Function to scroll to the top
-    function scrollToTop() {
+    ballon.addEventListener("click", function(event) {
+        event.preventDefault();
+        scrollToNextSlide();
+    });
+
+    ballon1.addEventListener("click", function(event) {
+        event.preventDefault();
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
-        currentSectionIndex = 0;
-        toggleBallons();
-    }
 
-    // Function to toggle the display of the ballons
-    function toggleBallons() {
-        if (currentSectionIndex === sections.length - 1) {
-            ballon.style.display = 'none';
-            ballon1.style.display = 'block';
-        } else {
-            ballon.style.display = 'block';
-            ballon1.style.display = 'none';
+        ballon.classList.remove('hidden');
+        ballon1.classList.remove('hidden');
+        currentSlide = 0;
+    });
+
+    function scrollToNextSlide() {
+        currentSlide = (currentSlide + 1) % sections.length;
+
+        // Vérifie si on est sur le dernier slide
+        if (currentSlide === sections.length - 1) {
+            // Cache l'image du ballon normal et affiche celle du ballon1
+            ballon.classList.add('hidden');
+            ballon1.classList.add('hidden');
+        }
+
+        const nextSection = sections[currentSlide];
+
+        if(nextSection) {
+            const top = nextSection.offsetTop;
+
+            window.scrollTo({
+                top: top,
+                behavior: 'smooth'
+            });
         }
     }
-
-    // Add event listener to the first ballon
-    ballon.addEventListener('click', (event) => {
-        event.preventDefault();
-        scrollToNextSection();
-    });
-
-    // Add event listener to the second ballon
-    ballon1.addEventListener('click', (event) => {
-        event.preventDefault();
-        scrollToTop();
-    });
-
-    // Add scroll event listener to the window to update ballon visibility based on scroll position
-    window.addEventListener('scroll', () => {
-        const scrollPosition = window.scrollY;
-        const windowHeight = window.innerHeight;
-
-        sections.forEach((section, index) => {
-            if (scrollPosition >= section.offsetTop - windowHeight / 2 &&
-                scrollPosition < section.offsetTop + section.offsetHeight - windowHeight / 2) {
-                currentSectionIndex = index;
-                toggleBallons();
-            }
-        });
-
-        // Check if we are at the bottom of the page
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-            currentSectionIndex = sections.length - 1;
-            toggleBallons();
-        }
-    });
-});
+}
