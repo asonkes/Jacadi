@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -26,6 +27,8 @@ class RegistrationFormType extends AbstractType
                     'placeholder' => 'jacadi@gmail.com'
                 ]
             ])
+            ->add('lastname', TextType::class)
+            ->add('firstname', TextType::class)
             ->add('validerLesConditionsDeConfidentialite', CheckboxType::class, [
                 'mapped' => false,
                 'label' => 'Valider les conditions de confidentialité',

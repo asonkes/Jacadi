@@ -1,6 +1,7 @@
 <h3>Activer votre compte</h3>
 <p>Bonjour
-	{{ user.email }}</p>
+	{{ user.lastname }}
+	{{ user.firstname }}</p>
 <p>Votre inscription sur le site Jacadi est à valider en cliquant sur le lien ci-dessous</p>
 <p>
 	<a href="{{ absolute_url(path('verify_user', {token: token})) }}">Lien</a>

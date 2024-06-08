@@ -28,6 +28,8 @@ class UsersFixtures extends Fixture
         $admin = new Users();
 
         $admin->setEmail('audrey.sonkes@gmail.com')
+            ->setLastname('Audrey')
+            ->setFirstname('Sonkes')
             ->setpassword(
                 $this->passwordEncoder->hashPassword($admin, 'admin')
             )
@@ -44,7 +46,9 @@ class UsersFixtures extends Fixture
             $user->setEmail($faker->email)
                 ->setPassword(
                     $this->passwordEncoder->hashPassword($user, 'Tiphaine')
-                );
+                )
+                ->setLastname($faker->lastName)
+                ->setFirstname($faker->firstName);
 
             $manager->persist($user);
         }
