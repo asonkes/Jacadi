@@ -43,7 +43,6 @@ body,
         }
 
         .j-ballonContainer1 {
-            //width: 80px;
             height: 103px;
         }
     }
@@ -57,7 +56,6 @@ body,
 .j-loginRegister,
 .j-resetPassword {
     max-width: 75%;
-    //filter: drop-shadow(0 0 0.1rem var(--darkGray));
     border: 1px solid var(--gray);
 
     @include mixin.lg-lt {

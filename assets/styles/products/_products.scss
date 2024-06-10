@@ -125,4 +125,54 @@
             }
         }
     }
+
+    .j-pagination__nav {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+
+        .j-pagination {
+            display: flex;
+            flex-direction: row;
+            font-family: var(--font-family1);
+
+            .j-pagination__item,
+            .j-pagination__item2 {
+                padding: 20px;
+                list-style-type: none;
+                text-decoration-line: none;
+                cursor: pointer;
+
+                .j-pagination__link {
+                    color: var(--black);
+                    text-decoration-line: none;
+                    background-color: var(--grayLight);
+                    border-radius: 25px;
+                    padding: 15px 20px;
+                    filter: drop-shadow(0 0 0.1rem var(--darkGray));
+
+                    &:hover {
+                        background-color: var(--brunLight);
+                    }
+
+                    @include mixin.md {
+                        padding: 10px 15px;
+                    }
+
+                    @include mixin.xs {
+                        padding: 5px 10px;
+                    }
+
+                    .j-pagination__icon {
+                        padding: 5px;
+                    }
+                }
+            }
+
+            .j-pagination__item2 {
+                transform: rotate(180deg);
+            }
+        }
+    }
 }

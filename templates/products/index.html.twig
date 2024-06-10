@@ -28,7 +28,7 @@
 				</div>
 			</a>
 			<div class="j-productsGrid">
-				{% for product in products %}
+				{% for product in products.data %}
 					<div class="j-Card">
 						<div class="j-Card-container">
 							<img class="j-Card__media" src="{{ asset('images/medias/mediaProducts/' ~ product.image) }}" alt="{{ product.name}}">
@@ -47,6 +47,45 @@
 					</div>
 				{% endfor %}
 			</div>
-		</div>
-	</section>
-{% endblock %}
+			{% set path = 'products_index' %}
+			{% set slug = category.slug %}
+			{% set pages = products.page %}
+			{% set currentPage = products.page %}
+
+			{% if products.pages >= 1 %}
+				<nav class="j-pagination__nav">
+					<ul
+						class="j-pagination">
+						<!-- Flèche vers la gauche -->
+						<li class="j-pagination__item">
+							{% if products.page > 1 %}
+								<a href="{{ path('products_index', {slug: category.slug, page: products.page - 1}) }}">
+									<i class="fa-solid fa-chevron-left j-pagination__icon"></i>
+								</a>
+							{% endif %}
+						</li>
+
+						<!-- Numéros de page -->
+						{% for page in 1..products.pages %}
+							{% if page == products.page %}
+								<li class="j-pagination__item active">{{ page }}</li>
+							{% elseif page >= products.page - 2 and page <= products.page + 2 %}
+								<li class="j-pagination__item">
+									<a class="j-pagination__link" href="{{ path('products_index', {slug: category.slug, page: page}) }}">{{ page }}</a>
+								</li>
+							{% endif %}
+						{% endfor %}
+
+						<!-- Flèche vers la droite -->
+						<li class="j-pagination__item">
+							{% if products.page < products.pages %}
+								<a href="{{ path('products_index', {slug: category.slug, page: products.page + 1}) }}">
+									<i class="fa-solid fa-chevron-right j-pagination__icon"></i>
+								</a>
+							{% endif %}
+						</li>
+					</ul>
+				</nav>
+			{% endif %}
+		</section>
+	{% endblock %}
