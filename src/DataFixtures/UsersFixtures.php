@@ -33,7 +33,19 @@ class UsersFixtures extends Fixture
             ->setpassword(
                 $this->passwordEncoder->hashPassword($admin, 'admin')
             )
-            ->setRoles(['ROLE_ADMIN]']);
+            ->setRoles(['ROLE_ADMIN']);
+
+        $adminClient = new Users();
+
+        $adminClient->setEmail('jacadi@gmail.com')
+            ->setLastname('Tiphaine')
+            ->setFirstname('Stadnik')
+            ->setpassword(
+                $this->passwordEncoder->hashPassword($adminClient, 'jacadi')
+            )
+            ->setRoles(['ROLE_ADMIN_CLIENT']);
+
+        $manager->persist($adminClient);
 
         $manager->persist($admin);
 
