@@ -10,7 +10,7 @@
 {{ form_row(productForm.eco) }}
 <div class="j-dashboard__buttonParent">
 	<button class="j-dashboard__button" type="submit">
-		Valider
+		{{ button_label | default('Ajouter') }}
 	</button>
 </div>
 {{ form_end(productForm) }}

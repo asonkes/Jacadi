@@ -66,11 +66,41 @@ class ProductsController extends AbstractController
 
     #[Route('/produits/edition/{id}', name: 'edit')]
     #[IsGranted('ROLE_ADMIN_CLIENT')]
-    public function edit(Products $product): Response
+    public function edit(Products $product, request $request, SluggerInterface $slugger, EntityManagerInterface $entityManagerInterface): Response
     {
         // On vérifie si l'utilisateur peut éditer avec le voter
         $this->denyAccessUnlessGranted('PRODUCT_EDIT', $product);
-        return $this->render('admin/products/index.html.twig');
+
+        // On créé le formulaire
+        $productForm = $this->createForm(ProductsFormType::class, $product);
+
+        // On traite la requête du formulaire
+        $productForm->handleRequest($request);
+
+        // On vérifie si le formulaire est soumis et valide
+        if ($productForm->isSubmitted() && $productForm->isValid()) {
+            // On génère le slug
+            $slug = $slugger->slug($product->getName())->lower();
+            $product->setSlug($slug);
+
+            // On arrondi le prix 
+            $prix = $product->getPrice();
+            $product->setPrice($prix);
+
+            // On stocke
+            $entityManagerInterface->persist($product);
+            $entityManagerInterface->flush();
+
+            $this->addFlash('success', 'Produit modifié avec succès');
+
+            // On redirige
+
+            return $this->redirectToRoute('admin_add');
+        }
+
+        return $this->render('admin/products/edit.html.twig', [
+            'productForm' => $productForm->createView()
+        ]);
     }
 
     #[Route('/produits/suppression', name: 'delete')]
