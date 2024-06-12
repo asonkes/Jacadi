@@ -144,6 +144,13 @@
                 text-decoration-line: none;
                 cursor: pointer;
 
+                &.active {
+                    border-radius: 30px;
+                    padding: 20px 25px;
+                    background-color: var(--blueDark);
+                    filter: drop-shadow(0 0 0.1rem var(--darkGray));
+                }
+
                 .j-pagination__link {
                     color: var(--black);
                     text-decoration-line: none;

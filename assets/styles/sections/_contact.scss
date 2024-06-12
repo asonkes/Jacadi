@@ -22,6 +22,7 @@
 
         @include mixin.sm-lt {
             justify-content: center;
+            padding-left: 0;
         }
 
         .j-contact__content {
@@ -75,24 +76,34 @@
 
                 @include mixin.sm-lt {
                     width: 100%;
+                    margin: 15px 0 15px 0;
                 }
 
                 .j-form__input,
                 .j-form__textarea {
-                    width: 100%;
+                    width: 70%;
                     font-size: 20px;
                     font-weight: bolder;
                     font-style: italic;
                     padding: 10px;
-                    background-color: rgba(255, 255, 255, 0.4);
+                    background-color: rgba(255, 255, 255, 0.6);
                     border-radius: 25px;
                     font-family: var(--font-family2);
                     outline: none;
-                    border: 1px solid rgba(255, 255, 255, 0.4);
+                    border: 1px solid rgba(255, 255, 255, 0.6);
+                    color: var(--blueDark);
 
                     &::placeholder {
-                        color: white !important;
+                        color: var(--blueDark) !important;
                         opacity: 1 !important;
+                    }
+
+                    @include mixin.xl-lt {
+                        width: 90%;
+                    }
+
+                    @include mixin.lg {
+                        width: 100%;
                     }
 
                     @include mixin.md {
@@ -118,6 +129,7 @@
                 font-size: 20px;
                 font-weight: bolder;
                 border: none;
+                color: var(--blueDark);
 
                 @include mixin.sm {
                     width: 160px;
