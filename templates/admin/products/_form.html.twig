@@ -1,0 +1,16 @@
+{# Permet d'avoir un seul formulaire pour l'ajout et l'édition des produits #}
+{{ form_start(productForm) }}
+{{ form_row(productForm.name) }}
+{{ form_row(productForm.categories) }}
+{{ form_row(productForm.price) }}
+{{ form_row(productForm.image) }}
+{{ form_row(productForm.content) }}
+{{ form_row(productForm.composition) }}
+{{ form_row(productForm.advices) }}
+{{ form_row(productForm.eco) }}
+<div class="j-dashboard__buttonParent">
+	<button class="j-dashboard__button" type="submit">
+		Valider
+	</button>
+</div>
+{{ form_end(productForm) }}
