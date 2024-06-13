@@ -19,6 +19,10 @@ class Stock
     #[ORM\Column]
     private ?int $stockProducts = null;
 
+    #[ORM\ManyToOne(inversedBy: 'stocks')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Products $products = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +48,18 @@ class Stock
     public function setStockProducts(int $stockProducts): static
     {
         $this->stockProducts = $stockProducts;
+
+        return $this;
+    }
+
+    public function getProducts(): ?Products
+    {
+        return $this->products;
+    }
+
+    public function setProducts(?Products $products): static
+    {
+        $this->products = $products;
 
         return $this;
     }

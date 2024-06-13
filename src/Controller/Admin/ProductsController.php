@@ -17,17 +17,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ProductsController extends AbstractController
 {
     #[Route('/produits', name: 'products')]
-    #[IsGranted('ROLE_ADMIN_CLIENT')]
+    #[IsGranted('ROLE_ADMIN')]
     public function index(ProductsRepository $productsRepository): Response
     {
         return $this->render('admin/products/index.html.twig');
     }
 
     #[Route('/produits/ajout', name: 'add')]
-    #[IsGranted('ROLE_ADMIN_CLIENT')]
+    #[IsGranted('ROLE_ADMIN')]
     public function add(Products $products, Request $request, EntityManagerInterface $entityManagerInterface, SluggerInterface $slugger): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN_CLIENT');
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         // On créé un "nouveau produit"
         $product = new $products();
@@ -65,7 +65,7 @@ class ProductsController extends AbstractController
     }
 
     #[Route('/produits/edition/{id}', name: 'edit')]
-    #[IsGranted('ROLE_ADMIN_CLIENT')]
+    #[IsGranted('ROLE_ADMIN')]
     public function edit(Products $product, request $request, SluggerInterface $slugger, EntityManagerInterface $entityManagerInterface): Response
     {
         // On vérifie si l'utilisateur peut éditer avec le voter
@@ -104,7 +104,7 @@ class ProductsController extends AbstractController
     }
 
     #[Route('/produits/suppression', name: 'delete')]
-    #[IsGranted('ROLE_ADMIN_CLIENT')]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(Products $product): Response
     {
         // On vérifie si l'utilisateur peut delete avec le voter

@@ -51,11 +51,15 @@ class Products
     #[ORM\Column(length: 255)]
     private ?string $eco = null;
 
+    #[ORM\OneToMany(targetEntity: Stock::class, mappedBy: 'products')]
+    private Collection $stocks;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
         $this->ordersDetails = new ArrayCollection();
         $this->createdAt = new \DateTimeImmutable();
+        $this->stocks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -197,6 +201,36 @@ class Products
     public function setEco(string $eco): static
     {
         $this->eco = $eco;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Stock>
+     */
+    public function getStocks(): Collection
+    {
+        return $this->stocks;
+    }
+
+    public function addStock(Stock $stock): static
+    {
+        if (!$this->stocks->contains($stock)) {
+            $this->stocks->add($stock);
+            $stock->setProducts($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStock(Stock $stock): static
+    {
+        if ($this->stocks->removeElement($stock)) {
+            // set the owning side to null (unless already changed)
+            if ($stock->getProducts() === $this) {
+                $stock->setProducts(null);
+            }
+        }
 
         return $this;
     }

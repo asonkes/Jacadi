@@ -63,11 +63,11 @@ class ProductsVoter extends Voter
 
     private function canEdit()
     {
-        return $this->security->isGranted('ROLE_ADMIN_CLIENT');
+        return $this->security->isGranted('ROLE_ADMIN');
     }
 
     private function canDelete()
     {
-        return $this->security->isGranted('ROLE_ADMIN_CLIENT');
+        return $this->security->isGranted('ROLE_ADMIN');
     }
 }
