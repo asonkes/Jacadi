@@ -2,11 +2,25 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<meta name="title" content="Jacadi">
+		<meta name="description" content="Jacadi référence de la mode enfantine afin de répondre aux besoins des tous petits">
+		<meta property="og:title" content="{% block og_title %}Jacadi{% endblock %}">
+		<meta property="og:type" content="website">
+		<meta property="og:image" content="http://jacadi.audrey-sonkes.be/assets/images/backgroundImages/doudou.webp">
+		<meta property="og:image:width" content="1600">
+		<meta property="og:image:height" content="1104">
+		<meta property="og:url" content="https://jacadi.audrey-sonkes.be/">
+		<meta property="og:description" content="Jacadi est ">
+		<meta property="og:locale" content="fr_FR">
+		<meta property="og:site_name" content="Jacadi">
+
 		<title>
-			{% block title %}Welcome!
+			{% block title %}Jacadi
 			{% endblock %}
 		</title>
+
 		<script src="https://kit.fontawesome.com/2cbf82340f.js" crossorigin="anonymous"></script>
 		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
 		{% block stylesheets %}

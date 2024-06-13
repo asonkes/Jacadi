@@ -3,6 +3,10 @@
 {% block title %}Jacadi - Article
 {% endblock %}
 
+{% block og_title %}
+	Jacadi - Article
+{% endblock %}
+
 {% block body %}
 
 	<section class="j-section js-page-content">
@@ -100,14 +104,14 @@
 				</div>
 				{# Doit être changer par la suite, juste un début ==> voir raisonnement avec base de données #}
 				{#
-																<div>
-																	{% if product.stock > 0 %}
-																		<a href="#">Ajouter au panier</a>
-																	{% else %}
-																		<p>Temporairement en rupture de stock</p>
-																	{% endif %}
-																</div>
-																#}
+																				<div>
+																					{% if product.stock > 0 %}
+																						<a href="#">Ajouter au panier</a>
+																					{% else %}
+																						<p>Temporairement en rupture de stock</p>
+																					{% endif %}
+																				</div>
+																				#}
 			</div>
 		</div>
 	</section>
