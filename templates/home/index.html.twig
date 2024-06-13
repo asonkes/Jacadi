@@ -35,7 +35,7 @@
 					{% if category.categoryOrder == 1 %}
 						<div class="j-Card">
 							<div class="j-Card-container">
-								<img class="j-Card__media" src="{{ asset('images/medias/mediaHome/pexels-photo-235398.jpeg') }}" alt="jeune fille qui joue avec des feuilles séchées">
+								<img class="j-Card__media" src="{{ asset('images/medias/mediaHome/pexels-photo-235398.webp') }}" alt="jeune fille qui joue avec des feuilles séchées">
 								<div class="j-Card__contentText">
 									<div class="j-Card__containerlink">
 										<a href="{{ path('products_index', {'slug': category.slug}) }}" class="j-Card__link">
@@ -63,7 +63,7 @@
 					{% elseif category.categoryOrder == 3 %}
 						<div class="j-Card">
 							<div class="j-Card-container">
-								<img class="j-Card__media" src="{{ asset('images/medias/mediaHome/pexels-photo-15466102.jpeg') }}" alt="jeune garçon en salopette avec chapeau">
+								<img class="j-Card__media" src="{{ asset('images/medias/mediaHome/pexels-photo-15466102.webp') }}" alt="jeune garçon en salopette avec chapeau">
 								<div class="j-Card__contentText">
 									<div class="j-Card__containerlink">
 										<a href="{{ path('products_index', {'slug': category.slug}) }}" class="j-Card__link">
@@ -77,7 +77,7 @@
 					{% elseif category.categoryOrder == 4 %}
 						<div class="j-Card">
 							<div class="j-Card-container">
-								<img class="j-Card__media" src="{{ asset('images/medias/mediaHome/pexels-photo-1427288.jpg') }}" alt="visage garçon avec cheveux brun">
+								<img class="j-Card__media" src="{{ asset('images/medias/mediaHome/pexels-photo-1427288.webp') }}" alt="visage garçon avec cheveux brun">
 								<div class="j-Card__contentText">
 									<div class="j-Card__containerlink">
 										<a href="{{ path('products_index', {'slug': category.slug}) }}" class="j-Card__link">
@@ -100,42 +100,42 @@
 			{% for category in categories %}
 				{% if category.categoryOrder == 6 %}
 					<div class="j-Card__shadow">
-						<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/pexels-photo-4971312.jpeg')}}" alt="jeune fille couchée sur le dos parterre">
+						<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/pexels-photo-4971312.webp')}}" alt="jeune fille couchée sur le dos parterre">
 						<a class="j-Card__link__shadow" href="{{ path('products_index', {'slug': 't-shirts'}) }}">
 							<p class="j-Card__title__shadow">{{ category.name }}/Pulls</p>
 						</a>
 					</div>
 				{% elseif category.categoryOrder == 7 %}
 					<div class="j-Card__shadow">
-						<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/pexels-photo-3763588.jpeg')}}" alt="jeune fille avec cheveux crollés debout sur un lit">
+						<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/pexels-photo-3763588.webp')}}" alt="jeune fille avec cheveux crollés debout sur un lit">
 						<a class="j-Card__link__shadow" href="{{ path('products_index', {'slug': 'robes'}) }}">
 							<p class="j-Card__title__shadow">{{ category.name }}</p>
 						</a>
 					</div>
 				{% elseif category.categoryOrder == 8 %}
 					<div class="j-Card__shadow">
-						<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/c407b2c2a69045bc9ed52467c17e22c6-thumbnail-0000000000 (3).jpg')}}" alt="jeune garçon assis avec chemise rayée">
+						<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/c407b2c2a69045bc9ed52467c17e22c6-thumbnail-0000000000_1024x.webp')}}" alt="jeune garçon assis avec chemise rayée">
 						<a class="j-Card__link__shadow" href="{{ path('products_index', {'slug': 'chemises'}) }}">
 							<p class="j-Card__title__shadow">{{ category.name}}</p>
 						</a>
 					</div>
 				{% elseif category.categoryOrder == 9 %}
 					<div class="j-Card__shadow">
-						<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/TW15041-11_TW22131-44_1_1024x.jpg')}}" alt="jeune garçon qui se tien sur un mur avec pull rayé">
+						<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/TW15041-11_TW22131-44_1 (3).webp')}}" alt="jeune garçon qui se tient sur un mur avec pull rayé">
 						<a class="j-Card__link__shadow" href="{{ path('products_index', {'slug': 'pantalons'}) }}">
 							<p class="j-Card__title__shadow">{{ category.name}}</p>
 						</a>
 					</div>
 				{% elseif category.categoryOrder == 10 %}
 					<div class="j-Card__shadow">
-						<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/jupe-de-ceremonie-a-fleurs-fille.jpg')}}" alt="petite fille en robe">
+						<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/jupe-de-ceremonie-a-fleurs-fille.webp')}}" alt="petite fille en robe">
 						<a class="j-Card__link__shadow" href="{{ path('products_index', {'slug': 'jupes'}) }}">
 							<p class="j-Card__title__shadow">{{ category.name}}</p>
 						</a>
 					</div>
 				{% elseif category.categoryOrder == 11 %}
 					<div class="j-Card__shadow">
-						<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/portrait-grand-angle-enfant-souriant_23-2148222919.jpg')}}" alt="petit garçon avec short et t-shirt rouge">
+						<img class="j-Card__media__shadow" src="{{ asset('images/medias/mediaCoupDeCoeur/portrait-grand-angle-enfant-souriant_23-2148222919.webp')}}" alt="petit garçon avec short et t-shirt rouge">
 						<a class="j-Card__link__shadow" href="{{ path('products_index', {'slug': 'shorts'}) }}">
 							<p class="j-Card__title__shadow">{{ category.name}}</p>
 						</a>
