@@ -36,7 +36,7 @@ class ProductsFormType extends AbstractType
                     )
                 ]
             ])
-            ->add('price', MoneyType::class, options: [
+            ->add('price', options: [
                 'label' => 'Prix',
                 'constraints' => [
                     new NotBlank([

@@ -46,3 +46,9 @@
     font-family: var(--font-family2);
     padding: 10px;
 }
+
+.formPrice {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

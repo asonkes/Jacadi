@@ -2,7 +2,10 @@
 {{ form_start(productForm) }}
 {{ form_row(productForm.name) }}
 {{ form_row(productForm.categories) }}
-{{ form_row(productForm.price) }}
+<div class="formPrice">
+	{{ form_row(productForm.price) }}
+	<span class="euro-symbol">€</span>
+</div>
 {{ form_row(productForm.image) }}
 {{ form_row(productForm.content) }}
 {{ form_row(productForm.composition) }}
