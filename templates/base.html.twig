@@ -8,13 +8,17 @@
 		<meta name="description" content="Jacadi référence de la mode enfantine afin de répondre aux besoins des tous petits">
 		<meta property="og:title" content="{% block og_title %}Jacadi{% endblock %}">
 		<meta property="og:type" content="website">
-		<meta property="og:image" content="http://jacadi.audrey-sonkes.be/assets/images/backgroundImages/doudou.webp">
+		<meta property="og:image" content="{{ absolute_url(asset('images/backgroundImages/doudou.webp')) }}">
 		<meta property="og:image:width" content="1600">
 		<meta property="og:image:height" content="1104">
 		<meta property="og:url" content="https://jacadi.audrey-sonkes.be/">
 		<meta property="og:description" content="Jacadi est ">
 		<meta property="og:locale" content="fr_FR">
 		<meta property="og:site_name" content="Jacadi">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="Jacadi">
+		<meta name="twitter:description" content="Jacadi référence de la mode enfantine afin de répondre aux besoins des tous petits">
+		<meta name="twitter:image" content="{{ absolute_url(asset('images/twitterImages/doudou2.webp')) }}">
 
 		<title>
 			{% block title %}Jacadi
