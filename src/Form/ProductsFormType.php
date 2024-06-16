@@ -49,9 +49,12 @@ class ProductsFormType extends AbstractType
                 ]
             ])
             ->add('image', FileType::class, [
-                'label' => 'Image (Jpeg, Png,...)',
                 'mapped' => false,
-                'required' => false
+                'required' => false,
+                'constraints' => [
+                    'maxWidth' => '1500',
+                    'maxMessage' => "L'image ne doit pas faire plus de 1500 pixels de large."
+                ]
             ])
             ->add('content', options: [
                 'label' => 'Description',
