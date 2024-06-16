@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 #[Route('/admin', name: 'admin_')]
 class ProductsController extends AbstractController
@@ -43,6 +44,26 @@ class ProductsController extends AbstractController
             // On génère le slug
             $slug = $slugger->slug($product->getName())->lower();
             $product->setSlug($slug);
+
+            // On traite le téléchargement de l'image
+            $imageFile = $productForm->get('image')->getData();
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('image_dir'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // Handle exception if something happens during file upload
+                }
+
+                // Sets the new filename in the product entity
+                $product->setImage($newFilename);
+            }
 
             // On arrondi le prix 
             $prix = $product->getPrice();
@@ -82,6 +103,26 @@ class ProductsController extends AbstractController
             // On génère le slug
             $slug = $slugger->slug($product->getName())->lower();
             $product->setSlug($slug);
+
+            // On traite le téléchargement de l'image
+            $imageFile = $productForm->get('image')->getData();
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('image_dir'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // Handle exception if something happens during file upload
+                }
+
+                // Sets the new filename in the product entity
+                $product->setImage($newFilename);
+            }
 
             // On arrondi le prix 
             $prix = $product->getPrice();

@@ -48,7 +48,11 @@ class ProductsFormType extends AbstractType
                     )
                 ]
             ])
-            ->add('image', FileType::class)
+            ->add('image', FileType::class, [
+                'label' => 'Image (Jpeg, Png,...)',
+                'mapped' => false,
+                'required' => false
+            ])
             ->add('content', options: [
                 'label' => 'Description',
                 'constraints' => [
@@ -81,6 +85,7 @@ class ProductsFormType extends AbstractType
                 ]
             ])
             ->add('advices', options: [
+                'label' => "Conseils d'entretien",
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Le champ ne peut pas être vide'
@@ -96,6 +101,7 @@ class ProductsFormType extends AbstractType
                 ]
             ])
             ->add('eco', options: [
+                'label' => 'Articles responsables',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Le champ ne peut pas être vide'
