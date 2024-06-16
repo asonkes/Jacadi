@@ -13,7 +13,6 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Positive;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 
 class ProductsFormType extends AbstractType
@@ -48,7 +47,7 @@ class ProductsFormType extends AbstractType
                     )
                 ]
             ])
-            ->add('image', FileType::class)
+            ->add('image')
             ->add('content', options: [
                 'label' => 'Description',
                 'constraints' => [
