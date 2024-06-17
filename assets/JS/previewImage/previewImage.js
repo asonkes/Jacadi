@@ -12,7 +12,8 @@ function previewImage(event) {
     reader.readAsDataURL(input.files[0]);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function(event) {
+    event.preventDefault();
     const imageInput = document.querySelector('.image-input');
     if (imageInput) {
         imageInput.addEventListener('change', previewImage);
