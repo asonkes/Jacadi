@@ -9,6 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\Count;
+use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Positive;
@@ -52,8 +53,10 @@ class ProductsFormType extends AbstractType
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
-                    'maxWidth' => '1500',
-                    'maxMessage' => "L'image ne doit pas faire plus de 1500 pixels de large."
+                    new Image([
+                        'maxWidth' => '1500',
+                        'maxWidthMessage' => "L'image ne doit pas faire plus de 1500 pixels de large."
+                    ])
                 ]
             ])
             ->add('content', options: [
