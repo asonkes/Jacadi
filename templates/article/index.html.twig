@@ -91,16 +91,9 @@
 					</div>
 				</div>
 				<div class="j-popUp__item2">
-					<p class="j-popUp__item2__item">3 ans</p>
-					<p class="j-popUp__item2__item">4 ans</p>
-					<p class="j-popUp__item2__item">5 ans</p>
-					<p class="j-popUp__item2__item">6 ans</p>
-					<p class="j-popUp__item2__item">7 ans</p>
-					<p class="j-popUp__item2__item">8 ans</p>
-					<p class="j-popUp__item2__item">9 ans</p>
-					<p class="j-popUp__item2__item">10 ans</p>
-					<p class="j-popUp__item2__item">11 ans</p>
-					<p class="j-popUp__item2__item">12 ans</p>
+					{% for stock in stocks %}
+						<p class="j-popUp__item2__item">{{ stock.size}}</p>
+					{% endfor %}
 				</div>
 			</div>
 		</div>
