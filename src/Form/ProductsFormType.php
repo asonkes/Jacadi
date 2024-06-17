@@ -56,7 +56,7 @@ class ProductsFormType extends AbstractType
                     new Image([
                         'maxWidth' => '1500',
                         'maxWidthMessage' => "L'image ne doit pas faire plus de 1500 pixels de large."
-                    ])
+                    ]),
                 ]
             ])
             ->add('content', options: [
