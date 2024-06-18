@@ -2,10 +2,24 @@
 {{ form_start(productForm) }}
 {{ form_row(productForm.name) }}
 {{ form_row(productForm.categories) }}
+
 <div class="formPrice">
 	{{ form_row(productForm.price) }}
 	<span class="euro-symbol">€</span>
 </div>
+
+{{ form_label(productForm.stocks) }}
+
+<div id="stocks-wrapper">
+	{% for stockForm in productForm.stocks %}
+		<div class="stock-form">
+			{{ form_row(stockForm.size) }}
+			{{ form_row(stockForm.stockProducts) }}
+			{{ form_widget(stockForm) }}
+		</div>
+	{% endfor %}
+</div>
+
 <div class="image-input">
 	{{ form_row(productForm.image) }}
 </div>

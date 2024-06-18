@@ -70,6 +70,12 @@ class ProductsController extends AbstractController
                 }
             }
 
+            // Persister les entités de stock associées
+            foreach ($product->getStocks() as $stock) {
+                $stock->setProducts($product);
+                $entityManagerInterface->persist($stock);
+            }
+
             // On stocke
             $entityManagerInterface->persist($product);
             $entityManagerInterface->flush();
@@ -130,11 +136,17 @@ class ProductsController extends AbstractController
                 }
             }
 
+            // Persister les entités de stock associées
+            foreach ($product->getStocks() as $stock) {
+                $stock->setProducts($product);
+                $entityManagerInterface->persist($stock);
+            }
+
             // On stocke
             $entityManagerInterface->persist($product);
             $entityManagerInterface->flush();
 
-            $this->addFlash('success', 'Produit modifié avec succès');
+            $this->addFlash('success', 'Produit ajouté avec succès');
 
             // On redirige
 

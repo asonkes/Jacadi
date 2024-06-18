@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Positive;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class ProductsFormType extends AbstractType
 {
@@ -48,6 +48,15 @@ class ProductsFormType extends AbstractType
                         message: 'Le prix ne peut-être négatif'
                     )
                 ]
+            ])
+            ->add('stocks', CollectionType::class, [
+                'label' => 'Stock',
+                'entry_type' => StockFormType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+                // Optionnel, dépend de votre besoin
+                'entry_options' => ['label' => false]
             ])
             ->add('image', FileType::class, [
                 'mapped' => false,

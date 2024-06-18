@@ -37,6 +37,11 @@
 				<li>
 					<a class="js-change-color-a" href=" {{ path('home')}}#contact ">Contact</a>
 				</li>
+				{% if is_granted('ROLE_ADMIN') %}
+					<li>
+						<a class="js-change-color-a" href=" {{ path('admin_index')}} ">Administration</a>
+					</li>
+				{% endif %}
 			</ul>
 		</nav>
 		<div class="j-headerIcon">
@@ -71,6 +76,7 @@
 			<li><a href=" {{ path('home')}}#coupDeCoeur ">Coup de Coeur</a></li>
 			<li><a href=" {{ path('home')}}#notreUnivers ">Notre Univers</a></li>
 			<li><a href=" {{ path('home')}}#contact ">Contact</a></li>
+			<li><a href=" {{ path('admin_index')}} ">Administration</a></li>
 			<li><a href="#">Mon Compte</a></li>
 			<li><a href=" {{ path('app_login')}}">Connexion</a></li>
 		</ul>

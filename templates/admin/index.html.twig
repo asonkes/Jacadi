@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jacadi - Admin
+{% endblock %}
+
+{% block og_title %}
+	Jacadi - Admin
+{% endblock %}
+
+{% block body %}
+
+	<section class="j-section js-page-content">
+		<div class="j-homeCover" style="background-image: url('{{ asset('images/backgroundImages/doudou.webp') }}')">
+			<img class="j-homeLogo" src="{{ asset('images/Logo/Logo.png')}}">
+		</div>
+
+		<div class="j-dashboard" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.webp') }}')">
+
+			{% for label, messages in app.flashes %}
+				{% for message in messages %}
+					<div class="j-flashMessage js-flashMessage {{ label }}">
+						<div>
+							<strong>{{ message }}</strong>
+						</div>
+						<div class="j-flashIcon js-flashIcon">
+							<i class="fa-solid fa-xmark"></i>
+						</div>
+					</div>
+				{% endfor %}
+			{% endfor %}
+
+			<div class="j-dashboard__form">
+				<div class="j-form" method="post">
+					<h3 class="j-form__h3">Admin</h3>
+					<aside>
+						<article>
+							<div class="j-admin__title">Catégories</div>
+							<div class="j-admin__list">
+								<p class="j-admin__text">
+									<a class="j-admin__link" href=" {{ path('admin_categories_index') }}">Liste des catégories</a>
+								</p>
+								<p class="j-admin__text">
+									<a class="j-admin__link" href="#">Ajouter des catégories</a>
+								</p>
+							</div>
+						</article>
+
+						<article>
+							<div class="j-admin__title">Produits</div>
+							<div class="j-admin__list">
+								<p class="j-admin__text">
+									<a class="j-admin__link" href="#">Liste des produits</a>
+								</p>
+								<p class="j-admin__text">
+									<a class="j-admin__link" href="{{ path('admin_add') }}">Ajouter un produit</a>
+								</p>
+							</div>
+						</article>
+
+						<article>
+							<div class="j-admin__title">Utilisateurs</div>
+							<div class="j-admin__list">
+								<p class="j-admin__text">
+									<a class="j-admin__link" href="#">Liste des utilisateurs</a>
+								</p>
+							</div>
+						</article>
+					</aside>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
