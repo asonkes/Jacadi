@@ -57,15 +57,15 @@ class UsersController extends AbstractController
         ]);
     }
 
-    #[Route('/utilisateurs/suppression/{id}', name: 'delete_user', methods: ['POST'])]
+    #[Route('/utilisateurs/suppression/{id}', name: 'delete_user', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Users $user, EntityManagerInterface $entityManagerInterface): Response
     {
-        // Vérifie si l'utilisateur peut supprimer avec le voter
+        // On vérifie si l'utilisateur peut delete avec le voter
         $this->denyAccessUnlessGranted('USER_DELETE', $user);
 
         // Vérifie le token CSRF pour sécuriser la requête de suppression
-        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->query->get('_token'))) {
             // Supprime l'utilisateur
             $entityManagerInterface->remove($user);
             $entityManagerInterface->flush();

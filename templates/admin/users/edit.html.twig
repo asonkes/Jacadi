@@ -30,7 +30,26 @@
 
 			<div class="j-dashboard__form">
 				<div class="j-form" method="post">
-					<h3 class="j-form__h3">Modifier des Utilisateurs - Dashboard</h3>
+					<a href=" {{ path('admin_index') }} " class="j-linkPage__Parent">
+						<div class="j-linkPage">
+							<i class="fa-solid fa-chevron-right j-linkPage__icon"></i>
+							<p class="j-linkPage__text">Retour à la page Admin</p>
+						</div>
+					</a>
+					<h3 class="j-form__h3">Ajout d' Utilisateurs - Dashboard</h3>
+					{{ form_start(userForm) }}
+					{{ form_row(userForm.email) }}
+					{{ form_row(userForm.roles) }}
+					{{ form_row(userForm.lastname) }}
+					{{ form_row(userForm.firstname) }}
+					{{ form_row(userForm.password) }}
+					{{ form_row(userForm.is_verified) }}
+					<div class="j-dashboard__buttonParent">
+						<button class="j-dashboard__button" type="submit">
+							Modifier
+						</button>
+					</div>
+					{{ form_end(userForm) }}
 				</div>
 			</div>
 		</div>

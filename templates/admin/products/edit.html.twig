@@ -30,6 +30,12 @@
 
 			<div class="j-dashboard__form">
 				<div class="j-form" method="post">
+					<a href=" {{ path('admin_index') }} " class="j-linkPage__Parent">
+						<div class="j-linkPage">
+							<i class="fa-solid fa-chevron-right j-linkPage__icon"></i>
+							<p class="j-linkPage__text">Retour à la page Admin</p>
+						</div>
+					</a>
 					<h3 class="j-form__h3">Modifier des Produits - Dashboard</h3>
 					{% include "admin/products/_form.html.twig" with {'button_label': 'Modifier'} %}
 				</div>

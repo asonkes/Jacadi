@@ -132,12 +132,26 @@ class ProductsController extends AbstractController
             'product' => $product
         ]);
     }
-    #[Route('/produits/suppression', name: 'delete')]
+
+    #[Route('/produits/suppression/{id}', name: 'delete', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_ADMIN')]
-    public function delete(Products $product): Response
+    public function delete(Request $request, Products $product, EntityManagerInterface $entityManagerInterface): Response
     {
         // On vérifie si l'utilisateur peut delete avec le voter
-        $this->denyAccessUnlessGranted('DELETE_EDIT', $product);
-        return $this->render('admin/products/delete.html.twig');
+        $this->denyAccessUnlessGranted('PRODUCT_DELETE', $product);
+
+        // Vérifie le token CSRF pour sécuriser la requête de suppression
+        if ($this->isCsrfTokenValid('delete' . $product->getId(), $request->query->get('_token'))) {
+            // Supprime le produit
+            $entityManagerInterface->remove($product);
+            $entityManagerInterface->flush();
+
+            $this->addFlash('success', 'Produit supprimé avec succès');
+        } else {
+            $this->addFlash('error', 'Le jeton CSRF est invalide.');
+        }
+
+        // Redirige vers la liste des produits
+        return $this->redirectToRoute('admin_products');
     }
 }
