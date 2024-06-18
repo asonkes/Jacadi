@@ -25,9 +25,9 @@
 </div>
 <div id="image-preview-container">
 	{% if product.image %}
-		<img id="image-preview" src="{{ asset('uploads/images/' ~ product.image) }}" alt="Aperçu de l'image ajoutée" style="max-width: 200px; max-height: 200px;"/>
+		<img class="j-Card__media" id="image-preview" src="{{ asset('images/medias/mediaProducts/' ~ product.image) }}" alt="Aperçu de l'image ajoutée" style="max-width: 200px; max-height: 200px;"/>
 	{% else %}
-		<img id="image-preview" src="" alt="Aperçu de l'image modifiée" style="display: none; max-width: 200px; max-height: 200px;"/>
+		<img id="image-preview" src="{{ asset('images/medias/mediaProducts/' ~ product.image) }}" alt="Aperçu de l'image modifiée" style="display: none; max-width: 200px; max-height: 200px;"/>
 	{% endif %}
 </div>
 {{ form_row(productForm.content) }}

@@ -13,16 +13,20 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 #[Route('/admin', name: 'admin_')]
 class ProductsController extends AbstractController
 {
     #[Route('/produits', name: 'products')]
     #[IsGranted('ROLE_ADMIN')]
-    public function index(ProductsRepository $productsRepository): Response
+    public function index(Products $products, ProductsRepository $productsRepository): Response
     {
-        return $this->render('admin/products/index.html.twig');
+        // Permet ici de récupérer tous les produits pour le dashboard
+        $products = $productsRepository->findAll();
+
+        return $this->render('admin/products/index.html.twig', [
+            'products' => $products
+        ]);
     }
 
     #[Route('/produits/ajout', name: 'add')]

@@ -3,23 +3,67 @@
 {% block title %}Jacadi - Gestion des produits
 {% endblock %}
 
-{% block og_title %}
-	Jacadi - Gestion des produits
+{% block og_title %}Jacadi - Gestion des produits
 {% endblock %}
 
 {% block body %}
-
 	<section class="j-section js-page-content">
 		<div class="j-homeCover" style="background-image: url('{{ asset('images/backgroundImages/doudou.webp') }}')">
-			<img class="j-homeLogo" src="{{ asset('images/Logo/Logo.png')}}">
+			<img class="j-homeLogo" src="{{ asset('images/Logo/Logo.png') }}">
 		</div>
 
 		<div class="j-resetPassword" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.webp') }}')">
-
 			<div class="j-resetPassword__form">
 				<div class="j-form" method="post">
-					<h3 class="j-form__h3">Gestion des produits - Dashboard</h3>
+					<a href="{{ path('admin_index') }}" class="j-linkPage__Parent">
+						<div class="j-linkPage">
+							<i class="fa-solid fa-chevron-right j-linkPage__icon"></i>
+							<p class="j-linkPage__text">Retour à la page Admin</p>
+						</div>
+					</a>
+					<h3 class="j-form__h3">Liste des produits - Dashboard</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Name</th>
+								<th>Slug</th>
+								<th>Price</th>
+								<th>Image</th>
+								<th>Description</th>
+								<th>Composition</th>
+								<th>Conseils</th>
+								<th>Eco</th>
+								<th>Catégories</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for product in products %}
+								<tr>
+									<td>{{ product.id }}</td>
+									<td>{{ product.name }}</td>
+									<td>{{ product.slug }}</td>
+									<td>{{ product.price }}</td>
+									<td>
+										<img class="j-Card__media" id="image-preview" src="{{ asset('images/medias/mediaProducts/' ~ product.image) }}" alt="Aperçu de l'image ajoutée" style="max-width: 200px; max-height: 200px;">
+									</td>
+									<td>{{ product.content }}</td>
+									<td>{{ product.composition }}</td>
+									<td>{{ product.advices }}</td>
+									<td>{{ product.eco }}</td>
+									<td>
+										{% for category in product.categories %}
+											{{ category.name }}
+											{% if not loop.last %},
+											{% endif %}
+										{% endfor %}
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
 				</div>
 			</div>
-		</section>
-	{% endblock %}
+		</div>
+	</section>
+{% endblock %}

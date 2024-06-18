@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Jacadi - Réinitialisation du mot de passe
+{% block title %}Jacadi - Liste des utilisateurs
 {% endblock %}
 
 {% block og_title %}
-	Jacadi - Réinitialisation du mot de passe
+	Jacadi - Liste des Utilisateurs
 {% endblock %}
 
 {% block body %}
@@ -18,7 +18,13 @@
 
 			<div class="j-resetPassword__form">
 				<div class="j-form" method="post">
-					<h3 class="j-form__h3">Gestion des utilisateurs</h3>
+					<a href=" {{ path('admin_index') }} " class="j-linkPage__Parent">
+						<div class="j-linkPage">
+							<i class="fa-solid fa-chevron-right j-linkPage__icon"></i>
+							<p class="j-linkPage__text">Retour à la page Admin</p>
+						</div>
+					</a>
+					<h3 class="j-form__h3">Liste des utilisateurs - Dashboard</h3>
 				</div>
 			</div>
 		</section>

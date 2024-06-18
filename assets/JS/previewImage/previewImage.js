@@ -2,7 +2,8 @@ function previewImage(event) {
     const input = event.target;
     const reader = new FileReader();
     
-    reader.onload = function() {
+    reader.onload = function(event) {
+        event.preventDefault();
         const dataURL = reader.result;
         const imagePreview = document.getElementById('image-preview');
         imagePreview.src = dataURL;
