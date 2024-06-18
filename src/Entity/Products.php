@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Entity\Categories;
 use App\Entity\OrdersDetails;
+use App\Entity\Stock;
 use Doctrine\DBAL\Types\Types;
 use App\Entity\Trait\SlugTrait;
 use Doctrine\ORM\Mapping as ORM;
@@ -60,6 +61,18 @@ class Products
         $this->ordersDetails = new ArrayCollection();
         $this->createdAt = new \DateTimeImmutable();
         $this->stocks = new ArrayCollection();
+
+        // Initialisation des stocks par défaut
+        $this->initializeDefaultStocks();
+    }
+
+    private function initializeDefaultStocks(): void
+    {
+        $sizes = ['3mois', '6mois', '9mois', '1an', '2ans', '18mois', '3ans', '4ans', '5ans', '6ans', '8ans', '10ans', '12ans', '14ans']; // Définissez les tailles ici
+        foreach ($sizes as $size) {
+            $stock = new Stock($size);
+            $this->addStock($stock);
+        }
     }
 
     public function getId(): ?int

@@ -23,6 +23,12 @@ class Stock
     #[ORM\JoinColumn(nullable: false)]
     private ?Products $products = null;
 
+    public function __construct(string $size)
+    {
+        $this->size = $size;
+        $this->stockProducts = 0; // Initialisez avec une valeur par défaut de 0
+    }
+
     public function getId(): ?int
     {
         return $this->id;

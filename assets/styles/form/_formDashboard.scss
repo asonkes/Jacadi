@@ -42,9 +42,10 @@
 
 #products_form_categories {
     width: 70%;
-    min-height: 100%;
-    font-family: var(--font-family2);
-    padding: 10px;
+
+    label {
+        padding: 0 !important;
+    }
 }
 
 .formPrice {
