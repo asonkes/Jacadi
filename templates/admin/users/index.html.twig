@@ -25,6 +25,42 @@
 						</div>
 					</a>
 					<h3 class="j-form__h3">Liste des utilisateurs - Dashboard</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Nom</th>
+								<th>Prénom</th>
+								<th>Email</th>
+								<th>Roles</th>
+								<th>Vérifié</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for user in users %}
+								<tr>
+									<td>{{ user.id }}</td>
+									<td>{{ user.firstname }}</td>
+									<td>{{ user.lastname }}</td>
+									<td>{{ user.email }}</td>
+									<td>
+										{% set name = "Utilisateur" %}
+										{% for role in user.roles %}
+											{% if role == "ROLE_ADMIN" %}
+												{% set name = "Administrateur" %}
+											{% endif %}
+										{% endfor %}
+										<span>{{ name }}</span>
+									</td>
+									<td>{{ user.isVerified }}</td>
+									<td>
+										<a href="#">Modifier</a>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</section>
