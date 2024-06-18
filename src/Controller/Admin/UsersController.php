@@ -2,8 +2,8 @@
 
 namespace App\Controller\Admin;
 
-use UsersFormType;
 use App\Entity\Users;
+use App\Form\UsersFormType;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,7 +25,6 @@ class UsersController extends AbstractController
             'users' => $users
         ]);
     }
-
 
     #[Route('/utilisateurs/edition/{id}', name: 'edit_user')]
     #[IsGranted('ROLE_ADMIN')]

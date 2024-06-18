@@ -55,7 +55,8 @@
 									</td>
 									<td>{{ user.isVerified }}</td>
 									<td>
-										<a href="#">Modifier</a>
+										<a href="{{ path('admin_edit_user', {id: user.id})}}">Modifier</a>
+										<a href="#">Supprimer</td>
 									</td>
 								</tr>
 							{% endfor %}

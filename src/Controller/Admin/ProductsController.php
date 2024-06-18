@@ -34,154 +34,110 @@ class ProductsController extends AbstractController
     public function add(Products $products, Request $request, EntityManagerInterface $entityManagerInterface, SluggerInterface $slugger): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
-
         // On créé un "nouveau produit"
         $product = new $products();
-
         // On créé le formulaire
         $productForm = $this->createForm(ProductsFormType::class, $product);
-
         // On traite la requête du formulaire
         $productForm->handleRequest($request);
-
         // On vérifie si le formulaire est soumis et valide
         if ($productForm->isSubmitted() && $productForm->isValid()) {
             // Génère le slug
             $slug = $slugger->slug($product->getName())->lower();
             $product->setSlug($slug);
-
             // Traite le téléchargement de l'image
             $imageFile = $productForm->get('image')->getData();
             if ($imageFile instanceof UploadedFile) {
                 try {
                     // Créer une image à partir du fichier téléchargé
                     $image = imagecreatefromstring(file_get_contents($imageFile->getPathname()));
-
                     // Chemin pour sauvegarder l'image WebP
                     $webpFilename = $slugger->slug(pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME)) . '-' . uniqid() . '.webp';
                     $webpFilePath = $this->getParameter('image_dir') . '/' . $webpFilename;
-
                     // Convertir en WebP
                     imagewebp($image, $webpFilePath);
-
                     // Libérer la mémoire utilisée par l'image
                     imagedestroy($image);
-
                     // Mettre à jour le nom du fichier dans l'entité produit avec le fichier WebP
                     $product->setImage($webpFilename);
                 } catch (\Exception $e) {
                     // Gérer l'exception si quelque chose se passe mal lors de la conversion
                 }
             }
-
             // Persister les entités de stock associées
             foreach ($product->getStocks() as $stock) {
                 $stock->setProducts($product);
                 $entityManagerInterface->persist($stock);
             }
-
             // On stocke
             $entityManagerInterface->persist($product);
             $entityManagerInterface->flush();
-
             $this->addFlash('success', 'Produit ajouté avec succès');
-
             // On redirige
-
             return $this->redirectToRoute('admin_add');
         }
-
         return $this->render('admin/products/add.html.twig', [
             'productForm' => $productForm->createView(),
             'product' => $product
         ]);
     }
-
     #[Route('/produits/edition/{id}', name: 'edit')]
     #[IsGranted('ROLE_ADMIN')]
     public function edit(Products $product, request $request, SluggerInterface $slugger, EntityManagerInterface $entityManagerInterface): Response
     {
         // On vérifie si l'utilisateur peut éditer avec le voter
         $this->denyAccessUnlessGranted('PRODUCT_EDIT', $product);
-
         // On créé le formulaire
         $productForm = $this->createForm(ProductsFormType::class, $product);
-
         // On traite la requête du formulaire
         $productForm->handleRequest($request);
-
         // On vérifie si le formulaire est soumis et valide
         if ($productForm->isSubmitted() && $productForm->isValid()) {
             // Génère le slug
             $slug = $slugger->slug($product->getName())->lower();
             $product->setSlug($slug);
-
             // Traite le téléchargement de l'image
             $imageFile = $productForm->get('image')->getData();
             if ($imageFile instanceof UploadedFile) {
                 try {
                     // Créer une image à partir du fichier téléchargé
                     $image = imagecreatefromstring(file_get_contents($imageFile->getPathname()));
-
                     // Chemin pour sauvegarder l'image WebP
                     $webpFilename = $slugger->slug(pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME)) . '-' . uniqid() . '.webp';
                     $webpFilePath = $this->getParameter('image_dir') . '/' . $webpFilename;
-
                     // Convertir en WebP
                     imagewebp($image, $webpFilePath);
-
                     // Libérer la mémoire utilisée par l'image
                     imagedestroy($image);
-
                     // Mettre à jour le nom du fichier dans l'entité produit avec le fichier WebP
                     $product->setImage($webpFilename);
                 } catch (\Exception $e) {
                     // Gérer l'exception si quelque chose se passe mal lors de la conversion
                 }
             }
-
             // Persister les entités de stock associées
             foreach ($product->getStocks() as $stock) {
                 $stock->setProducts($product);
                 $entityManagerInterface->persist($stock);
             }
-
             // On stocke
             $entityManagerInterface->persist($product);
             $entityManagerInterface->flush();
-
-            $this->addFlash('success', 'Produit modifié avec succès');
-
+            $this->addFlash('success', 'Produit ajouté avec succès');
             // On redirige
-
             return $this->redirectToRoute('admin_add');
         }
-
         return $this->render('admin/products/edit.html.twig', [
             'productForm' => $productForm->createView(),
             'product' => $product
         ]);
     }
-
-    #[Route('/produits/suppression/{id}', name: 'delete', methods: ['GET', 'POST'])]
+    #[Route('/produits/suppression', name: 'delete')]
     #[IsGranted('ROLE_ADMIN')]
-    public function delete(Request $request, Products $product, EntityManagerInterface $entityManagerInterface): Response
+    public function delete(Products $product): Response
     {
         // On vérifie si l'utilisateur peut delete avec le voter
-        $this->denyAccessUnlessGranted('PRODUCT_DELETE', $product);
-
-        // Vérifie le token CSRF pour sécuriser la requête de suppression
-        if ($this->isCsrfTokenValid('delete' . $product->getId(), $request->query->get('_token'))) {
-            // Supprime le produit
-            $entityManagerInterface->remove($product);
-            $entityManagerInterface->flush();
-
-            $this->addFlash('success', 'Produit supprimé avec succès');
-        } else {
-            $this->addFlash('error', 'Le jeton CSRF est invalide.');
-        }
-
-        // Redirige vers la liste des produits
-        return $this->redirectToRoute('admin_products');
+        $this->denyAccessUnlessGranted('DELETE_EDIT', $product);
+        return $this->render('admin/products/delete.html.twig');
     }
 }
