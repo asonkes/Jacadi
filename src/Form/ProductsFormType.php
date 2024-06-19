@@ -53,7 +53,8 @@ class ProductsFormType extends AbstractType
                 'label' => 'Stocks',
                 'entry_type' => StockFormType::class,
                 'allow_add' => true,
-                'allow_delete' => true
+                'allow_delete' => true,
+                'by_reference' => false,
             ])
             ->add('image', FileType::class, [
                 'mapped' => false,

@@ -42,7 +42,8 @@ class ArticleController extends AbstractController
         return $this->render('article/index.html.twig', [
             'product' => $product,
             'stocks' => $stocks,
-            "categories" => $categories
+            'categories' => $categories,
+            'productId' => $id
         ]);
     }
 }

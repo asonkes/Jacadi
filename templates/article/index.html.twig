@@ -72,6 +72,7 @@
 							<div class="j-CardPair__buttonParent">
 								<button class="j-CardPair__button js-CardPair__button" type="submit">
 									Choisir sa taille
+									<span id="selected-size"></span>
 								</button>
 								<button class="j-CardPair__button" type="submit">
 									Ajouter au panier
@@ -91,8 +92,22 @@
 					</div>
 				</div>
 				<div class="j-popUp__item2">
-					{% for stock in stocks %}
-						<p class="j-popUp__item2__item">{{ stock.size}}</p>
+					{% for category in categories %}
+						{% for product in category.products %}
+							{% if product.id == productId %}
+								{% for stock in product.stocks %}
+									{% if category.name == 'Bébé Fille' or category.name == 'Bébé Garçon' %}
+										{% if stock.size in ['3 mois', '6 mois', '9 mois', '1 an', '18 mois', '2 ans'] %}
+											<p class="j-popUp__item2__item" data-size="{{ stock.size }}">{{ stock.size }}</p>
+										{% endif %}
+									{% elseif category.name == 'Fille' or category.name == 'Garçon' %}
+										{% if stock.size in ['3 ans', '4 ans', '5 ans', '6 ans', '8 ans', '10 ans', '12 ans', '14 ans'] %}
+											<p class="j-popUp__item2__item" data-size="{{ stock.size }}">{{ stock.size }}</p>
+										{% endif %}
+									{% endif %}
+								{% endfor %}
+							{% endif %}
+						{% endfor %}
 					{% endfor %}
 				</div>
 			</div>
