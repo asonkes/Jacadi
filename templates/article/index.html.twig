@@ -74,9 +74,7 @@
 									Choisir sa taille
 									<span id="selected-size"></span>
 								</button>
-								<button class="j-CardPair__button" type="submit">
-									Ajouter au panier
-								</button>
+								<a class="j-CardPair__button" href=" {{ path('cart_add', {'id': product.id}) }} ">Ajouter au panier</a>
 							</div>
 						</div>
 					</div>
