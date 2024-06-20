@@ -8,14 +8,7 @@
 	<span class="euro-symbol">€</span>
 </div>
 
-<div id="stocks-wrapper">
-	{% for stockForm in productForm.stocks %}
-		<div class="stock-form">
-			{{ form_row(stockForm.size) }}
-			{{ form_row(stockForm.stockProducts) }}
-		</div>
-	{% endfor %}
-</div>
+{{ form_row(productForm.stocks) }}
 
 <div class="image-input">
 	{{ form_row(productForm.image) }}

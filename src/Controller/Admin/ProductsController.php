@@ -39,10 +39,19 @@ class ProductsController extends AbstractController
         // On créé un "nouveau produit"
         $product = new $products();
 
-        // On créé un "nouveau stock"
-        $stock = new $stock();
-        $stock->setStockProducts(0);
-        $product->addStock($stock);
+        // Initialiser les tailles par défaut
+        $sizes = ['3 mois', '6 mois', '9 mois', '1 an', '2 ans', '18 mois', '3 ans', '4 ans', '5 ans', '6 ans', '8 ans', '10 ans', '12 ans', '14 ans'];
+
+        // Initialiser les tailles par défaut
+        $sizes = ['3 mois', '6 mois', '9 mois', '1 an', '2 ans', '18 mois', '3 ans', '4 ans', '5 ans', '6 ans', '8 ans', '10 ans', '12 ans', '14 ans'];
+
+        foreach ($sizes as $size) {
+            $stock = new Stock();
+            $stock->setSize($size);
+            $stock->setStockProducts(0);
+            $stock->setProducts($product);
+            $product->addStock($stock);
+        }
 
         // On créé le formulaire
         $productForm = $this->createForm(ProductsFormType::class, $product);
@@ -79,6 +88,12 @@ class ProductsController extends AbstractController
                 } catch (\Exception $e) {
                     // Gérer l'exception si quelque chose se passe mal lors de la conversion
                 }
+            }
+
+            // Persister les entités de stock associées
+            foreach ($product->getStocks() as $stock) {
+                $stock->setProducts($product);
+                $entityManagerInterface->persist($stock);
             }
 
             // On stocke
@@ -148,7 +163,7 @@ class ProductsController extends AbstractController
             // On stocke
             $entityManagerInterface->persist($product);
             $entityManagerInterface->flush();
-            $this->addFlash('success', 'Produit ajouté avec succès');
+            $this->addFlash('success', 'Produit modifié avec succès');
 
             // On redirige
             return $this->redirectToRoute('admin_add');
@@ -162,18 +177,30 @@ class ProductsController extends AbstractController
 
     #[Route('/produits/suppression/{id}', name: 'delete', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_ADMIN')]
-    public function delete(Request $request, Products $product, EntityManagerInterface $entityManagerInterface): Response
+    public function delete(Request $request, Products $product, EntityManagerInterface $entityManager): Response
     {
-        // On vérifie si l'utilisateur peut delete avec le voter
+        // Vérifie si l'utilisateur peut supprimer le produit
         $this->denyAccessUnlessGranted('PRODUCT_DELETE', $product);
 
         // Vérifie le token CSRF pour sécuriser la requête de suppression
         if ($this->isCsrfTokenValid('delete' . $product->getId(), $request->query->get('_token'))) {
-            // Supprime le produit
-            $entityManagerInterface->remove($product);
-            $entityManagerInterface->flush();
+            // Récupère tous les stocks associés au produit
+            $stocks = $product->getStocks();
 
-            $this->addFlash('success', 'Produit supprimé avec succès');
+            try {
+                // Supprime chaque stock associé au produit
+                foreach ($stocks as $stock) {
+                    $entityManager->remove($stock);
+                }
+
+                // Supprime le produit lui-même
+                $entityManager->remove($product);
+                $entityManager->flush();
+
+                $this->addFlash('success', 'Produit supprimé avec succès');
+            } catch (\Exception $e) {
+                $this->addFlash('error', 'Une erreur s\'est produite lors de la suppression du produit : ' . $e->getMessage());
+            }
         } else {
             $this->addFlash('error', 'Le jeton CSRF est invalide.');
         }
