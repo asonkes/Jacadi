@@ -28,7 +28,7 @@ class ResetPasswordRequestFormType extends AbstractType
                             'message' => 'L\'adresse e-mail ne peut pas être vide.',
                         ]),
                         new Regex([
-                            'pattern' => '/@.*\.com$/i',
+                            'pattern' => '/@.*\.(com|be|net)$/i',
                             'message' => 'L\'adresse e-mail doit contenir un "@" et se terminer par ".com".',
                         ]),
                     ]

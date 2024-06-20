@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Products;
 use App\Repository\ProductsRepository;
 use App\Repository\CategoriesRepository;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,10 +13,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CategoriesController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(ProductsRepository $productsRepository, CategoriesRepository $categoriesRepository): Response
+    public function index(Products $product, ProductsRepository $productsRepository, CategoriesRepository $categoriesRepository): Response
     {
         // Pemet de récupérer les produits de la base de données
-        $product = $productsRepository()->findAll();
+        $product = $productsRepository->findAll();
 
         $categories = $categoriesRepository->findBy([]);
 

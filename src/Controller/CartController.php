@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Products;
+use App\Repository\StockRepository;
 use App\Repository\ProductsRepository;
+use App\Repository\CategoriesRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,8 +14,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CartController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(Products $product, SessionInterface $session, ProductsRepository $productsRepository)
+    public function index(Products $product, SessionInterface $session, ProductsRepository $productsRepository, StockRepository $stockRepository)
     {
+        $stock = $stockRepository->findAll();
+
         $panier = $session->get('panier', []);
 
         // On initialise des variables
@@ -25,7 +29,7 @@ class CartController extends AbstractController
 
             $data[] = [
                 'product' => $product,
-                'quantity' => $quantity
+                'quantity' => $quantity,
             ];
 
             $total += $product->getPrice() * $quantity;
@@ -33,7 +37,8 @@ class CartController extends AbstractController
 
         return $this->render('cart/index.html.twig', [
             'data' => $data,
-            'total' => $total
+            'total' => $total,
+            'stock' => $stock
         ]);
     }
 

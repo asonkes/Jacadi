@@ -16,62 +16,54 @@
 
 		<div class="j-loginRegister" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.webp') }}')">
 
-			<a href=" {{ path('home') }} " class="j-linkPage__Parent">
+			<a href="{{ path('home') }}" class="j-linkPage__Parent">
 				<div class="j-linkPage">
 					<i class="fa-solid fa-chevron-right j-linkPage__icon"></i>
 					<p class="j-linkPage__text">Retour à l'accueil</p>
 				</div>
 			</a>
-			<div class="j-loginRegister__form">
-				<h3>Panier</h3>
-				<table>
-					<thead>
-						<tr>
-							<th>Produit</th>
-							<th>Prix</th>
-							<th>Quantité</th>
-							<th>Total</th>
-							<th>Action</th>
-							<th>Action</th>
-							<th>Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for element in data %}
-							<tr>
-								<td>{{ element.product.name }}</td>
-								<td>{{ element.product.price}}
-									€</td>
-								<td>{{ element.quantity }}</td>
-								<td>{{ element.quantity * element.product.price }}
-									€</td>
-								<td>
-									<a href="{{ path('cart_add', {'id': element.product.id})}}">+</a>
-
-
-								</td>
-								<td>
-									<a href="{{ path('cart_remove', {'id': element.product.id})}}">-</a>
-								</td>
-								<td>
-									<a href="{{ path('cart_delete', {'id': element.product.id})}}">Supprimer</a>
-								</td>
-							</tr>
-						{% else %}
-							<tr>
-								<td>Votre panier est vide</td>
-							</tr>
-						{% endfor %}
-					</tbody>
-					<tfoot>
-						<td>Total</td>
-						<td>{{ total }}
-							€</td>
-						<td>
-							<a href="{{ path('cart_empty')}}">Vider</a>
-						</td>
-					</tfoot>
-				</table>
+			<div class="j-cart">
+				<h3 class="j-cart__h3">Panier</h3>
+				<div class="j-cartGrid">
+					{% for element in data %}
+						<div class="j-cartGrid__item1">
+							<img id="image-preview" src="{{ asset('images/medias/mediaProducts/' ~ element.product.image) }}" alt="Aperçu de l'image ajoutée" style="max-width: 200px; max-height: 200px;">
+						</div>
+						<div class="j-cartGrid__item2">
+							<div class="j-cartGrid__text">
+								<span>Nom :</span>
+								{{ element.product.name }}</div>
+							<div class="j-cartGrid__text">
+								<span>Prix :</span>
+								{{ element.product.price }}
+								€</div>
+							<div class="j-cartGrid__text">
+								<span>Quantité :</span>
+								{{ element.quantity }}</div>
+							<div class="j-cartGrid__text">
+								<span>Total :</span>
+								{{ element.quantity * element.product.price }}
+								€</div>
+							<div class="j-cartGrid__button">
+								<a class="j-cart__button" href="{{ path('cart_add', {'id': element.product.id})}}">Ajouter</a>
+								<a class="j-cart__button" href="{{ path('cart_remove', {'id': element.product.id})}}">Retirer</a>
+								<a class="j-cart__button" href="{{ path('cart_delete', {'id': element.product.id})}}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?');">Supprimer</a>
+							</div>
+						</div>
+					{% else %}
+						<div class="j-cartGrid__text">Votre panier est vide</div>
+					{% endfor %}
+				</div>
+				<div class="j-cartGrid__item3">
+					<div class="j-cartGrid__text2">
+						<span>Total :</span>
+					</div>
+					<div class="j-cartGrid__text2">{{ total }}
+						€</div>
+					<div class="j-cartGrid__text2">
+						<a class="j-cart__button" href="{{ path('cart_empty')}}">Vider</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
