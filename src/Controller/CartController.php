@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Products;
 use App\Repository\StockRepository;
 use App\Repository\ProductsRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,31 +24,28 @@ class CartController extends AbstractController
         $total = 0;
 
         // Parcourir chaque élément du panier
-        foreach ($panier as $id => $quantity) {
+        foreach ($panier as $id => $details) {
             $product = $productsRepository->find($id);
 
-            if ($product) {
+            if ($product && is_array($details) && isset($details['quantity']) && isset($details['size'])) {
                 // Convertir le prix en nombre (float)
                 $price = (float) $product->getPrice();
 
-                // Vérifier si $quantity est numérique
-                if (is_numeric($quantity)) {
+                // Vérifier si $details['quantity'] est numérique
+                if (is_numeric($details['quantity'])) {
                     // Récupérer les stocks associés au produit
                     $stocks = $stockRepository->findBy(['products' => $product]);
 
                     $data[] = [
                         'product' => $product,
-                        'quantity' => $quantity,
-                        'stocks' => $stocks, // Ajouter les stocks au tableau de données
+                        'quantity' => $details['quantity'],
+                        'size' => $details['size'], // Ajouter la taille au tableau de données
+                        'stocks' => $stocks,
                     ];
 
                     // Calculer le total
-                    $total += $price * (int) $quantity;
-                } else {
-                    // Gérer l'erreur si $quantity n'est pas numérique
+                    $total += $price * (int) $details['quantity'];
                 }
-            } else {
-                // Gérer l'erreur si le produit n'est pas trouvé
             }
         }
 
@@ -57,70 +55,82 @@ class CartController extends AbstractController
         ]);
     }
 
-    #[Route('/ajout/{id}', name: 'add')]
-    public function add(Products $product, SessionInterface $session)
+    #[Route('/ajout/{id}', name: 'add', methods: ['POST'])]
+    public function add(Request $request, Products $product, SessionInterface $session)
     {
-        // On récupère l'id du produit
         $id = $product->getId();
+        $size = $request->request->get('size');
 
-        // On récupère le panier existant
+        // Récupérer le panier existant
         $panier = $session->get('panier', []);
 
-        // On ajoute le produit dans le panier s'il n'y est pas encore
-        // Sinon on incrémente sa quantité
-        if (!isset($panier[$id])) {
-            $panier[$id] = 1;
+        // Utiliser une clé composite pour le produit et la taille
+        $key = $id . '_' . $size;
+
+        if (!isset($panier[$key])) {
+            $panier[$key] = [
+                'quantity' => 1,
+                'size' => $size,
+                'product_id' => $id,
+            ];
         } else {
-            $panier[$id]++;
+            $panier[$key]['quantity']++;
         }
 
         $session->set('panier', $panier);
 
-        // On redirige vers la page du panier
         return $this->redirectToRoute('cart_index');
     }
 
-    #[Route('/remove/{id}', name: 'remove')]
-    public function remove(Products $product, SessionInterface $session)
+    #[Route('/remove/{id}', name: 'remove', methods: ['POST'])]
+    public function remove(Request $request, Products $product, SessionInterface $session)
     {
-        // On récupère l'id du produit
         $id = $product->getId();
+        $size = $request->request->get('size');
 
-        // On récupère le panier existant
+        // Ajoutez une déclaration de débogage ici
+        if (!$size) {
+            throw new \Exception('La taille n\'a pas été transmise correctement.');
+        }
+
+        $key = $id . '_' . $size;
+
         $panier = $session->get('panier', []);
 
-        // On retirer le produit du panier s'il n'y a qu'1 exemplaire
-        // Sinon on décrémente sa quantité
-        if (!empty($panier[$id])) {
-            if ($panier[$id] > 1) {
-                $panier[$id]--;
-            } else {
-                unset($panier[$id]);
+        if (isset($panier[$key])) {
+            $panier[$key]['quantity']--;
+
+            if ($panier[$key]['quantity'] <= 0) {
+                unset($panier[$key]);
             }
         }
 
         $session->set('panier', $panier);
 
-        // On redirige vers la page du panier
         return $this->redirectToRoute('cart_index');
     }
 
-    #[Route('/delete/{id}', name: 'delete')]
-    public function delete(Products $product, SessionInterface $session)
+    #[Route('/delete/{id}', name: 'delete', methods: ['POST'])]
+    public function delete(Request $request, Products $product, SessionInterface $session)
     {
-        // On récupère l'id du produit
         $id = $product->getId();
+        $size = $request->request->get('size');
 
-        // On récupère le panier existant
+        // Ajoutez une déclaration de débogage ici
+        if (!$size) {
+            throw new \Exception('La taille n\'a pas été transmise correctement.');
+        }
+
+        $key = $id . '_' . $size;
+
         $panier = $session->get('panier', []);
 
-        if (!empty($panier[$id])) {
-            unset($panier[$id]);
+        if (isset($panier[$key])) {
+            unset($panier[$key]);
         }
 
         $session->set('panier', $panier);
 
-        // On redirige vers la page du panier
         return $this->redirectToRoute('cart_index');
     }
 

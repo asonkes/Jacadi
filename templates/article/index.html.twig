@@ -70,12 +70,16 @@
 								</div>
 							</div>
 							<div class="j-CardPair__buttonParent">
-								<button class="j-CardPair__button js-CardPair__button" type="submit">
+								<button class="j-CardPair__button js-CardPair__button" type="button">
 									Choisir sa taille
-									<span id="selected-size"></span>
+									<span class="span2" id="selected-size" data-size=""></span>
 								</button>
-								<a class="j-CardPair__button" href=" {{ path('cart_add', {'id': product.id}) }} ">Ajouter au panier</a>
+								<form id="add-to-cart-form" action="{{ path('cart_add', {'id': product.id}) }}" method="POST">
+									<input type="hidden" name="size" id="size-input" value="">
+									<button class="j-CardPair__button" type="submit">Ajouter au panier</button>
+								</form>
 							</div>
+
 						</div>
 					</div>
 				</div>
@@ -99,7 +103,7 @@
 											<div class="j-popUp__itemParent">
 												<p class="j-popUp__item2__item" data-size="{{ stock.size }}">{{ stock.size }}</p>
 												<p class="j-popUp__item2__item" data-size="{{ stock.stockProducts }}">
-													{% if stock.stockProducts < 0 %}
+													{% if stock.stockProducts <= 0 %}
 														<span class="j-popUp__span">Temporairement indisponible</span>
 													{% else %}
 														{{ stock.stockProducts }}
@@ -112,7 +116,7 @@
 											<div class="j-popUp__itemParent">
 												<p class="j-popUp__item2__item" data-size="{{ stock.size }}">{{ stock.size }}</p>
 												<p class="j-popUp__item2__item" data-size="{{ stock.stockProducts }}">
-													{% if stock.stockProducts < 0 %}
+													{% if stock.stockProducts <= 0 %}
 														<span class="j-popUp__span">Temporairement indisponible</span>
 													{% else %}
 														{{ stock.stockProducts }}
