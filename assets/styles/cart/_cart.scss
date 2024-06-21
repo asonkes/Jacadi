@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     font-family: var(--font-family2);
-    font-size: 20px;
+    font-size: 16px;
 
     @include mixin.md {
         font-size: 16px;
@@ -42,22 +42,12 @@
             }
 
             .j-cartGrid__button {
-                max-width: 30%;
+                max-width: 100px;
                 display: flex;
                 flex-direction: column;
                 text-align: center;
 
-                @include mixin.lg {
-                    max-width: 40%;
-                }
 
-                @include mixin.md {
-                    max-width: 50%;
-                }
-
-                @include mixin.sm {
-                    max-width: 70%;
-                }
             }
         }
     }
@@ -84,7 +74,16 @@ span {
 .j-cart__button {
     background-color: #785B5D;
     color: var(--white);
-    padding: 8px;
+    padding: 4px;
+    border-radius: 25px;
+    text-decoration: none;
+    margin: 5px 5px;
+}
+
+.j-cart__button2 {
+    background-color: #785B5D;
+    color: var(--white);
+    padding: 10px;
     border-radius: 25px;
     text-decoration: none;
     margin: 5px 5px;

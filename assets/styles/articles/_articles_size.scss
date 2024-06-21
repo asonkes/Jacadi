@@ -59,3 +59,16 @@
         }
     }
 }
+
+.j-popUp__itemParent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.j-popUp__span {
+    text-decoration: none;
+    color: var(--blue);
+    font-size: 14px;
+    font-weight: 300 !important;
+}

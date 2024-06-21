@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Stock;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Range;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Positive;
@@ -34,9 +35,10 @@ class StockFormType extends AbstractType
                     new NotBlank([
                         'message' => 'Le champ ne peut pas être vide'
                     ]),
-                    new Positive(
-                        message: 'La stock ne peut pas être négatif'
-                    )
+                    new Range([
+                        'min' => 0,
+                        'notInRangeMessage' => 'Le stock ne peut pas être négatif'
+                    ]),
                 ]
             ]);
     }

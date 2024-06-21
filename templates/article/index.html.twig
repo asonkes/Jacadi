@@ -96,11 +96,29 @@
 								{% for stock in product.stocks %}
 									{% if category.name == 'Bébé Fille' or category.name == 'Bébé Garçon' %}
 										{% if stock.size in ['3 mois', '6 mois', '9 mois', '1 an', '2 ans', '18 mois', '3 ans'] %}
-											<p class="j-popUp__item2__item" data-size="{{ stock.size }}">{{ stock.size }}</p>
+											<div class="j-popUp__itemParent">
+												<p class="j-popUp__item2__item" data-size="{{ stock.size }}">{{ stock.size }}</p>
+												<p class="j-popUp__item2__item" data-size="{{ stock.stockProducts }}">
+													{% if stock.stockProducts <= 0 %}
+														<span class="j-popUp__span">Temporairement indisponible</span>
+													{% else %}
+														{{ stock.stockProducts }}
+													{% endif %}
+												</p>
+											</div>
 										{% endif %}
 									{% elseif category.name == 'Fille' or category.name == 'Garçon' %}
 										{% if stock.size in ['2 ans', '3 ans', '4 ans', '5 ans', '6 ans', '8 ans', '10 ans', '12 ans', '14 ans'] %}
-											<p class="j-popUp__item2__item" data-size="{{ stock.size }}">{{ stock.size }}</p>
+											<div class="j-popUp__itemParent">
+												<p class="j-popUp__item2__item" data-size="{{ stock.size }}">{{ stock.size }}</p>
+												<p class="j-popUp__item2__item" data-size="{{ stock.stockProducts }}">
+													{% if stock.stockProducts <= 0 %}
+														<span class="j-popUp__span">Temporairement indisponible</span>
+													{% else %}
+														{{ stock.stockProducts }}
+													{% endif %}
+												</p>
+											</div>
 										{% endif %}
 									{% endif %}
 								{% endfor %}
