@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Products;
 use App\Repository\StockRepository;
 use App\Repository\ProductsRepository;
-use App\Repository\CategoriesRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,31 +13,47 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CartController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(Products $product, SessionInterface $session, ProductsRepository $productsRepository, StockRepository $stockRepository)
+    public function index(ProductsRepository $productsRepository, StockRepository $stockRepository, SessionInterface $session)
     {
-        $stock = $stockRepository->findAll();
-
+        // Récupérer le panier depuis la session
         $panier = $session->get('panier', []);
 
         // On initialise des variables
         $data = [];
         $total = 0;
 
+        // Parcourir chaque élément du panier
         foreach ($panier as $id => $quantity) {
             $product = $productsRepository->find($id);
 
-            $data[] = [
-                'product' => $product,
-                'quantity' => $quantity,
-            ];
+            if ($product) {
+                // Convertir le prix en nombre (float)
+                $price = (float) $product->getPrice();
 
-            $total += $product->getPrice() * $quantity;
+                // Vérifier si $quantity est numérique
+                if (is_numeric($quantity)) {
+                    // Récupérer les stocks associés au produit
+                    $stocks = $stockRepository->findBy(['products' => $product]);
+
+                    $data[] = [
+                        'product' => $product,
+                        'quantity' => $quantity,
+                        'stocks' => $stocks, // Ajouter les stocks au tableau de données
+                    ];
+
+                    // Calculer le total
+                    $total += $price * (int) $quantity;
+                } else {
+                    // Gérer l'erreur si $quantity n'est pas numérique
+                }
+            } else {
+                // Gérer l'erreur si le produit n'est pas trouvé
+            }
         }
 
         return $this->render('cart/index.html.twig', [
             'data' => $data,
             'total' => $total,
-            'stock' => $stock
         ]);
     }
 
@@ -53,7 +68,7 @@ class CartController extends AbstractController
 
         // On ajoute le produit dans le panier s'il n'y est pas encore
         // Sinon on incrémente sa quantité
-        if (empty($panier[$id])) {
+        if (!isset($panier[$id])) {
             $panier[$id] = 1;
         } else {
             $panier[$id]++;
@@ -79,9 +94,9 @@ class CartController extends AbstractController
         if (!empty($panier[$id])) {
             if ($panier[$id] > 1) {
                 $panier[$id]--;
+            } else {
+                unset($panier[$id]);
             }
-        } else {
-            unset($panier[$id]);
         }
 
         $session->set('panier', $panier);

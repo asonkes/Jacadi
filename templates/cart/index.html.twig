@@ -34,6 +34,12 @@
 								<span>Nom :</span>
 								{{ element.product.name }}</div>
 							<div class="j-cartGrid__text">
+								{% for stock in element.stocks %}
+									<span>Taille :</span>
+									{{ stock.size }}
+								{% endfor %}
+							</div>
+							<div class="j-cartGrid__text">
 								<span>Prix :</span>
 								{{ element.product.price }}
 								€</div>
