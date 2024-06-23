@@ -204,25 +204,21 @@
 		<div class="j-contact__contentParent">
 			<div class="j-contact__content">
 				<h2 class="j-contact__h2">Contact</h2>
-				<form action="">
-					<div class="j-form__inputParent">
-						<label for="firstname"></label>
-						<input class="j-form__input" type="text" placeholder="Nom">
-					</div>
-					<div class="j-form__inputParent">
-						<label for="lastname"></label>
-						<input class="j-form__input" type="text" placeholder="Prénom">
-					</div>
-					<div class="j-form__inputParent">
-						<label for="e-mail"></label>
-						<input class="j-form__input" type="text" placeholder="E-mail">
-					</div>
-					<div class="j-form__inputParent">
-						<label for="message"></label>
-						<textarea class="j-form__textarea" placeholder="Message"></textarea>
-					</div>
-					<button class="j-form__button">Envoyer</button>
-				</form>
+				{{ form_start(form) }}
+				<div class="j-form__inputParent">
+					{{ form_row(form.firstname) }}
+				</div>
+				<div class="j-form__inputParent">
+					{{ form_row(form.lastname) }}
+				</div>
+				<div class="j-form__inputParent">
+					{{ form_row(form.email) }}
+				</div>
+				<div class="j-form__inputParent">
+					{{ form_row(form.message) }}
+				</div>
+				<button>{{ form_widget(form.submit) }}</button>
+				{{ form_end(form) }}
 			</div>
 		</div>
 		<div class="j-prefooter-grid">

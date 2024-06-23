@@ -1,0 +1,15 @@
+{{ form_start(form) }}
+<div class="j-form__inputParent">
+	{{ form_row(form.firstname) }}
+</div>
+<div class="j-form__inputParent">
+	{{ form_row(form.lastname) }}
+</div>
+<div class="j-form__inputParent">
+	{{ form_row(form.email) }}
+</div>
+<div class="j-form__inputParent">
+	{{ form_row(form.message) }}
+</div>
+<button>{{ form_widget(form.submit) }}</button>
+{{ form_end(form) }}

@@ -2,19 +2,72 @@
 
 namespace App\Controller;
 
+use App\Form\ContactFormType;
 use App\Repository\CategoriesRepository;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Mailer\MailerInterface;
 
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(CategoriesRepository $categoriesRepository): Response
+    public function index(Request $request, CategoriesRepository $categoriesRepository, MailerInterface $mailer): Response
     {
-        $categories = $categoriesRepository->findBY([]);
+        $categories = $categoriesRepository->findAll();
+
+        $form = $this->createForm(ContactFormType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $contactFormData = $form->getData();
+
+            // Envoi de l'e-mail
+            $this->sendEmail(
+                $contactFormData['email'],
+                'jacadi@gmail.com',
+                'Contact Form Submission',
+                [
+                    'firstname' => $contactFormData['firstname'],
+                    'lastname' => $contactFormData['lastname'],
+                    'user_email' => $contactFormData['email'],
+                    'message' => $contactFormData['message'],
+                ],
+                $mailer
+            );
+
+            $this->addFlash('success', 'Message sent successfully!');
+
+            return $this->redirectToRoute('home');
+        }
+
         return $this->render('home/index.html.twig', [
-            'categories' => $categories
+            'categories' => $categories,
+            'form' => $form->createView(),
         ]);
+    }
+
+    private function sendEmail(string $from, string $to, string $subject, array $context, MailerInterface $mailer): void
+    {
+        // Construire le contenu de l'e-mail
+        $emailContent = sprintf(
+            "Nom: %s\nPrénom: %s\nE-mail: %s\nMessage:\n%s",
+            $context['lastname'],
+            $context['firstname'],
+            $context['user_email'],
+            $context['message']
+        );
+
+        // Créer l'objet de l'e-mail
+        $email = (new TemplatedEmail())
+            ->from($from)
+            ->to($to)
+            ->subject($subject)
+            ->text($emailContent);
+
+        // Envoyer l'e-mail
+        $mailer->send($email);
     }
 }
