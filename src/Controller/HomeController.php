@@ -17,16 +17,4 @@ class HomeController extends AbstractController
             'categories' => $categories
         ]);
     }
-
-    #[Route('/home/produits', name: 'products')]
-    public function products(): Response
-    {
-        return $this->render('home/products/index.html.twig');
-    }
-
-    #[Route('/home/articles', name: 'articles')]
-    public function articles(): Response
-    {
-        return $this->render('home/articles.html.twig');
-    }
 }
