@@ -10,4 +10,3 @@ import '../JS/flashMessage/flashMessage.js';
 import '../JS/cross/cross.js';
 import '../JS/previewImage/previewImage.js';
 import '../JS/size/size.js';
-

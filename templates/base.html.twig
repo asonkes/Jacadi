@@ -40,9 +40,8 @@
 
 		{% block body %}{% endblock %}
 
-		<a href="https://www.iubenda.com/privacy-policy/18385874" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe" title="Politique de confidentialité">Politique de confidentialité</a>
-
-		{% if app.request.cookies.get('cookiesAccepted') is not defined %}
+		<script>
+			<a href="https://www.iubenda.com/privacy-policy/18385874" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe " title="Politique de confidentialité ">Politique de confidentialité</a>
 			<script type="text/javascript">
 				(function (w, d) {
 var loader = function () {
@@ -51,7 +50,6 @@ tag = d.getElementsByTagName("script")[0];
 s.src = "https://cdn.iubenda.com/iubenda.js";
 tag.parentNode.insertBefore(s, tag);
 };
-
 if (w.addEventListener) {
 w.addEventListener("load", loader, false);
 } else if (w.attachEvent) {
@@ -59,25 +57,15 @@ w.attachEvent("onload", loader);
 } else {
 w.onload = loader;
 }
-
-// Ajout de l'événement pour accepter les cookies
-document.addEventListener('DOMContentLoaded', function () {
-document.querySelector('.iubenda-embed').addEventListener('click', function () {
-document.cookie = "cookiesAccepted=true; path=/; max-age=" + (
-60 * 60 * 24 * 365
-); // 1 an
-});
-});
 })(window, document);
 			</script>
-		{% endif %}
+			{% include "partials/footer.html.twig" %}
 
-		{% include "partials/footer.html.twig" %}
+			<div id="App"></div>
 
-		<div id="App"></div>
-
-		{% block javascripts %}
-			{{ encore_entry_script_tags('app') }}
-		{% endblock %}
+			{% block javascripts %}
+				{{ encore_entry_script_tags('app') }}
+			{% endblock %}
+		</body>
 	</body>
 </html>
