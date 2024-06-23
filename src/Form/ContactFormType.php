@@ -1,12 +1,11 @@
 <?php
 
+
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints\Regex;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints as Assert; // Importation des contraintes
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -23,10 +22,12 @@ class ContactFormType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Prénom',
                     'class' => 'j-form__input',
-                    new NotBlank([
+                ],
+                'constraints' => [
+                    new Assert\NotBlank([
                         'message' => 'Le champ ne peut pas être vide.',
                     ]),
-                    new Regex([
+                    new Assert\Regex([
                         'pattern' => '/^\D+$/',
                         'message' => 'Votre prénom ne peut pas contenir de chiffres.',
                     ])
@@ -37,12 +38,14 @@ class ContactFormType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Nom',
                     'class' => 'j-form__input',
-                    new NotBlank([
+                ],
+                'constraints' => [
+                    new Assert\NotBlank([
                         'message' => 'Le champ ne peut pas être vide.',
                     ]),
-                    new Regex([
+                    new Assert\Regex([
                         'pattern' => '/^\D+$/',
-                        'message' => 'Votre prénom ne peut pas contenir de chiffres.',
+                        'message' => 'Votre nom ne peut pas contenir de chiffres.',
                     ])
                 ]
             ])
@@ -51,12 +54,14 @@ class ContactFormType extends AbstractType
                 'attr' => [
                     'placeholder' => 'E-mail',
                     'class' => 'j-form__input',
-                    new NotBlank([
+                ],
+                'constraints' => [
+                    new Assert\NotBlank([
                         'message' => 'L\'adresse e-mail ne peut pas être vide.',
                     ]),
-                    new Regex([
+                    new Assert\Regex([
                         'pattern' => '/@.*\.(com|be|net)$/i',
-                        'message' => 'L\'adresse e-mail doit contenir un "@" et se terminer par ".com".',
+                        'message' => 'L\'adresse e-mail doit contenir un "@" et se terminer par ".com", ".be" ou ".net".',
                     ]),
                 ]
             ])
@@ -65,17 +70,17 @@ class ContactFormType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Message',
                     'class' => 'j-form__input',
-                    new NotBlank([
+                ],
+                'constraints' => [
+                    new Assert\NotBlank([
                         'message' => 'Le champ ne peut pas être vide.',
                     ]),
-                    new Length(
-                        [
-                            'min' => 8,
-                            'minMessage' => "Le champ doit comporter au minimum 8 caractères",
-                            'max' => 200,
-                            'maxMessage' => 'Le champ doit comporter au maximum 200 caractères'
-                        ]
-                    )
+                    new Assert\Length([
+                        'min' => 8,
+                        'minMessage' => 'Le champ doit comporter au moins {{ limit }} caractères.',
+                        'max' => 200,
+                        'maxMessage' => 'Le champ doit comporter au maximum {{ limit }} caractères.',
+                    ])
                 ]
             ])
             ->add('submit', SubmitType::class, [
