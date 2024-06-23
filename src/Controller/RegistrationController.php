@@ -36,10 +36,7 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
 
-            // On génère le JWT de l'utilisateur
-            // On crée le Header
             $header = [
                 'typ' => 'JWT',
                 'alg' => 'HS256'
@@ -59,7 +56,10 @@ class RegistrationController extends AbstractController
                 $user->getEmail(),
                 'Activation de votre compte sur le site e-commerce',
                 'register',
-                compact('user', 'token')
+                [
+                    'user' => $user,
+                    'token' => $token
+                ]
             );
 
             return $userAuthenticator->authenticateUser(
