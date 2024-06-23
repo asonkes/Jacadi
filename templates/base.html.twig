@@ -42,7 +42,35 @@
 
 		<a href="https://www.iubenda.com/privacy-policy/18385874" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe" title="Politique de confidentialité">Politique de confidentialité</a>
 
-		<script src="{{ asset('path/to/your/cookieConsent.js') }}"></script>
+		{% if app.request.cookies.get('cookiesAccepted') is not defined %}
+			<script type="text/javascript">
+				(function (w, d) {
+var loader = function () {
+var s = d.createElement("script"),
+tag = d.getElementsByTagName("script")[0];
+s.src = "https://cdn.iubenda.com/iubenda.js";
+tag.parentNode.insertBefore(s, tag);
+};
+
+if (w.addEventListener) {
+w.addEventListener("load", loader, false);
+} else if (w.attachEvent) {
+w.attachEvent("onload", loader);
+} else {
+w.onload = loader;
+}
+
+// Ajout de l'événement pour accepter les cookies
+document.addEventListener('DOMContentLoaded', function () {
+document.querySelector('.iubenda-embed').addEventListener('click', function () {
+document.cookie = "cookiesAccepted=true; path=/; max-age=" + (
+60 * 60 * 24 * 365
+); // 1 an
+});
+});
+})(window, document);
+			</script>
+		{% endif %}
 
 		{% include "partials/footer.html.twig" %}
 
