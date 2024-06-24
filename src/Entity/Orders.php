@@ -32,7 +32,7 @@ class Orders
     #[ORM\JoinColumn(nullable: false)]
     private ?Users $Users = null;
 
-    #[ORM\OneToMany(targetEntity: OrdersDetails::class, mappedBy: 'orders', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: OrdersDetails::class, mappedBy: 'orders', orphanRemoval: true, cascade: ['persist'])]
     private Collection $ordersDetails;
 
     public function __construct()

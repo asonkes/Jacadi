@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jacadi - Commandes
+{% endblock %}
+
+{% block og_title %}Jacadi - Commandes
+{% endblock %}
+
+{% block body %}
+	<section class="j-section js-page-content">
+		<div class="j-homeCover" style="background-image: url('{{ asset('images/backgroundImages/doudou.webp') }}')">
+			<img class="j-homeLogo" src="{{ asset('images/Logo/Logo.png')}}">
+		</div>
+		<div class="j-loginRegister" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.webp') }}')">
+			<a href="{{ path('home') }}" class="j-linkPage__Parent">
+				<div class="j-linkPage">
+					<i class="fa-solid fa-chevron-right j-linkPage__icon"></i>
+					<p class="j-linkPage__text">Retour à l'accueil</p>
+				</div>
+			</a>
+			<div class="j-cart">
+				<h3 class="j-cart__h3">Commandes</h3>
+			</div>
+		</div>
+	</section>
+{% endblock %}
