@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Controller;
 
 use App\Entity\Orders;
@@ -10,12 +11,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
+use Symfony\Component\Mime\Address;
 
 #[Route('/commandes', name: 'app_orders_')]
 class OrdersController extends AbstractController
 {
     #[Route('/ajout', name: 'add')]
-    public function add(SessionInterface $session, ProductsRepository $productsRepository, EntityManagerInterface $entityManager): Response
+    public function add(SessionInterface $session, ProductsRepository $productsRepository, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
 
@@ -26,42 +30,70 @@ class OrdersController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
-        // Le panier n'est pas vide, on crée la commande
+        // Générer le numéro de référence unique
+        $orderRepository = $entityManager->getRepository(Orders::class);
+        $lastOrder = $orderRepository->findOneBy([], ['id' => 'desc']);
+        $lastId = $lastOrder ? $lastOrder->getId() + 1 : 1;
+        $reference = sprintf('%s-%s-%04d', date('Y'), date('m'), $lastId);
+
+        // Créer la commande
         $order = new Orders();
-
-        // On remplit la commande 
         $order->setUsers($this->getUser());
-        $order->setReference(uniqid());
+        $order->setReference($reference);
 
-        // On parcourt le panier pour créer les détails de la commande
+        $total = 0; // Initialiser le total de la commande
+
+        // Parcourir le panier pour créer les détails de la commande
         foreach ($panier as $key => $details) {
             $orderDetails = new OrdersDetails();
 
             // Récupérer l'ID du produit et la taille à partir de la clé composite
             list($productId, $size) = explode('_', $key);
 
-            // On va chercher le produit
+            // Récupérer le produit
             $product = $productsRepository->find($productId);
 
+            // Créer le détail de commande
             $price = $product->getPrice();
+            $quantity = $details['quantity'];
+            $total += $price * $quantity; // Ajouter au total
 
-            // On crée le détail de commande
             $orderDetails->setProducts($product);
             $orderDetails->setPrice($price);
-            $orderDetails->setQuantity($details['quantity']);
-            $orderDetails->setSize($details['size']);  // Ajouter la taille
+            $orderDetails->setQuantity($quantity);
+            $orderDetails->setSize($size);
 
             $order->addOrdersDetail($orderDetails);
         }
 
-        // On persiste et on flush
+        // Persister et flush
         $entityManager->persist($order);
         $entityManager->flush();
 
+        // Vider le panier
         $session->remove('panier');
 
-        $this->addFlash('success', 'Votre commande a été créé avec succès');
+        // Envoyer l'email de confirmation
+        $this->sendOrderConfirmationEmail($order, $total, $mailer);
+
+        $this->addFlash('success', 'Votre commande a été créée avec succès et un email de confirmation a été envoyé.');
 
         return $this->redirectToRoute('home');
+    }
+
+    private function sendOrderConfirmationEmail(Orders $order, float $total, MailerInterface $mailer)
+    {
+        $user = $order->getUsers();
+        $email = (new Email())
+            ->from(new Address('no-reply@yourdomain.com', 'Your Shop'))
+            ->to($user->getEmail())
+            ->subject('Confirmation de commande')
+            ->html($this->renderView('emails/order_confirmation.html.twig', [
+                'order' => $order,
+                'user' => $user,
+                'total' => $total
+            ]));
+
+        $mailer->send($email);
     }
 }

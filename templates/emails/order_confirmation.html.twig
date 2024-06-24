@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Confirmation de commande</title>
+	</head>
+	<body>
+		<h1>Bonjour
+			{{ user.firstName }}
+			{{ user.lastName }},</h1>
+		<p>Merci pour votre commande ! Voici les détails de votre commande :</p>
+		<p>Numéro de commande :
+			{{ order.reference }}</p>
+		<table>
+			<thead>
+				<tr>
+					<th>Produit</th>
+					<th>Quantité</th>
+					<th>Taille</th>
+					<th>Prix</th>
+					<th>Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for detail in order.ordersDetails %}
+					<tr>
+						<td>{{ detail.products.name }}</td>
+						<td>{{ detail.quantity }}</td>
+						<td>{{ detail.size }}</td>
+						<td>{{ detail.price }}€</td>
+						<td>{{ detail.price * detail.quantity }}€</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<p>Total de la commande :
+			{{ total }}€</p>
+		<p>Nous vous attendons au magasin pour la bonne réception de votre commande.</p>
+		<p>Celle-ci sera prête dans 24h00.</p>
+		<p>Nous espérons vous revoir bientôt, un  tout grand merci !</p>
+	</body>
+</html>
