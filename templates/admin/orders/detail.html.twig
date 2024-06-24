@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jacadi - Détails des commandes
+{% endblock %}
+
+{% block og_title %}
+	Jacadi - Détails des commandes
+{% endblock %}
+
+{% block body %}
+
+	<section class="j-section js-page-content">
+		<div class="j-homeCover" style="background-image: url('{{ asset('images/backgroundImages/doudou.webp') }}')">
+			<img class="j-homeLogo" src="{{ asset('images/Logo/Logo.png')}}">
+		</div>
+
+		<div class="j-dashboard" style="background-image: url('{{ asset('images/backgroundImages/ciment-texture_1194-6501.webp') }}')">
+
+			{% for label, messages in app.flashes %}
+				{% for message in messages %}
+					<div class="j-flashMessage js-flashMessage {{ label }}">
+						<div>
+							<strong>{{ message }}</strong>
+						</div>
+						<div class="j-flashIcon js-flashIcon">
+							<i class="fa-solid fa-xmark"></i>
+						</div>
+					</div>
+				{% endfor %}
+			{% endfor %}
+
+			<div class="j-dashboard__form">
+				<div class="j-form" method="post">
+					<a href=" {{ path('admin_index') }} " class="j-linkPage__Parent">
+						<div class="j-linkPage">
+							<i class="fa-solid fa-chevron-right j-linkPage__icon"></i>
+							<p class="j-linkPage__text">Retour à la page Admin</p>
+						</div>
+					</a>
+					<h3 class="j-form__h3">Détails des commandes - Dashboard</h3>
+					<table>
+						<thead>
+							<tr></tr>
+							<tr>
+								<th>ID Produit</th>
+								<th>Produit</th>
+								<th>Quantité</th>
+								<th>Taille</th>
+								<th>Prix</th>
+								<th>Total</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% set total = 0 %}
+							{% for detail in order.ordersDetails %}
+								<tr>
+									<td>{{ detail.products.id }}</td>
+									<td>{{ detail.products.name }}</td>
+									<td>{{ detail.quantity }}</td>
+									<td>{{ detail.size }}</td>
+									<td>{{ detail.price }}€</td>
+									<td>{{ detail.price * detail.quantity }}€</td>
+								</tr>
+								{% set total = total + detail.price * detail.quantity %}
+							{% endfor %}
+						</tbody>
+					</table>
+					<p>Total de la commande :
+						{{ total }}€</p>
+					<a href="{{ path('admin_orders') }}">Retour à la liste des commandes</a>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div></section>{% endblock %}

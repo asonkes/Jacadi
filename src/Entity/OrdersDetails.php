@@ -22,7 +22,7 @@ class OrdersDetails
      */
     #[ORM\Id]
     #[ORM\ManyToOne(inversedBy: 'ordersDetails')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     private ?Orders $orders = null;
 
     /**
