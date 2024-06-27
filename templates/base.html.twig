@@ -39,34 +39,42 @@
 		{% include "partials/header.html.twig" %}
 
 		{% block body %}{% endblock %}
-
-		<script>
-			<a href="https://www.iubenda.com/privacy-policy/18385874" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe " title="Politique de confidentialité ">Politique de confidentialité</a>
-			<script type="text/javascript">
-				(function (w, d) {
-var loader = function () {
-var s = d.createElement("script"),
-tag = d.getElementsByTagName("script")[0];
-s.src = "https://cdn.iubenda.com/iubenda.js";
-tag.parentNode.insertBefore(s, tag);
-};
-if (w.addEventListener) {
-w.addEventListener("load", loader, false);
-} else if (w.attachEvent) {
-w.attachEvent("onload", loader);
-} else {
-w.onload = loader;
+		<script type="text/javascript">
+			var _iub = _iub || [];
+_iub.csConfiguration = {
+"askConsentAtCookiePolicyUpdate": true,
+"floatingPreferencesButtonDisplay": "bottom-left",
+"lang": "fr",
+"perPurposeConsent": true,
+"preferenceCookie": {
+"expireAfter": 180
+},
+"siteId": 3683578,
+"whitelabel": false,
+"cookiePolicyId": 62903451,
+"banner": {
+"acceptButtonDisplay": true,
+"closeButtonDisplay": false,
+"customizeButtonDisplay": true,
+"explicitWithdrawal": true,
+"listPurposes": true,
+"ownerName": "jacadi.audrey-sonkes.be/",
+"position": "float-top-center",
+"rejectButtonDisplay": true,
+"showTitle": false,
+"showTotalNumberOfProviders": true
 }
-})(window, document);
-			</script>
+};
+		</script>
+		<script type="text/javascript" src="https://cs.iubenda.com/autoblocking/3683578.js"></script>
+		<script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
 
-			{% include "partials/footer.html.twig" %}
+		{% include "partials/footer.html.twig" %}
 
-			<div id="App"></div>
+		<div id="App"></div>
 
-			{% block javascripts %}
-				{{ encore_entry_script_tags('app') }}
-			{% endblock %}
-		</body>
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
 	</body>
-</html>
+</html></body></html>

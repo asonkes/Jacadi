@@ -21,20 +21,20 @@ class StockFixtures extends Fixture
 
         // Itère sur chaque produit et crée des stocks pour chaque produit
         foreach ($products as $product) {
-            $this->createStock('3 mois', 50, $product, $manager);
-            $this->createStock('6 mois', 50, $product, $manager);
-            $this->createStock('9 mois', 50, $product, $manager);
-            $this->createStock('1 an', 50, $product, $manager);
-            $this->createStock('2 ans', 50, $product, $manager);
-            $this->createStock('18 mois', 50, $product, $manager);
-            $this->createStock('3 ans', 50, $product, $manager);
-            $this->createStock('4 ans', 50, $product, $manager);
-            $this->createStock('5 ans', 50, $product, $manager);
-            $this->createStock('6 ans', 50, $product, $manager);
-            $this->createStock('8 ans', 50, $product, $manager);
-            $this->createStock('10 ans', 50, $product, $manager);
-            $this->createStock('12 ans', 50, $product, $manager);
-            $this->createStock('14 ans', 50, $product, $manager);
+            $this->createStock('3 mois', 0, $product, $manager);
+            $this->createStock('6 mois', 0, $product, $manager);
+            $this->createStock('9 mois', 0, $product, $manager);
+            $this->createStock('1 an', 0, $product, $manager);
+            $this->createStock('2 ans', 0, $product, $manager);
+            $this->createStock('18 mois', 0, $product, $manager);
+            $this->createStock('3 ans', 0, $product, $manager);
+            $this->createStock('4 ans', 0, $product, $manager);
+            $this->createStock('5 ans', 0, $product, $manager);
+            $this->createStock('6 ans', 0, $product, $manager);
+            $this->createStock('8 ans', 0, $product, $manager);
+            $this->createStock('10 ans', 0, $product, $manager);
+            $this->createStock('12 ans', 0, $product, $manager);
+            $this->createStock('14 ans', 0, $product, $manager);
         }
 
         // Sauvegarde tous les stocks créés dans la base de données
