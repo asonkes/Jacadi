@@ -13,10 +13,10 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/admin', name: 'admin_')]
+#[IsGranted('ROLE_ADMIN')]
 class UsersController extends AbstractController
 {
     #[Route('/utilisateurs', name: 'users')]
-    #[IsGranted('ROLE_ADMIN')]
     public function index(UsersRepository $usersRepository): Response
     {
         // Permet de pouvoir récupérer tous les utilisateurs de la base de données
@@ -27,7 +27,6 @@ class UsersController extends AbstractController
     }
 
     #[Route('/utilisateurs/edition/{id}', name: 'edit_user')]
-    #[IsGranted('ROLE_ADMIN')]
     public function edit(Users $user, Request $request, EntityManagerInterface $entityManagerInterface): Response
     {
         // Vérifie si l'utilisateur peut éditer avec le voter
@@ -58,7 +57,6 @@ class UsersController extends AbstractController
     }
 
     #[Route('/utilisateurs/suppression/{id}', name: 'delete_user', methods: ['GET', 'POST'])]
-    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Users $user, EntityManagerInterface $entityManagerInterface): Response
     {
         // On vérifie si l'utilisateur peut delete avec le voter

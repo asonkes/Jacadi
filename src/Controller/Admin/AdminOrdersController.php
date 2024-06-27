@@ -11,10 +11,10 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/admin', name: 'admin_')]
+#[IsGranted('ROLE_ADMIN')]
 class AdminOrdersController extends AbstractController
 {
     #[Route('/commandes', name: 'orders')]
-    #[IsGranted('ROLE_ADMIN')]
     public function index(EntityManagerInterface $entityManager): Response
     {
         $orders = $entityManager->getRepository(Orders::class)->findAll();
