@@ -41,7 +41,7 @@
                 top: 50%;
                 transform: translateY(-50%);
                 background-color: var(--white);
-                transition: background-color 0.5s easy-in-out;
+
 
                 &:before,
                 &:after {
@@ -54,11 +54,11 @@
                 }
 
                 &:before {
-                    transform: translateY(-15px);
+                    transform: translateY(-10px);
                 }
 
                 &:after {
-                    transform: translateY(15px);
+                    transform: translateY(10px);
                 }
             }
         }
@@ -85,6 +85,9 @@
         opacity: 92%;
         z-index: 9999;
         display: none;
+        max-height: calc(100vh - 65px);
+        /* Ajuste la hauteur pour éviter de dépasser l'écran */
+        overflow-y: auto;
 
         ul {
             width: 100%;

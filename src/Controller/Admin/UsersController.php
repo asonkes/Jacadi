@@ -64,6 +64,7 @@ class UsersController extends AbstractController
 
         // Vérifie le token CSRF pour sécuriser la requête de suppression
         if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->query->get('_token'))) {
+
             // Supprime l'utilisateur
             $entityManagerInterface->remove($user);
             $entityManagerInterface->flush();

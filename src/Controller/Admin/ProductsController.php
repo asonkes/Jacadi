@@ -42,9 +42,6 @@ class ProductsController extends AbstractController
         // Initialiser les tailles par défaut
         $sizes = ['3 mois', '6 mois', '9 mois', '1 an', '2 ans', '18 mois', '3 ans', '4 ans', '5 ans', '6 ans', '8 ans', '10 ans', '12 ans', '14 ans'];
 
-        // Initialiser les tailles par défaut
-        $sizes = ['3 mois', '6 mois', '9 mois', '1 an', '2 ans', '18 mois', '3 ans', '4 ans', '5 ans', '6 ans', '8 ans', '10 ans', '12 ans', '14 ans'];
-
         foreach ($sizes as $size) {
             $stock = new Stock();
             $stock->setSize($size);
@@ -123,8 +120,8 @@ class ProductsController extends AbstractController
 
         // On traite la requête du formulaire
         $productForm->handleRequest($request);
-        // On vérifie si le formulaire est soumis et valide
 
+        // On vérifie si le formulaire est soumis et valide
         if ($productForm->isSubmitted() && $productForm->isValid()) {
             // Génère le slug
             $slug = $slugger->slug($product->getName())->lower();
@@ -150,7 +147,7 @@ class ProductsController extends AbstractController
                     // Mettre à jour le nom du fichier dans l'entité produit avec le fichier WebP
                     $product->setImage($webpFilename);
                 } catch (\Exception $e) {
-                    // Gérer l'exception si quelque chose se passe mal lors de la conversion
+                    $this->addFlash('error', 'Une erreur s\'est produite lors de l\'ajout du produit : ' . $e->getMessage());
                 }
             }
 

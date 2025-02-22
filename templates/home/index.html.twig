@@ -254,3 +254,28 @@
 		</div>
 	</section>
 {% endblock %}
+
+
+{% block javascripts %}
+	{{ parent() }}
+	<!-- Ce bloc appelle les autres scripts définis dans le template parent -->
+
+	<!-- Ton code personnalisé pour la gestion du consentement -->
+		<script>
+document.addEventListener("DOMContentLoaded", function () {
+let consentGiven = localStorage.getItem("iubenda_consent");
+
+if (! consentGiven) {
+window._iub = window._iub || {};
+window._iub.csConfiguration = {
+askConsentAtCookiePolicyUpdate: true,
+onConsentGiven: function () {
+localStorage.setItem("iubenda_consent", "true");
+console.log("Consentement enregistré !");
+}
+};
+} else {
+console.log("Consentement déjà donné, la bannière ne sera pas affichée.");
+}
+});
+</script>{% endblock %}
